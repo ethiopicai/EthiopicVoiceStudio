@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "main",
+  "description": "Bundled prototype window; no filesystem, shell, or HTTP plugin access.",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

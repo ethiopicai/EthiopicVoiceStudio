@@ -1,0 +1,152 @@
+"""Reference inference for the Ethiopic Voice Studio's Amharic OmniVoice TTS variants.
+
+Same file in every variant folder (tts-codec_llm-0.6b-amh-fp32, tts-codec_llm-0.6b-amh-fp16, tts-codec_llm-0.6b-amh-int8_onnx). The variant's
+variant.json says which runtime to use:
+  * runtime "torch-cuda" : PyTorch, weights in model.safetensors (fp32 or fp16)
+  * runtime "onnxruntime-cpu" : backbone + audio heads run per decoding step in ONNX Runtime
+    (backbone_step*.onnx); token embeddings in embeddings.safetensors; everything else (sampling loop, codec) PyTorch CPU.
+The Higgs-Audio-v2 codec lives in a shared folder (default: ../codec-higgs_audio_v2-fp32 next to the variant folder).
+
+Needs: the `omnivoice` package (k2-fsa/OmniVoice code, Apache-2.0; pip install omnivoice, or set OMNIVOICE_SRC to a
+checkout), torch, torchaudio, transformers>=5.3, soundfile; onnxruntime for the CPU variant.
+
+CLI:
+  python tts_omnivoice_infer.py --text "ሰላም።" --ref ref.wav --ref-text "<exact transcript of ref.wav>" --out out.wav
+Python:
+  tts = OmniVoiceTTS("/path/to/tts-codec_llm-0.6b-amh-fp16")
+  voice = tts.voice("ref.wav", "<ref transcript>")      # encode once, reuse (VoiceClonePrompt; .save()/.load() too)
+  wav = tts.synth("ጽሑፍ", voice)                          # float32 numpy, 24 kHz
+"""
+import argparse
+import json
+import os
+import sys
+import time
+
+import numpy as np
+import torch
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+if os.environ.get("OMNIVOICE_SRC"):
+    sys.path.insert(0, os.environ["OMNIVOICE_SRC"])
+
+from omnivoice import OmniVoice  # noqa: E402
+from omnivoice.models.omnivoice import OmniVoiceConfig, OmniVoiceModelOutput, VoiceClonePrompt  # noqa: E402
+from omnivoice.utils.duration import RuleDurationEstimator  # noqa: E402
+from transformers import AutoFeatureExtractor, AutoTokenizer, HiggsAudioV2TokenizerModel  # noqa: E402
+
+SR = 24000
+
+
+class _OnnxOmniVoice(OmniVoice):
+    """OmniVoice whose backbone + audio heads run in ONNX Runtime. Only the embedding tables live in torch."""
+
+    def forward(self, input_ids, audio_mask, labels=None, attention_mask=None, document_ids=None, position_ids=None):
+        emb = self._prepare_embed_inputs(input_ids, audio_mask).float().numpy()
+        logits = self._ort.run(None, {"emb": emb, "mask": attention_mask.numpy()})[0]
+        B, S = emb.shape[:2]
+        logits = torch.from_numpy(logits).view(B, S, self.config.num_audio_codebook, self.config.audio_vocab_size)
+        return OmniVoiceModelOutput(loss=None, logits=logits.permute(0, 2, 1, 3))
+
+
+class _EmbedOnly(torch.nn.Module):
+    def __init__(self, w):
+        super().__init__()
+        self.embed_tokens = torch.nn.Embedding.from_pretrained(w, freeze=True)
+
+    def get_input_embeddings(self):
+        return self.embed_tokens
+
+
+def _variant_meta(d):
+    p = os.path.join(d, "variant.json")
+    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+
+
+class OmniVoiceTTS:
+    def __init__(self, variant_dir=HERE, codec_dir=None, device=None, threads=None, onnx_file=None,
+                 codec_dtype=None, num_step=None):
+        meta = _variant_meta(variant_dir)
+        self.meta = meta
+        runtime = meta.get("runtime", "torch-cuda")
+        if not codec_dir:  # shared codec next to the variant; "tts-codec-higgs" = name before 2026-11-26
+            parent = os.path.dirname(os.path.abspath(variant_dir))
+            codec_dir = next((os.path.join(parent, n) for n in ("codec-higgs_audio_v2-fp32", "tts-codec-higgs")
+                              if os.path.isdir(os.path.join(parent, n))), os.path.join(parent, "codec-higgs_audio_v2-fp32"))
+        if threads:
+            torch.set_num_threads(threads)
+        self.num_step = num_step or meta.get("recommended_num_step", 16)
+        if runtime.startswith("onnx"):
+            import onnxruntime as ort
+            from safetensors.torch import load_file
+            device = "cpu"
+            cfg = OmniVoiceConfig.from_pretrained(variant_dir)
+            with torch.device("meta"):
+                m = _OnnxOmniVoice(cfg)
+            e = load_file(os.path.join(variant_dir, "embeddings.safetensors"))
+            m.llm = _EmbedOnly(e["llm.embed_tokens.weight"].float())
+            m.audio_embeddings = torch.nn.Embedding.from_pretrained(e["audio_embeddings.weight"].float(), freeze=True)
+            m.codebook_layer_offsets = e["codebook_layer_offsets"]
+            m.audio_heads = None
+            so = ort.SessionOptions()
+            so.intra_op_num_threads, so.inter_op_num_threads = threads or 4, 1
+            onnx_file = onnx_file or meta.get("onnx_file", "backbone_step.int8.onnx")
+            m._ort = ort.InferenceSession(os.path.join(variant_dir, onnx_file), so, providers=["CPUExecutionProvider"])
+        else:
+            device = device or ("cuda:0" if torch.cuda.is_available() else "cpu")
+            dtype = torch.float16 if meta.get("precision", "fp32") == "fp16" else torch.float32
+            if dtype == torch.float16 and str(device).startswith("cpu"):
+                dtype = torch.float32  # fp16 matmuls on CPU are slow or unsupported
+            # train=True: skip OmniVoice's own tokenizer/codec loading (it would fetch the codec from the HF hub)
+            m = OmniVoice.from_pretrained(variant_dir, train=True, device_map=device, dtype=dtype)
+        m.eval()
+        m.text_tokenizer = AutoTokenizer.from_pretrained(variant_dir)
+        cdt = codec_dtype or torch.float32
+        m.audio_tokenizer = HiggsAudioV2TokenizerModel.from_pretrained(codec_dir, device_map=device, dtype=cdt).eval()
+        m.feature_extractor = AutoFeatureExtractor.from_pretrained(codec_dir)
+        m.sampling_rate = m.feature_extractor.sampling_rate
+        m.duration_estimator = RuleDurationEstimator()
+        self.model, self.device = m, device
+
+    @torch.inference_mode()
+    def voice(self, ref_audio, ref_text):
+        """Encode a 3-10 s reference clip once. ref_text must be its exact transcript (no Whisper auto-transcribe)."""
+        return self.model.create_voice_clone_prompt(ref_audio=ref_audio, ref_text=ref_text)
+
+    @torch.inference_mode()
+    def synth(self, text, voice, num_step=None, speed=None, seed=0, **kw):
+        if seed is not None:
+            torch.manual_seed(seed)
+        return self.model.generate(text=text, language="am", voice_clone_prompt=voice,
+                                   num_step=num_step or self.num_step, speed=speed, **kw)[0]
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--text", required=True, nargs="+", help="one or more sentences (one wav each)")
+    ap.add_argument("--ref", required=True)
+    ap.add_argument("--ref-text", required=True)
+    ap.add_argument("--out", default="out.wav", help="output path; with several texts, _<i> is appended")
+    ap.add_argument("--variant", default=HERE)
+    ap.add_argument("--codec", default=None)
+    ap.add_argument("--num-step", type=int, default=None)
+    ap.add_argument("--speed", type=float, default=None, help="0.9 gave the best CER on our test set")
+    ap.add_argument("--threads", type=int, default=None)
+    ap.add_argument("--seed", type=int, default=0)
+    a = ap.parse_args()
+    import soundfile as sf
+    t = time.perf_counter()
+    tts = OmniVoiceTTS(a.variant, a.codec, threads=a.threads, num_step=a.num_step)
+    print(f"loaded in {time.perf_counter() - t:.1f} s", file=sys.stderr)
+    v = tts.voice(a.ref, a.ref_text)
+    for i, txt in enumerate(a.text):
+        t = time.perf_counter()
+        w = tts.synth(txt, v, speed=a.speed, seed=a.seed)
+        dt = time.perf_counter() - t
+        out = a.out if len(a.text) == 1 else a.out.replace(".wav", f"_{i}.wav")
+        sf.write(out, w, SR)
+        print(f"{out}: {len(w) / SR:.2f} s audio in {dt:.2f} s (RTF {dt / (len(w) / SR):.2f})", file=sys.stderr)
+
+
+if __name__ == "__main__":
+    main()

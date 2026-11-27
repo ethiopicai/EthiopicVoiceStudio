@@ -1,0 +1,60 @@
+# tts-flow_lm-90m-amh-3242h-v1.0
+
+Amharic text-to-speech with voice cloning that runs on a CPU about 2x faster than real time. It is
+[Kyutai Pocket TTS](https://github.com/kyutai-labs/pocket-tts) fine-tuned on Amharic, then distilled to 6 layers
+(~100M parameters, 0.44 GB).
+
+## Use
+
+```bash
+python tts_small_infer.py --text "ሰላም ጤና ይስጥልኝ። ዛሬ ስለ ኢትዮጵያ ዜና እንነጋገራለን።" --out out.wav --int8 [--voice ref.wav]
+```
+
+```python
+from tts_small_infer import AmharicTTS
+tts = AmharicTTS(threads=4, int8=True)
+wav = tts.synth("ሰላም ጤና ይስጥልኝ።", voice="ref.wav")   # float32 numpy at tts.sample_rate (24000)
+```
+
+- **Voice:** a clean 3-5 s clip of one speaker; no transcript needed. Without one, `voices/default.wav` is used
+  (a news-reader clip from the training data).
+- **Text:** Amharic in Ethiopic script. Each sentence (split on ። ? !) is generated separately. Spell out numbers;
+  Latin script is read poorly.
+- **Needs:** `pocket-tts` (tested: git v4.0.1-19-gee2ebc8; the PyPI 4.0.1 wheel is untested), `torch`, `sentencepiece`, `pyyaml`, `numpy`, `soundfile`; `torchao` for
+  `--int8`. Peak RAM about 1.7 GB.
+
+## Quality
+
+CER is measured with amharic-ctc v0.3, letters folded, spaces and punctuation ignored. The same 5 held-out voices are
+used for every model.
+
+| | clean100 CER | 162-set CER | speaker sim (clean100) |
+|---|---|---|---|
+| this model, as shipped (CPU, `tts_small_infer.py`, int8 / fp32) | 0.053 / 0.061 | | |
+| this model (6 layers), GPU research eval | 0.074 | 0.112 | 0.952 |
+| 24-layer teacher | 0.084 | 0.107 | |
+| Amharic OmniVoice (GPU model) | 0.047 | 0.100 | 0.961 |
+| real recordings | | 0.236 | |
+
+- **clean100** is 100 held-out human-edited written sentences.
+- **162-set** texts are ASR transcripts with errors, so every CER there is inflated.
+
+**Speed:** on 4 CPU cores, RTF is 0.55 in fp32 and 0.53 in int8 (seconds of compute per
+second of audio). This was measured on ARM cores of a shared machine.
+
+## Training
+
+- **Fine-tune:** the English 24-layer teacher, with a new sentencepiece text embedding.
+  - Steps 0-5k: 964 h of Amharic news.
+  - Steps 5k-15k: 1,593 h of news and podcasts.
+  - 2.5k polish steps at lr 5e-5 on 415 h of the cleanest clips.
+- **Data:** clips were filtered by agreement between the corpus transcript and amharic-ctc (CER <= 0.15, 0.05 for
+  polish), with forced word alignment.
+- **Distillation:** to 6 layers, with guidance (cfg 2.0) baked in.
+
+## License
+
+- **Code:** the pocket-tts code is MIT.
+- **Base weights:** Kyutai's base weights are CC-BY-4.0, under Kyutai's acceptable-use policy.
+- **Training data:** Amilia, derived from YouTube.
+- **Use:** this fine-tune is for **non-commercial use only**.

@@ -1,0 +1,12 @@
+[workspace]
+members = ["apps/desktop/src-tauri", "crates/prototype-core", "crates/transcripts", "crates/home-content", "crates/resource-packs"]
+resolver = "2"
+
+# Model integrity checks must stay responsive in development builds too.
+[profile.dev.package.sha2]
+opt-level = 3
+
+# Host compiler helpers are not shipped. Keep proc-macro metadata intact when
+# building an explicit macOS target with the current Rust toolchain.
+[profile.release.build-override]
+strip = "none"

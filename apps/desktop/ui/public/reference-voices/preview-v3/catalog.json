@@ -1,0 +1,1287 @@
+{
+  "schemaVersion": 3,
+  "packId": "atts1hg1-am-preview-v3",
+  "replacesPackIds": [
+    "atts1hg1-am-preview-v1",
+    "atts1hg1-am-preview-v2"
+  ],
+  "noncommercial": true,
+  "text": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+  "voices": [
+    {
+      "id": "preview-abrahan-mack-ru",
+      "personaId": "tesfaye",
+      "name": "Tesfaye · ተስፋዬ 1",
+      "image": "/profile-images/presets/tesfaye-v2.jpg",
+      "avatarPresentation": "male",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/tesfaye_1_am.wav",
+      "audioSha256": "73f65cda24ef295903a44fa0fe3bca68405db1ab48ad69985ce5a65b0a337aeb",
+      "bytes": 1557164,
+      "sampleRate": 24000,
+      "durationSeconds": 32.44,
+      "peak": 0.784393310546875,
+      "rms": 0.12308045476675034,
+      "longerThanV1Seconds": 27.76,
+      "previousDefault": {
+        "name": "Abrahan Mack · RU",
+        "image": "/profile-images/presets/abrahan-mack.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 224684,
+        "audioSha256": "c32800951763ac4bd94eebd8b888c9c50f79b115bf71e27c68a832a3a2eb5736"
+      },
+      "previousAudioName": "Abrahan_Mack_ru_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Abrahan Mack · RU",
+          "image": "/profile-images/presets/abrahan-mack.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 224684,
+          "audioSha256": "c32800951763ac4bd94eebd8b888c9c50f79b115bf71e27c68a832a3a2eb5736",
+          "audioName": "Abrahan_Mack_ru_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Tesfaye · ተስፋዬ 1",
+          "image": "/profile-images/presets/tesfaye-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1345964,
+          "audioSha256": "5f8a4ced95290281dc951f295efc0a84fccdf79b544ebda49083e4463cc9ee6e",
+          "audioName": "tesfaye_1_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Abrahan_Mack_ru.wav",
+        "language": "ru",
+        "sha256": "cb8777d70a3a4bb05666a532321c62f23426e5daa501f837125ae18a4114c43d",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Abrahan_Mack_ru.wav",
+        "transcript": "Привет мир, это тест синтеза речи на русском, тебе нравится ?"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261119,
+        "promptSeed": 0,
+        "outputGain": 1.0,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 5,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-abrahan-mack-tr",
+      "personaId": "tesfaye",
+      "name": "Tesfaye · ተስፋዬ 2",
+      "image": "/profile-images/presets/tesfaye-v2.jpg",
+      "avatarPresentation": "male",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/tesfaye_2_am.wav",
+      "audioSha256": "ba8920ea7662682c5eea76c263d1a4b332e7df50e1cbfa8bee5beca45bdf18ee",
+      "bytes": 1526444,
+      "sampleRate": 24000,
+      "durationSeconds": 31.8,
+      "peak": 0.7896728515625,
+      "rms": 0.1254517287015915,
+      "longerThanV1Seconds": 26.16,
+      "previousDefault": {
+        "name": "Abrahan Mack · TR",
+        "image": "/profile-images/presets/abrahan-mack.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 270764,
+        "audioSha256": "74c37afd43ada7e1d66976287809be6259d4e101190c16dc337b46a5c5d485d6"
+      },
+      "previousAudioName": "Abrahan_Mack_tr_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Abrahan Mack · TR",
+          "image": "/profile-images/presets/abrahan-mack.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 270764,
+          "audioSha256": "74c37afd43ada7e1d66976287809be6259d4e101190c16dc337b46a5c5d485d6",
+          "audioName": "Abrahan_Mack_tr_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Tesfaye · ተስፋዬ 2",
+          "image": "/profile-images/presets/tesfaye-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1380524,
+          "audioSha256": "8be4b3d2d635e9e132de77bf63697bd2ddd6f43682b9efb0faf5d0f0307aa78f",
+          "audioName": "tesfaye_2_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Abrahan_Mack_tr.wav",
+        "language": "tr",
+        "sha256": "abc25b24bfc36acbf1dc6e1dd10ebda42740d933bcefda9f3d2e30f81a11d553",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Abrahan_Mack_tr.wav",
+        "transcript": "Merhaba dünya, bu bir Türkçe ses sentezi testi; beğeniyor musun ?"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261120,
+        "promptSeed": 0,
+        "outputGain": 1.0,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 5,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-adde-michal-nl",
+      "personaId": "dawit",
+      "name": "Dawit · ዳዊት",
+      "image": "/profile-images/presets/dawit-v2.jpg",
+      "avatarPresentation": "male",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/dawit_1_am.wav",
+      "audioSha256": "5b11a6042c59b2fcc6d0332cd05b0911b25c65697490b5367d48f3bba30808b2",
+      "bytes": 1276844,
+      "sampleRate": 24000,
+      "durationSeconds": 26.6,
+      "peak": 0.97998046875,
+      "rms": 0.137649804353714,
+      "longerThanV1Seconds": 22.4,
+      "previousDefault": {
+        "name": "Adde Michal · NL",
+        "image": "/profile-images/presets/adde-michal.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 201644,
+        "audioSha256": "3e7f8ccb896546046d19fe2cec5f73b0237c53c273691a8394ceab1d28349498"
+      },
+      "previousAudioName": "Adde_Michal_nl_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Adde Michal · NL",
+          "image": "/profile-images/presets/adde-michal.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 201644,
+          "audioSha256": "3e7f8ccb896546046d19fe2cec5f73b0237c53c273691a8394ceab1d28349498",
+          "audioName": "Adde_Michal_nl_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Dawit · ዳዊት",
+          "image": "/profile-images/presets/dawit-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1215404,
+          "audioSha256": "4c4638fd02450fbf51134522538d80099671768ffbf20f0dba951877b2556e12",
+          "audioName": "dawit_1_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Adde_Michal_nl.wav",
+        "language": "nl",
+        "sha256": "148564c41edb6f1f80d14f844b00eb1e4b7ee242b58c563e8e26ac1a261bc0fe",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Adde_Michal_nl.wav",
+        "transcript": "Hallo wereld, dit is een test van spraaksynthese in het Nederlands, vind je het leuk ?"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261121,
+        "promptSeed": 0,
+        "outputGain": 0.9513670390855213,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 5,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-asya-anara-en",
+      "personaId": "hana",
+      "name": "Hana · ሀና",
+      "image": "/profile-images/presets/hana-v2.jpg",
+      "avatarPresentation": "female",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/hana_1_am.wav",
+      "audioSha256": "1971e2cebf1a2a814c739cb01b81355a96a16fb352a7f6a243e949dc6c829bb8",
+      "bytes": 1545644,
+      "sampleRate": 24000,
+      "durationSeconds": 32.2,
+      "peak": 0.84808349609375,
+      "rms": 0.09946732968091965,
+      "longerThanV1Seconds": 26.72,
+      "previousDefault": {
+        "name": "Asya Anara · EN",
+        "image": "/profile-images/presets/asya-anara.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 263084,
+        "audioSha256": "8ffa8e3f502ed4078d61ff0c91b0c10cd970560e6ec5dbf37fddb962552aedfc"
+      },
+      "previousAudioName": "Asya_Anara_en_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Asya Anara · EN",
+          "image": "/profile-images/presets/asya-anara.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 263084,
+          "audioSha256": "8ffa8e3f502ed4078d61ff0c91b0c10cd970560e6ec5dbf37fddb962552aedfc",
+          "audioName": "Asya_Anara_en_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Hana · ሀና",
+          "image": "/profile-images/presets/hana-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1488044,
+          "audioSha256": "5a84ffef6e98ff73c112c21dd6b03b686970f4e55732bb78b8995f55d883875f",
+          "audioName": "hana_1_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Asya_Anara_en.wav",
+        "language": "en",
+        "sha256": "f811e31bfc18bde09bdd5afc4888d39f55ba09cf6d803043bf69cf04fe6974f9",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Asya_Anara_en.wav",
+        "transcript": "Hello world, this is a test of speech synthesis in English, do you like it ?"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261122,
+        "promptSeed": 0,
+        "outputGain": 1.0,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 5,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-craig-gutsy-cs",
+      "personaId": "bereket",
+      "name": "Bereket · በረከት",
+      "image": "/profile-images/presets/bereket-v2.jpg",
+      "avatarPresentation": "male",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/bereket_1_am.wav",
+      "audioSha256": "b814b01fc31d888319c3709f03c570bed58342d47645ccab3b32f9e5f166fdaa",
+      "bytes": 1353644,
+      "sampleRate": 24000,
+      "durationSeconds": 28.2,
+      "peak": 0.968597412109375,
+      "rms": 0.09970148652791977,
+      "longerThanV1Seconds": 23.76,
+      "previousDefault": {
+        "name": "Craig Gutsy · CS",
+        "image": "/profile-images/presets/craig-gutsy.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 213164,
+        "audioSha256": "43c4a02e4cedb024020f60cb652c21eeed86c6a8feae8889331d5e118cce3ebb"
+      },
+      "previousAudioName": "Craig_Gutsy_cs_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Craig Gutsy · CS",
+          "image": "/profile-images/presets/craig-gutsy.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 213164,
+          "audioSha256": "43c4a02e4cedb024020f60cb652c21eeed86c6a8feae8889331d5e118cce3ebb",
+          "audioName": "Craig_Gutsy_cs_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Bereket · በረከት",
+          "image": "/profile-images/presets/bereket-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1230764,
+          "audioSha256": "179a583a06ea37c43ed07200be055e4343522368f73953c15b5208d7c6595676",
+          "audioName": "bereket_1_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Craig_Gutsy_cs.wav",
+        "language": "cs",
+        "sha256": "564768a31a87a51f2005e421f8fbec6ae4cd1b451e71e4667b0508f521c51390",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Craig_Gutsy_cs.wav",
+        "transcript": "Ahoj světe, toto je test syntézy řeči v češtině, líbí se ti to ?"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261123,
+        "promptSeed": 0,
+        "outputGain": 1.0,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 5,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-damien-black-zh",
+      "personaId": "natnael",
+      "name": "Natnael · ናትናኤል",
+      "image": "/profile-images/presets/natnael-v2.jpg",
+      "avatarPresentation": "male",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/natnael_1_am.wav",
+      "audioSha256": "0df046704217affd353e32fc0c2c7fd9e38457c1ed96754c4c157826031a8934",
+      "bytes": 1349804,
+      "sampleRate": 24000,
+      "durationSeconds": 28.12,
+      "peak": 0.97998046875,
+      "rms": 0.1156589537858963,
+      "longerThanV1Seconds": 23.68,
+      "previousDefault": {
+        "name": "Damien Black · ZH",
+        "image": "/profile-images/presets/damien-black.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 213164,
+        "audioSha256": "3a8a9405dd5b45b442ddec7c84bbad5ef521cbd92975aacbf7030e33e6106b1d"
+      },
+      "previousAudioName": "Damien_Black_zh_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Damien Black · ZH",
+          "image": "/profile-images/presets/damien-black.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 213164,
+          "audioSha256": "3a8a9405dd5b45b442ddec7c84bbad5ef521cbd92975aacbf7030e33e6106b1d",
+          "audioName": "Damien_Black_zh_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Natnael · ናትናኤል",
+          "image": "/profile-images/presets/natnael-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1269164,
+          "audioSha256": "787660527a29ba0cf65fad0b3c45e6b397c0f9719d05553f17c23bbacbed35d5",
+          "audioName": "natnael_1_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Damien_Black_zh.wav",
+        "language": "zh",
+        "sha256": "7981cc3ff891f9cfa0819677763d23a5f6d47ced7ea0fa25b9d53f0cae47f150",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Damien_Black_zh.wav",
+        "transcript": "你好世界，这是英语语音合成的测试，你喜欢吗？"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261124,
+        "promptSeed": 0,
+        "outputGain": 0.9460322573406422,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 4.2260317460317465,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-dionisio-schuyler-de",
+      "personaId": "solomon",
+      "name": "Solomon · ሰለሞን 1",
+      "image": "/profile-images/presets/solomon-v2.jpg",
+      "avatarPresentation": "male",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/solomon_1_am.wav",
+      "audioSha256": "f94feaa6dfdb94dce1b18d0e5001ea1c639b7870ddb39bf0bec11af3f040a017",
+      "bytes": 1511084,
+      "sampleRate": 24000,
+      "durationSeconds": 31.48,
+      "peak": 0.86077880859375,
+      "rms": 0.10267966240644455,
+      "longerThanV1Seconds": 25.84,
+      "previousDefault": {
+        "name": "Dionisio Schuyler · DE",
+        "image": "/profile-images/presets/dionisio-schuyler.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 270764,
+        "audioSha256": "8c7ca8f4eedee10340e521ef6a279499e0df946258deebea87668f291b5bdcad"
+      },
+      "previousAudioName": "Dionisio_Schuyler_de_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Dionisio Schuyler · DE",
+          "image": "/profile-images/presets/dionisio-schuyler.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 270764,
+          "audioSha256": "8c7ca8f4eedee10340e521ef6a279499e0df946258deebea87668f291b5bdcad",
+          "audioName": "Dionisio_Schuyler_de_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Solomon · ሰለሞን 1",
+          "image": "/profile-images/presets/solomon-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1380524,
+          "audioSha256": "4aa61653303e6b491ffb8ebf166acbd459bec2b21664a65e479ac544a699103a",
+          "audioName": "solomon_1_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Dionisio_Schuyler_de.wav",
+        "language": "de",
+        "sha256": "82434215366371e2848e5b06819678b6b356e2b4e900a31681c4a84078a3baad",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Dionisio_Schuyler_de.wav",
+        "transcript": "Hallo Welt, dies ist ein Test der Sprachsynthese auf Deutsch, gefällt sie dir ?"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261125,
+        "promptSeed": 0,
+        "outputGain": 1.0,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 5,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-dionisio-schuyler-it",
+      "personaId": "solomon",
+      "name": "Solomon · ሰለሞን 2",
+      "image": "/profile-images/presets/solomon-v2.jpg",
+      "avatarPresentation": "male",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/solomon_2_am.wav",
+      "audioSha256": "0fc471e724ad7570538b842c8f2dccfd68dc9bbac3781d3e2c6e102202a7f9ce",
+      "bytes": 1434284,
+      "sampleRate": 24000,
+      "durationSeconds": 29.88,
+      "peak": 0.856292724609375,
+      "rms": 0.12603352963924408,
+      "longerThanV1Seconds": 25.52,
+      "previousDefault": {
+        "name": "Dionisio Schuyler · IT",
+        "image": "/profile-images/presets/dionisio-schuyler.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 209324,
+        "audioSha256": "d87621e19605fa12ff28d4088771f4cce74f6da0a8ae13e4ba7c8bf647841a1a"
+      },
+      "previousAudioName": "Dionisio_Schuyler_it_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Dionisio Schuyler · IT",
+          "image": "/profile-images/presets/dionisio-schuyler.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 209324,
+          "audioSha256": "d87621e19605fa12ff28d4088771f4cce74f6da0a8ae13e4ba7c8bf647841a1a",
+          "audioName": "Dionisio_Schuyler_it_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Solomon · ሰለሞን 2",
+          "image": "/profile-images/presets/solomon-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1280684,
+          "audioSha256": "19370600b20fb0cba2d5208359de6bf97d1a36efd7b89325be0755e04e4693b8",
+          "audioName": "solomon_2_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Dionisio_Schuyler_it.wav",
+        "language": "it",
+        "sha256": "73fcff2932e88bae7f7826190dad025c3ad96b10ed647809fda51e8ba7d0ba3f",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Dionisio_Schuyler_it.wav",
+        "transcript": "Ciao mondo, questo è un test di sintesi vocale in italiano, ti piace ?"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261126,
+        "promptSeed": 0,
+        "outputGain": 1.0,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 4.597551020408163,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-gitta-nikolina-ar",
+      "personaId": "sara",
+      "name": "Sara · ሳራ",
+      "image": "/profile-images/presets/sara-v2.jpg",
+      "avatarPresentation": "female",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/sara_1_am.wav",
+      "audioSha256": "972bb6329b07daa7e64d9e52d7b4f31c781baa597b7f86c8ff05b57bbd292862",
+      "bytes": 1388204,
+      "sampleRate": 24000,
+      "durationSeconds": 28.92,
+      "peak": 0.902191162109375,
+      "rms": 0.08979405462741852,
+      "longerThanV1Seconds": 24.08,
+      "previousDefault": {
+        "name": "Gitta Nikolina · AR",
+        "image": "/profile-images/presets/gitta-nikolina.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 232364,
+        "audioSha256": "f0f19c590f81e37c378916a0296b93495e34fb028abc99b1b4fe7f2d17b59e55"
+      },
+      "previousAudioName": "Gitta_Nikolina_ar_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Gitta Nikolina · AR",
+          "image": "/profile-images/presets/gitta-nikolina.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 232364,
+          "audioSha256": "f0f19c590f81e37c378916a0296b93495e34fb028abc99b1b4fe7f2d17b59e55",
+          "audioName": "Gitta_Nikolina_ar_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Sara · ሳራ",
+          "image": "/profile-images/presets/sara-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1307564,
+          "audioSha256": "53452abecf68f9eaf35214789bdc81f46128e970853118baeeecdaa20a27e8ef",
+          "audioName": "sara_1_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Gitta_Nikolina_ar.wav",
+        "language": "ar",
+        "sha256": "c722e79618af7dfb92d24bab493b6e6817c641a6623ac3969517d94f9ee8da0b",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Gitta_Nikolina_ar.wav",
+        "transcript": "مَرْحَبًا ، هذا اختبار لتوليد الكلام باللغة العربية؛ هل يعجبك ؟"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261127,
+        "promptSeed": 0,
+        "outputGain": 1.0,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 5,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-ludvig-milivoj-hu",
+      "personaId": "girma",
+      "name": "Girma · ግርማ",
+      "image": "/profile-images/presets/girma-v2.jpg",
+      "avatarPresentation": "male",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/girma_1_am.wav",
+      "audioSha256": "fb46052b24d40e1ddeeb52ebabcdc22a23224dd1884888ce8777509bf8e7dd2c",
+      "bytes": 1511084,
+      "sampleRate": 24000,
+      "durationSeconds": 31.48,
+      "peak": 0.951416015625,
+      "rms": 0.11623837053775787,
+      "longerThanV1Seconds": 26.8,
+      "previousDefault": {
+        "name": "Ludvig Milivoj · HU",
+        "image": "/profile-images/presets/ludvig-milivoj.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 224684,
+        "audioSha256": "27bb73e9308b88d318e65d6908c07e4eaa8a47f49ec349205f3f5cfe3b80c3cc"
+      },
+      "previousAudioName": "Ludvig_Milivoj_hu_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Ludvig Milivoj · HU",
+          "image": "/profile-images/presets/ludvig-milivoj.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 224684,
+          "audioSha256": "27bb73e9308b88d318e65d6908c07e4eaa8a47f49ec349205f3f5cfe3b80c3cc",
+          "audioName": "Ludvig_Milivoj_hu_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Girma · ግርማ",
+          "image": "/profile-images/presets/girma-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1415084,
+          "audioSha256": "79cafbe5834183ab9097a04a594c92313e147e0ff57711e07cab32ffdaa86156",
+          "audioName": "girma_1_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Ludvig_Milivoj_hu.wav",
+        "language": "hu",
+        "sha256": "498815e5a23b4a8ce28bd4bc84a24b2cd08f7a7685dde328e994bae3dce15b31",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Ludvig_Milivoj_hu.wav",
+        "transcript": "Helló világ, ez egy teszt a beszédszintézisre magyarul, tetszik ?"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261128,
+        "promptSeed": 0,
+        "outputGain": 1.0,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 5,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-nova-hogarth-hi",
+      "personaId": "meron",
+      "name": "Meron · ሜሮን",
+      "image": "/profile-images/presets/meron-v2.jpg",
+      "avatarPresentation": "female",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/meron_1_am.wav",
+      "audioSha256": "a69c3520194cd870501a5383cb5c182514c83f9a70e709ec78627d21a1e1dcc6",
+      "bytes": 1445804,
+      "sampleRate": 24000,
+      "durationSeconds": 30.12,
+      "peak": 0.746337890625,
+      "rms": 0.12852424383163452,
+      "longerThanV1Seconds": 25.68,
+      "previousDefault": {
+        "name": "Nova Hogarth · HI",
+        "image": "/profile-images/presets/nova-hogarth.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 213164,
+        "audioSha256": "79259068e1b704a171aa74227a2112e2cd5724c09eb8dd02ca08079b0ed0feb6"
+      },
+      "previousAudioName": "Nova_Hogarth_hi_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Nova Hogarth · HI",
+          "image": "/profile-images/presets/nova-hogarth.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 213164,
+          "audioSha256": "79259068e1b704a171aa74227a2112e2cd5724c09eb8dd02ca08079b0ed0feb6",
+          "audioName": "Nova_Hogarth_hi_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Meron · ሜሮን",
+          "image": "/profile-images/presets/meron-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1303724,
+          "audioSha256": "dbeea456fa511a0faa83b7e7480e79d44aa31a56dfa15cca8a8f8b7ffe530735",
+          "audioName": "meron_1_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Nova_Hogarth_hi.wav",
+        "language": "hi",
+        "sha256": "c0125cf9e5aefb77378f83072681c615c9ef83b03e8215c8cf470cda8c234050",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Nova_Hogarth_hi.wav",
+        "transcript": "नमस्ते दुनिया, यह हिन्दी में भाषण संश्लेषण का परीक्षण है, क्या आपको यह पसंद है ?"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261129,
+        "promptSeed": 0,
+        "outputGain": 1.0,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 5,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-royston-min-pt",
+      "personaId": "abel",
+      "name": "Abel · አቤል",
+      "image": "/profile-images/presets/abel-v2.jpg",
+      "avatarPresentation": "male",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/abel_1_am.wav",
+      "audioSha256": "e197c3b8e46bc2216527f274d00332636b95a272b7fbc62d9f7944452ce3a973",
+      "bytes": 1342124,
+      "sampleRate": 24000,
+      "durationSeconds": 27.96,
+      "peak": 0.955108642578125,
+      "rms": 0.08277712762355804,
+      "longerThanV1Seconds": 23.6,
+      "previousDefault": {
+        "name": "Royston Min · PT",
+        "image": "/profile-images/presets/royston-min.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 209324,
+        "audioSha256": "017e4a8cd5f31fb1a764e76b6cdedd81f102ab4dfdd372d3ffeea6d053ca6913"
+      },
+      "previousAudioName": "Royston_Min_pt_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Royston Min · PT",
+          "image": "/profile-images/presets/royston-min.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 209324,
+          "audioSha256": "017e4a8cd5f31fb1a764e76b6cdedd81f102ab4dfdd372d3ffeea6d053ca6913",
+          "audioName": "Royston_Min_pt_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Abel · አቤል",
+          "image": "/profile-images/presets/abel-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1284524,
+          "audioSha256": "a9629b58ff6424fdded23baee4cf8df67811400c117f766781cecd18fbee43e3",
+          "audioName": "abel_1_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Royston_Min_pt.wav",
+        "language": "pt",
+        "sha256": "3315df0227335039eef269971b0c9a2cb4ef9cc361d6234b90aeab7a1539723e",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Royston_Min_pt.wav",
+        "transcript": "Olá mundo, este é um teste de síntese de fala em português, você gosta ?"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261130,
+        "promptSeed": 0,
+        "outputGain": 1.0,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 4.504671201814059,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-viktor-eka-pl",
+      "personaId": "yonas",
+      "name": "Yonas · ዮናስ",
+      "image": "/profile-images/presets/yonas-v2.jpg",
+      "avatarPresentation": "male",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/yonas_1_am.wav",
+      "audioSha256": "def257b45490e34137f3391779ed1067519f83470219df686e6a16256606ff93",
+      "bytes": 1526444,
+      "sampleRate": 24000,
+      "durationSeconds": 31.8,
+      "peak": 0.97998046875,
+      "rms": 0.08206579834222794,
+      "longerThanV1Seconds": 26.16,
+      "previousDefault": {
+        "name": "Viktor Eka · PL",
+        "image": "/profile-images/presets/viktor-eka.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 270764,
+        "audioSha256": "41b7e5932b69e00e3de22d73e0e281f14d809698c135ad16d67f98f96019e19c"
+      },
+      "previousAudioName": "Viktor_Eka_pl_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Viktor Eka · PL",
+          "image": "/profile-images/presets/viktor-eka.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 270764,
+          "audioSha256": "41b7e5932b69e00e3de22d73e0e281f14d809698c135ad16d67f98f96019e19c",
+          "audioName": "Viktor_Eka_pl_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Yonas · ዮናስ",
+          "image": "/profile-images/presets/yonas-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1422764,
+          "audioSha256": "79497f89125bbc0db7362904269cebc5b79a7e4fd136d4900f6dc28558ff23ba",
+          "audioName": "yonas_1_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Viktor_Eka_pl.wav",
+        "language": "pl",
+        "sha256": "cbd11a7c5b73922cf72db286a451adbfeb1c5e5d34fd8fac9e4fdbefd51ac674",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Viktor_Eka_pl.wav",
+        "transcript": "Witaj świecie, to jest test syntezy mowy w języku polskim, czy ci się podoba ?"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261131,
+        "promptSeed": 0,
+        "outputGain": 0.8868852756843156,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 5,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-viktor-menelaos-ko",
+      "personaId": "asfaw",
+      "name": "Asfaw · አስፋው",
+      "image": "/profile-images/presets/asfaw-v2.jpg",
+      "avatarPresentation": "male",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/asfaw_1_am.wav",
+      "audioSha256": "7fc4715f697b6f4ad9c24f6c497b542d5c10409ce1c660f24d7645e53a325b8d",
+      "bytes": 1372844,
+      "sampleRate": 24000,
+      "durationSeconds": 28.6,
+      "peak": 0.801116943359375,
+      "rms": 0.10728486627340317,
+      "longerThanV1Seconds": 24.08,
+      "previousDefault": {
+        "name": "Viktor Menelaos · KO",
+        "image": "/profile-images/presets/viktor-menelaos.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 217004,
+        "audioSha256": "922f3e244b3d8cf3f5cab5575fb1b8595fbd40c07be03c50b2a618b7fb9a7eef"
+      },
+      "previousAudioName": "Viktor_Menelaos_ko_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Viktor Menelaos · KO",
+          "image": "/profile-images/presets/viktor-menelaos.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 217004,
+          "audioSha256": "922f3e244b3d8cf3f5cab5575fb1b8595fbd40c07be03c50b2a618b7fb9a7eef",
+          "audioName": "Viktor_Menelaos_ko_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Asfaw · አስፋው",
+          "image": "/profile-images/presets/asfaw-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1280684,
+          "audioSha256": "7e58499139d59df6e86e8c4ee7fe339eba3b76ce7e3d73f823d10f5221f71276",
+          "audioName": "asfaw_1_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Viktor_Menelaos_ko.wav",
+        "language": "ko",
+        "sha256": "9ddb65d4ed14ccbfe02e781fb454203377cf92669affbb49e7d55290d81806ab",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Viktor_Menelaos_ko.wav",
+        "transcript": "안녕 세상아, 이것은 한국어 음성 합성 테스트입니다. 마음에 드나요?"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261132,
+        "promptSeed": 0,
+        "outputGain": 1.0,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 5,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-vjollca-johnnie-es",
+      "personaId": "tigist",
+      "name": "Tigist · ትዕግሥት 1",
+      "image": "/profile-images/presets/tigist-v2.jpg",
+      "avatarPresentation": "female",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/tigist_1_am.wav",
+      "audioSha256": "4d86455d2e37263d58723f4b9714db003956e6ca9242a40b29a0cdb2a14ebfec",
+      "bytes": 1403564,
+      "sampleRate": 24000,
+      "durationSeconds": 29.24,
+      "peak": 0.819976806640625,
+      "rms": 0.10302010178565979,
+      "longerThanV1Seconds": 24.8,
+      "previousDefault": {
+        "name": "Vjollca Johnnie · ES",
+        "image": "/profile-images/presets/vjollca-johnnie.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 213164,
+        "audioSha256": "009a4bbfdc2d95474cf82e029fb4172e915c5474357eb3943951b0637a821bd3"
+      },
+      "previousAudioName": "Vjollca_Johnnie_es_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Vjollca Johnnie · ES",
+          "image": "/profile-images/presets/vjollca-johnnie.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 213164,
+          "audioSha256": "009a4bbfdc2d95474cf82e029fb4172e915c5474357eb3943951b0637a821bd3",
+          "audioName": "Vjollca_Johnnie_es_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Tigist · ትዕግሥት 1",
+          "image": "/profile-images/presets/tigist-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1276844,
+          "audioSha256": "4cdb870791c7532c51051e40ce1bf5db7fa94b596c43a7ff159f09e8b234a841",
+          "audioName": "tigist_1_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Vjollca_Johnnie_es.wav",
+        "language": "es",
+        "sha256": "265bff4ef87e025eb1fbe51382e02901ec15622f8bf2a7c6a59da7e61e4fa0fd",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Vjollca_Johnnie_es.wav",
+        "transcript": "Hola mundo, esto es una prueba de síntesis de voz en español, ¿te gusta ?"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261133,
+        "promptSeed": 0,
+        "outputGain": 1.0,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 5,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-vjollca-johnnie-fr",
+      "personaId": "tigist",
+      "name": "Tigist · ትዕግሥት 2",
+      "image": "/profile-images/presets/tigist-v2.jpg",
+      "avatarPresentation": "female",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/tigist_2_am.wav",
+      "audioSha256": "24508a566f47c33401f4dbc41271c452919724bd742962837d0b3b45ad3ffc25",
+      "bytes": 1480364,
+      "sampleRate": 24000,
+      "durationSeconds": 30.84,
+      "peak": 0.980010986328125,
+      "rms": 0.12844546139240265,
+      "longerThanV1Seconds": 25.12,
+      "previousDefault": {
+        "name": "Vjollca Johnnie · FR",
+        "image": "/profile-images/presets/vjollca-johnnie.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 274604,
+        "audioSha256": "b10ff557a8cedc181b9b0dc6d2899ef2e2abf01ea35ff459e821c0f5b604d50d"
+      },
+      "previousAudioName": "Vjollca_Johnnie_fr_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Vjollca Johnnie · FR",
+          "image": "/profile-images/presets/vjollca-johnnie.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 274604,
+          "audioSha256": "b10ff557a8cedc181b9b0dc6d2899ef2e2abf01ea35ff459e821c0f5b604d50d",
+          "audioName": "Vjollca_Johnnie_fr_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Tigist · ትዕግሥት 2",
+          "image": "/profile-images/presets/tigist-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1376684,
+          "audioSha256": "a726f9276b41bc77030fded374122e1b94a08302f6aec31c30102037a4e6da4d",
+          "audioName": "tigist_2_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Vjollca_Johnnie_fr.wav",
+        "language": "fr",
+        "sha256": "d8d36c67b1f69982e1affb31e093109241bf7d4cc3885935a57cea1acbff45b8",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Vjollca_Johnnie_fr.wav",
+        "transcript": "Bonjour , ceci est un test de synthèse vocale en français ; est‑ce que vous l’aimez  ?"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261134,
+        "promptSeed": 0,
+        "outputGain": 0.9368420510424442,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 4.876190476190477,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    },
+    {
+      "id": "preview-zacharie-aimilios-ja",
+      "personaId": "elias",
+      "name": "Elias · ኤልያስ",
+      "image": "/profile-images/presets/elias-v2.jpg",
+      "avatarPresentation": "male",
+      "avatarSelectionBasis": "fictional-ethiopian-persona",
+      "genderVerified": false,
+      "language": "am-ET",
+      "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ! በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር ,  የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ፕሮፋይል ይምረጡ ቀጥሎ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ ወይም ኦፍላይን ሆነው በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+      "audio": "/reference-voices/preview-v3/elias_1_am.wav",
+      "audioSha256": "e110af82740c42f5b648d423e0b714d5de3b486a123a278afd04c15767d47cec",
+      "bytes": 1280684,
+      "sampleRate": 24000,
+      "durationSeconds": 26.68,
+      "peak": 0.78302001953125,
+      "rms": 0.09547307342290878,
+      "longerThanV1Seconds": 22.56,
+      "previousDefault": {
+        "name": "Zacharie Aimilios · JA",
+        "image": "/profile-images/presets/zacharie-aimilios.jpg",
+        "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+        "bytes": 197804,
+        "audioSha256": "3daac6264cd6294556131b9060cc0a838fb96a0f6cb4dfab96209b948725574a"
+      },
+      "previousAudioName": "Zacharie_Aimilios_ja_am.wav",
+      "previousDefaults": {
+        "atts1hg1-am-preview-v1": {
+          "name": "Zacharie Aimilios · JA",
+          "image": "/profile-images/presets/zacharie-aimilios.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ።",
+          "bytes": 197804,
+          "audioSha256": "3daac6264cd6294556131b9060cc0a838fb96a0f6cb4dfab96209b948725574a",
+          "audioName": "Zacharie_Aimilios_ja_am.wav"
+        },
+        "atts1hg1-am-preview-v2": {
+          "name": "Elias · ኤልያስ",
+          "image": "/profile-images/presets/elias-v2.jpg",
+          "referenceText": "ሰላም! ወደ ኢትዮጲክ የድምጽ ስቱዲዮ እንኳን በደህና መጡ። በዚህ ስቱዲዮ ጽሑፍዎን ወደ ንግግር መቀየር፣ የተቀዳ ድምጽን ወደ ጽሑፍ መገልበጥ እና የጀርባ ጫጫታን ማጽዳት ይችላሉ። ለቪዲዮ፣ ለፖድካስት ወይም ለድምጽ መጽሐፍ የሚያስፈልግዎትን ትረካ ያዘጋጁ። አንድ ድምጽ ይምረጡ፣ ጽሑፍዎን ያስገቡ እና ውጤቱን ያዳምጡ። አስፈላጊዎቹን ሀብቶች አንዴ ካወረዱ በኋላ፣ ያለ በይነመረብ በኮምፒውተርዎ ላይ ሥራዎን መቀጠል ይችላሉ።",
+          "bytes": 1196204,
+          "audioSha256": "e56316afb690f74ae8dd71302ff2329868ea8822b9287e6c6e93eaa3ce09dce4",
+          "audioName": "elias_1_am.wav"
+        }
+      },
+      "source": {
+        "repository": "ABBNDZ/ATTS1HG1",
+        "revision": "04d285138f0c2f8a7939dd9a3e48d8be12dc1712",
+        "filename": "Zacharie_Aimilios_ja.wav",
+        "language": "ja",
+        "sha256": "3f3d53436f8bc9ad335b431d08b2d14b172abdb668532c93ecc649e81a569254",
+        "url": "https://huggingface.co/ABBNDZ/ATTS1HG1/resolve/04d285138f0c2f8a7939dd9a3e48d8be12dc1712/samples/Zacharie_Aimilios_ja.wav",
+        "transcript": "こんにちは、世界、これは日本語の音声合成のテストです。気に入りますか？"
+      },
+      "generation": {
+        "model": "ethiopic/ethiopic-studio-models/tts-flow_lm-90m-amh-fp32",
+        "weightsSha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+        "baseSamplerDecodeSteps": 1,
+        "samplerDecodeSteps": 2,
+        "stepMultiplier": 2,
+        "temperature": 0.7,
+        "seed": 20261135,
+        "promptSeed": 0,
+        "outputGain": 1.0,
+        "sourceConditioningMaxSeconds": 5,
+        "sourceConditioningSeconds": 5,
+        "sampleRate": 24000,
+        "runtime": "torch 2.9.1; PocketTTS; Apple Silicon CPU FP32"
+      },
+      "license": {
+        "id": "CPML-1.0",
+        "noncommercial": true,
+        "url": "https://coqui.ai/cpml",
+        "notice": "/reference-voices/preview-v3/LICENSES.txt"
+      }
+    }
+  ]
+}

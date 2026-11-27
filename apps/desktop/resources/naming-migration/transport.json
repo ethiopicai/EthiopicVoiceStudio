@@ -1,0 +1,301 @@
+{
+  "revision": "a8d70e01a3c53d8a868cd25961c19306e94bc33d",
+  "repository": "ethiopic/ethiopic-studio-models",
+  "file_sources": {
+    "asr-wav2vec_ctc-1b-amh-fp16/README.md": {
+      "sha256": "ce77d13ac2bf9a1f99f6c13d18c3f3bf6eaefba5af315bfc0fbc5dc8c563f032",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-1b-fp16/README.md"
+    },
+    "asr-wav2vec_ctc-1b-amh-fp16/STREAMING.md": {
+      "sha256": "da4e1f9dff4216825973db8fcb9df59fc20e3f6e8ef3d725ef62036c33adc8f9",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-1b-fp16/STREAMING.md"
+    },
+    "asr-wav2vec_ctc-1b-amh-fp16/requirements.txt": {
+      "sha256": "15636157a9dc688ebe34af18e0f7ef1081632686b36b9ece41ff1cf448cbd333",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-1b-fp16/requirements.txt"
+    },
+    "asr-wav2vec_ctc-1b-amh-fp16/model/config.json": {
+      "sha256": "b5b5f87b659361942239b4f79698352e8c76d2a69c9b59110270df3b26caabf3",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-1b-fp16/model/config.json"
+    },
+    "asr-wav2vec_ctc-1b-amh-fp16/model/model.safetensors": {
+      "sha256": "30ae0f19a3c4096326bffea3154bd0adf9adc05e0bb70efb36b1f14e60b7b43a",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-1b-fp16/model/model.safetensors"
+    },
+    "asr-wav2vec_ctc-1b-amh-fp16/model/tokenizer.model": {
+      "sha256": "8aa11a1092142ef472537476ef6e76541123e2f0d789b79f3ebd119008240b1e",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-1b-fp16/model/tokenizer.model"
+    },
+    "asr-wav2vec_ctc-1b-amh-fp16/model/version.json": {
+      "sha256": "53520bc805335760d28f6500ad33408609c9b0b499251916c72df035e1f7f06a",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-1b-fp16/model/version.json"
+    },
+    "asr-wav2vec_ctc-1b-amh-fp16/omniasr_hf/__init__.py": {
+      "sha256": "73367fdb9680db07aaf0b7bf5ebdb820dd6a26e648d5753f6f1df29fab607c76",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-1b-fp16/omniasr_hf/__init__.py"
+    },
+    "asr-wav2vec_ctc-1b-amh-fp16/omniasr_hf/audio_text.py": {
+      "sha256": "81a0f5dd0957f642b168720a201f90c2d4083a9dd7b7d5e8338d70e2b29c158f",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-1b-fp16/omniasr_hf/audio_text.py"
+    },
+    "asr-wav2vec_ctc-1b-amh-fp16/omniasr_hf/transcribe.py": {
+      "sha256": "f054704b3af9ba79d8d20506483468620af52227c50fabe94924e42e94a728b3",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-1b-fp16/omniasr_hf/transcribe.py"
+    },
+    "asr-wav2vec_ctc-1b-amh-int8_onnx/asr.int8.onnx": {
+      "sha256": "1d373c9bf1cf643e7b05c4f4b8674b380a4753d34296832ccea82f77a0a109bc",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-1b-onnx-int8/asr.int8.onnx"
+    },
+    "asr-wav2vec_ctc-1b-amh-int8_onnx/preprocessor.json": {
+      "sha256": "96ae755636581c79927ac061abbf97e6e3dc14ebe8a51a31156ed7276c12c4a3",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-1b-onnx-int8/preprocessor.json"
+    },
+    "asr-wav2vec_ctc-1b-amh-int8_onnx/tokenizer.model": {
+      "sha256": "8aa11a1092142ef472537476ef6e76541123e2f0d789b79f3ebd119008240b1e",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-1b-onnx-int8/tokenizer.model"
+    },
+    "asr-wav2vec_ctc-1b-amh-int8_onnx/vocab.json": {
+      "sha256": "e3ad1610f100cbcd659db40a02268dc35c5d39cea608922c4f00645d84c727c6",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-1b-onnx-int8/vocab.json"
+    },
+    "asr-wav2vec_ctc-300m-amh-fp16/STREAMING.md": {
+      "sha256": "da4e1f9dff4216825973db8fcb9df59fc20e3f6e8ef3d725ef62036c33adc8f9",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-300m-fp16/STREAMING.md"
+    },
+    "asr-wav2vec_ctc-300m-amh-fp16/requirements.txt": {
+      "sha256": "15636157a9dc688ebe34af18e0f7ef1081632686b36b9ece41ff1cf448cbd333",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-300m-fp16/requirements.txt"
+    },
+    "asr-wav2vec_ctc-300m-amh-fp16/model/config.json": {
+      "sha256": "b823a48cb5ecec2f70521c1b1e8b88091649b7ed0d8bc957bbc903890a563f7b",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-300m-fp16/model/config.json"
+    },
+    "asr-wav2vec_ctc-300m-amh-fp16/model/model.safetensors": {
+      "sha256": "ef5fea081ff3a3a88891cc92ed88cb0ab42c4d2cc153ea6476cab33009afd825",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-300m-fp16/model/model.safetensors"
+    },
+    "asr-wav2vec_ctc-300m-amh-fp16/model/tokenizer.model": {
+      "sha256": "8aa11a1092142ef472537476ef6e76541123e2f0d789b79f3ebd119008240b1e",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-300m-fp16/model/tokenizer.model"
+    },
+    "asr-wav2vec_ctc-300m-amh-fp16/model/version.json": {
+      "sha256": "0d3e90b0db263adbc09204820bd4c2a46fa5e6596b2a254b1702c8a6a6ed579e",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-300m-fp16/model/version.json"
+    },
+    "asr-wav2vec_ctc-300m-amh-fp16/omniasr_hf/__init__.py": {
+      "sha256": "73367fdb9680db07aaf0b7bf5ebdb820dd6a26e648d5753f6f1df29fab607c76",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-300m-fp16/omniasr_hf/__init__.py"
+    },
+    "asr-wav2vec_ctc-300m-amh-fp16/omniasr_hf/audio_text.py": {
+      "sha256": "81a0f5dd0957f642b168720a201f90c2d4083a9dd7b7d5e8338d70e2b29c158f",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-300m-fp16/omniasr_hf/audio_text.py"
+    },
+    "asr-wav2vec_ctc-300m-amh-fp16/omniasr_hf/transcribe.py": {
+      "sha256": "f054704b3af9ba79d8d20506483468620af52227c50fabe94924e42e94a728b3",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-300m-fp16/omniasr_hf/transcribe.py"
+    },
+    "asr-wav2vec_ctc-300m-amh-int8_onnx/asr.int8.onnx": {
+      "sha256": "5d42b8aea342b2907fb9745f67a887db7b968abe463454bd20adcda78ecd01c5",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-300m-onnx-int8/asr.int8.onnx"
+    },
+    "asr-wav2vec_ctc-300m-amh-int8_onnx/preprocessor.json": {
+      "sha256": "03f84908c28179afb876e620a8ab24666b5ca51e10e2fa7df65c0bf3a3ce0dff",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-300m-onnx-int8/preprocessor.json"
+    },
+    "asr-wav2vec_ctc-300m-amh-int8_onnx/tokenizer.model": {
+      "sha256": "8aa11a1092142ef472537476ef6e76541123e2f0d789b79f3ebd119008240b1e",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-300m-onnx-int8/tokenizer.model"
+    },
+    "asr-wav2vec_ctc-300m-amh-int8_onnx/vocab.json": {
+      "sha256": "e3ad1610f100cbcd659db40a02268dc35c5d39cea608922c4f00645d84c727c6",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-ctc-300m-onnx-int8/vocab.json"
+    },
+    "textcorrect-char_bart-7m-amh-fp32_onnx/encoder.onnx": {
+      "sha256": "ed5e0b020ee5577043f510885eaec7fc11485af6964ac61e3ed40152351633a6",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/corrector-tiny-onnx-fp32/encoder.onnx"
+    },
+    "textcorrect-char_bart-7m-amh-fp32_onnx/decoder_step.onnx": {
+      "sha256": "380361fda6ad12ecba53b8dc12de13afcfd72c96b6d0e7975b7c62664d51492c",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/corrector-tiny-onnx-fp32/decoder_step.onnx"
+    },
+    "textcorrect-char_bart-7m-amh-fp32_onnx/char_vocab.json": {
+      "sha256": "8ba92f2377b180d5688ad630d9cf8be080280058333a1017f9f4a1493b947a83",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/corrector-tiny-onnx-fp32/char_vocab.json"
+    },
+    "textcorrect-char_bart-7m-amh-fp32_onnx/meta.json": {
+      "sha256": "ef5afb731062855fb110f7f1c9714d2198ac76cb22d98894401e0c6f3fad6453",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/corrector-tiny-onnx-fp32/meta.json"
+    },
+    "textcorrect-char_bart-7m-amh-fp32_onnx/LICENSE": {
+      "sha256": "4f057dcdb326faa3829cb9f371bb468334b03346a8941c7160ec3d4238a7b100",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/corrector-tiny-onnx-fp32/LICENSE"
+    },
+    "textcorrect-char_bart-7m-amh-int8_onnx/encoder.onnx": {
+      "sha256": "572e247317212f6d9d67c090c0d09dc4e05fd38fb89cdfbf0cdccae2016d6443",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/corrector-tiny-onnx-int8/encoder.onnx"
+    },
+    "textcorrect-char_bart-7m-amh-int8_onnx/decoder_step.onnx": {
+      "sha256": "c63ad877ac581ef84d1db754627d93806fc72062a86678253244a668d2b6bd89",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/corrector-tiny-onnx-int8/decoder_step.onnx"
+    },
+    "textcorrect-char_bart-7m-amh-int8_onnx/char_vocab.json": {
+      "sha256": "8ba92f2377b180d5688ad630d9cf8be080280058333a1017f9f4a1493b947a83",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/corrector-tiny-onnx-int8/char_vocab.json"
+    },
+    "textcorrect-char_bart-7m-amh-int8_onnx/meta.json": {
+      "sha256": "ef5afb731062855fb110f7f1c9714d2198ac76cb22d98894401e0c6f3fad6453",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/corrector-tiny-onnx-int8/meta.json"
+    },
+    "textcorrect-char_bart-7m-amh-int8_onnx/LICENSE": {
+      "sha256": "4f057dcdb326faa3829cb9f371bb468334b03346a8941c7160ec3d4238a7b100",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/corrector-tiny-onnx-int8/LICENSE"
+    },
+    "edit-codec_llm-0.6b-amh/amharic_text.py": {
+      "sha256": "0ccdd0f42949a7bc3208c71cc40167de9560a1c9fd2c477f92a93f624f167960",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/edit-omnivoice/amharic_text.py"
+    },
+    "codec-higgs_audio_v2-fp32/config.json": {
+      "sha256": "eefb20806f7104e77c9a5277c9df0f9bb8826b08eb1d4e8ab2b9829b6ef9fac1",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec-higgs/config.json"
+    },
+    "codec-higgs_audio_v2-fp32/model.safetensors": {
+      "sha256": "fe7c5e8785e0a05833e1bfc3e002ec7f55af21e306b2e7154a448c1f54ccfb0d",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec-higgs/model.safetensors"
+    },
+    "codec-higgs_audio_v2-fp32/preprocessor_config.json": {
+      "sha256": "ae61eea88558608ee2fa86d2aec9fce8d99a5ff75d09cb7651ccce21ae1d9084",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec-higgs/preprocessor_config.json"
+    },
+    "tts-codec_llm-0.6b-amh-int8_onnx/backbone_step.int8.onnx": {
+      "sha256": "aa0d8daad4b6b87a0562240c9511c904d3ba1d6ee6692817bd2f8fccb4c3c447",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-cpu-int8/backbone_step.int8.onnx"
+    },
+    "tts-codec_llm-0.6b-amh-int8_onnx/chat_template.jinja": {
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-cpu-int8/chat_template.jinja"
+    },
+    "tts-codec_llm-0.6b-amh-int8_onnx/config.json": {
+      "sha256": "d5af4ab7446675a5b511a609400b9a562bf4c69f161da58cd0389c4e5c1d8f90",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-cpu-int8/config.json"
+    },
+    "tts-codec_llm-0.6b-amh-int8_onnx/embeddings.safetensors": {
+      "sha256": "dbed40bae26fa9cce9563d82a00f610195658a250651ce91081edd1708cd81a6",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-cpu-int8/embeddings.safetensors"
+    },
+    "tts-codec_llm-0.6b-amh-int8_onnx/tokenizer.json": {
+      "sha256": "408f669b7e2b045fdf54201d815bd364e6667dbd845115da81239c40bc6dcfd1",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-cpu-int8/tokenizer.json"
+    },
+    "tts-codec_llm-0.6b-amh-int8_onnx/tokenizer_config.json": {
+      "sha256": "0a36b8b56a6090efc92bb08e00b570ac2d2eaa4a8747a28beac1d98f876c7c49",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-cpu-int8/tokenizer_config.json"
+    },
+    "tts-codec_llm-0.6b-amh-fp16/chat_template.jinja": {
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-fp16/chat_template.jinja"
+    },
+    "tts-codec_llm-0.6b-amh-fp16/config.json": {
+      "sha256": "b23c97c706396124d82cbd93c0bd0b11503fc01dde1f314c69ef3006089942f2",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-fp16/config.json"
+    },
+    "tts-codec_llm-0.6b-amh-fp16/model.safetensors": {
+      "sha256": "f8cafa544a598d89e5d143c1e6abe21f8315f088b8ab235240a09eeed4775f7e",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-fp16/model.safetensors"
+    },
+    "tts-codec_llm-0.6b-amh-fp16/tokenizer.json": {
+      "sha256": "408f669b7e2b045fdf54201d815bd364e6667dbd845115da81239c40bc6dcfd1",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-fp16/tokenizer.json"
+    },
+    "tts-codec_llm-0.6b-amh-fp16/tokenizer_config.json": {
+      "sha256": "0a36b8b56a6090efc92bb08e00b570ac2d2eaa4a8747a28beac1d98f876c7c49",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-fp16/tokenizer_config.json"
+    },
+    "tts-codec_llm-0.6b-amh-fp32/chat_template.jinja": {
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-fp32/chat_template.jinja"
+    },
+    "tts-codec_llm-0.6b-amh-fp32/config.json": {
+      "sha256": "d5af4ab7446675a5b511a609400b9a562bf4c69f161da58cd0389c4e5c1d8f90",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-fp32/config.json"
+    },
+    "tts-codec_llm-0.6b-amh-fp32/model.safetensors": {
+      "sha256": "c1dbcf7a807154b55279d028bdbc4c1236951a5ea74d19ce96a1ad6ab863e975",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-fp32/model.safetensors"
+    },
+    "tts-codec_llm-0.6b-amh-fp32/tokenizer.json": {
+      "sha256": "408f669b7e2b045fdf54201d815bd364e6667dbd845115da81239c40bc6dcfd1",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-fp32/tokenizer.json"
+    },
+    "tts-codec_llm-0.6b-amh-fp32/tokenizer_config.json": {
+      "sha256": "0a36b8b56a6090efc92bb08e00b570ac2d2eaa4a8747a28beac1d98f876c7c49",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-omnivoice-fp32/tokenizer_config.json"
+    },
+    "tts-flow_lm-90m-amh-fp32/model.safetensors": {
+      "sha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-small-cpu/model.safetensors"
+    },
+    "tts-flow_lm-90m-amh-fp32/tokenizer.model": {
+      "sha256": "50e5df0ba8f39d9b40a02ba7e41b610d5dbb27763ef4a87ceb41745079e385a5",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-small-cpu/tokenizer.model"
+    },
+    "tts-flow_lm-90m-amh-fp32/voices/default.wav": {
+      "sha256": "51572b382982ffe53407a0a83332c0986eb5916eebb98e005f6049bf0aaa24e4",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-small-cpu/voices/default.wav"
+    }
+  },
+  "bundled_files": {
+    "asr-wav2vec_ctc-1b-amh-fp16/README.md": "437831a22d3ec0be76d39e352eb0a5c7096c55b901eeabf7851cec527cd25c7f",
+    "asr-wav2vec_ctc-1b-amh-fp16/STREAMING.md": "f76169c1f36da16e413085e5f8ce3d26827744b3274310b132dbb1ed13990164",
+    "asr-wav2vec_ctc-1b-amh-int8_onnx/asr_onnx_infer.py": "1bc50dd769df68f43b2594d011a4fdf8b60c2f2043d6dee5cceeffbc540e0f9c",
+    "asr-wav2vec_ctc-300m-amh-fp16/README.md": "9974fe1d21cd1ea25edc5fcca329e4929b9fe7e072178a751138ad006f1a95a8",
+    "asr-wav2vec_ctc-300m-amh-fp16/STREAMING.md": "f76169c1f36da16e413085e5f8ce3d26827744b3274310b132dbb1ed13990164",
+    "asr-wav2vec_ctc-300m-amh-int8_onnx/asr_onnx_infer.py": "1bc50dd769df68f43b2594d011a4fdf8b60c2f2043d6dee5cceeffbc540e0f9c",
+    "codec-higgs_audio_v2-fp32/README.md": "a687a8383e6836bdcd3c340e06bb52e42ecf708254f1ef57ca3923dc5857130a",
+    "edit-codec_llm-0.6b-amh/README.md": "d54688aa0bc307cca426c94788867c51eba2d553490273c5ac779533b2e4e258",
+    "edit-codec_llm-0.6b-amh/amharic_text.py": "d9da6da09790750c31f63f3e63fbb05095d06e2396e136e3edbb562fd7a5c0de",
+    "edit-codec_llm-0.6b-amh/edit_omnivoice_infer.py": "00a39b2ed1cd725d0f709eda7aefd17db44ab71a9ce8559121c790e5cf4aa9c4",
+    "textcorrect-char_bart-7m-amh-fp32_onnx/corrector_onnx.py": "6ca44fc5de39a451e92b2392dec4d8a7b778be8daca57cca3454bd2452f0815e",
+    "textcorrect-char_bart-7m-amh-int8_onnx/corrector_onnx.py": "6ca44fc5de39a451e92b2392dec4d8a7b778be8daca57cca3454bd2452f0815e",
+    "tts-codec_llm-0.6b-amh-fp16/tts_omnivoice_infer.py": "2aba0ac8819b0468e7718d1a73527e5956fcf21574b90485ee66f60aeb524f8a",
+    "tts-codec_llm-0.6b-amh-fp32/tts_omnivoice_infer.py": "2aba0ac8819b0468e7718d1a73527e5956fcf21574b90485ee66f60aeb524f8a",
+    "tts-codec_llm-0.6b-amh-int8_onnx/tts_omnivoice_infer.py": "2aba0ac8819b0468e7718d1a73527e5956fcf21574b90485ee66f60aeb524f8a",
+    "tts-flow_lm-90m-amh-fp32/config.yaml": "6d6d5a1edcb2283446912d4fbe87d696d7c568991f201bf43b73b1bd7f906990",
+    "tts-flow_lm-90m-amh-fp32/tts_small_infer.py": "9896f19a72204df8adbfd6763e607a8bb0a0a21487f2310aba9eda992fcf6d85",
+    "tts-flow_lm-90m-amh-fp32/README.md": "a83dd21ebc0cf89648ca197345f600fbcb6e1f979c5b04638cd53a869885b80e"
+  },
+  "aliases": {
+    "asr-ctc-1b-fp16": "asr-wav2vec_ctc-1b-amh-fp16",
+    "asr-ctc-1b-onnx-int8": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+    "asr-ctc-300m-fp16": "asr-wav2vec_ctc-300m-amh-fp16",
+    "asr-ctc-300m-onnx-int8": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+    "tts-codec-higgs": "codec-higgs_audio_v2-fp32",
+    "edit-omnivoice": "edit-codec_llm-0.6b-amh",
+    "corrector-tiny-onnx-fp32": "textcorrect-char_bart-7m-amh-fp32_onnx",
+    "corrector-tiny-onnx-int8": "textcorrect-char_bart-7m-amh-int8_onnx",
+    "tts-omnivoice-fp16": "tts-codec_llm-0.6b-amh-fp16",
+    "tts-omnivoice-fp32": "tts-codec_llm-0.6b-amh-fp32",
+    "tts-omnivoice-cpu-int8": "tts-codec_llm-0.6b-amh-int8_onnx",
+    "tts-small-cpu": "tts-flow_lm-90m-amh-fp32"
+  },
+  "public_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+  "current_bundled_files": {
+    "asr-wav2vec_ctc-1b-amh-fp16/README.md": "437831a22d3ec0be76d39e352eb0a5c7096c55b901eeabf7851cec527cd25c7f",
+    "asr-wav2vec_ctc-1b-amh-fp16/STREAMING.md": "f76169c1f36da16e413085e5f8ce3d26827744b3274310b132dbb1ed13990164",
+    "asr-wav2vec_ctc-1b-amh-int8_onnx/asr_onnx_infer.py": "1bc50dd769df68f43b2594d011a4fdf8b60c2f2043d6dee5cceeffbc540e0f9c",
+    "asr-wav2vec_ctc-300m-amh-fp16/README.md": "9974fe1d21cd1ea25edc5fcca329e4929b9fe7e072178a751138ad006f1a95a8",
+    "asr-wav2vec_ctc-300m-amh-fp16/STREAMING.md": "f76169c1f36da16e413085e5f8ce3d26827744b3274310b132dbb1ed13990164",
+    "asr-wav2vec_ctc-300m-amh-int8_onnx/asr_onnx_infer.py": "1bc50dd769df68f43b2594d011a4fdf8b60c2f2043d6dee5cceeffbc540e0f9c",
+    "codec-higgs_audio_v2-fp32/README.md": "a687a8383e6836bdcd3c340e06bb52e42ecf708254f1ef57ca3923dc5857130a",
+    "edit-codec_llm-0.6b-amh/README.md": "d54688aa0bc307cca426c94788867c51eba2d553490273c5ac779533b2e4e258",
+    "edit-codec_llm-0.6b-amh/amharic_text.py": "d9da6da09790750c31f63f3e63fbb05095d06e2396e136e3edbb562fd7a5c0de",
+    "edit-codec_llm-0.6b-amh/edit_omnivoice_infer.py": "00a39b2ed1cd725d0f709eda7aefd17db44ab71a9ce8559121c790e5cf4aa9c4",
+    "textcorrect-char_bart-7m-amh-fp32_onnx/corrector_onnx.py": "6ca44fc5de39a451e92b2392dec4d8a7b778be8daca57cca3454bd2452f0815e",
+    "textcorrect-char_bart-7m-amh-int8_onnx/corrector_onnx.py": "6ca44fc5de39a451e92b2392dec4d8a7b778be8daca57cca3454bd2452f0815e",
+    "tts-codec_llm-0.6b-amh-fp16/tts_omnivoice_infer.py": "2aba0ac8819b0468e7718d1a73527e5956fcf21574b90485ee66f60aeb524f8a",
+    "tts-codec_llm-0.6b-amh-fp32/tts_omnivoice_infer.py": "2aba0ac8819b0468e7718d1a73527e5956fcf21574b90485ee66f60aeb524f8a",
+    "tts-codec_llm-0.6b-amh-int8_onnx/tts_omnivoice_infer.py": "2aba0ac8819b0468e7718d1a73527e5956fcf21574b90485ee66f60aeb524f8a",
+    "tts-flow_lm-90m-amh-fp32/config.yaml": "6d6d5a1edcb2283446912d4fbe87d696d7c568991f201bf43b73b1bd7f906990",
+    "tts-flow_lm-90m-amh-fp32/tts_small_infer.py": "9896f19a72204df8adbfd6763e607a8bb0a0a21487f2310aba9eda992fcf6d85",
+    "tts-flow_lm-90m-amh-fp32/README.md": "a83dd21ebc0cf89648ca197345f600fbcb6e1f979c5b04638cd53a869885b80e"
+  }
+}

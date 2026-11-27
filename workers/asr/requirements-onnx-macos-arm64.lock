@@ -1,0 +1,8 @@
+# Torch-free macOS arm64 / CPython 3.11 provider smoke-tested on November 13, 2026.
+# Native launch MUST set ORT_DISABLE_TELEMETRY=1 before importing ONNX Runtime.
+# This is a maintainer environment recipe, not an end-user pip installation step.
+flatbuffers==25.12.19
+numpy==2.3.4
+onnxruntime==1.32.0
+packaging==26.3
+protobuf==7.36.2

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "releases": [
+    {
+      "profile": "cpu-high",
+      "model_version": "v0.3",
+      "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+      "transcription": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+      "dictation": "asr-wav2vec_ctc-300m-amh-int8_onnx"
+    },
+    {
+      "profile": "cpu-low",
+      "model_version": "v0.3",
+      "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+      "transcription": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+      "dictation": "asr-wav2vec_ctc-300m-amh-int8_onnx"
+    },
+    {
+      "profile": "gpu-modern",
+      "model_version": "v0.3",
+      "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+      "transcription": "asr-wav2vec_ctc-1b-amh-fp16",
+      "dictation": "asr-wav2vec_ctc-1b-amh-fp16"
+    },
+    {
+      "profile": "cpu-mid",
+      "model_version": "v0.3",
+      "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+      "transcription": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+      "dictation": "asr-wav2vec_ctc-300m-amh-int8_onnx"
+    },
+    {
+      "profile": "gpu-low",
+      "model_version": "v0.3",
+      "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+      "transcription": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+      "dictation": "asr-wav2vec_ctc-300m-amh-int8_onnx"
+    },
+    {
+      "profile": "gpu-pascal",
+      "model_version": "v0.3",
+      "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+      "transcription": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+      "dictation": "asr-wav2vec_ctc-300m-amh-int8_onnx"
+    },
+    {
+      "profile": null,
+      "model_version": "v0.3",
+      "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+      "transcription": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+      "dictation": "asr-wav2vec_ctc-300m-amh-int8_onnx"
+    }
+  ]
+}

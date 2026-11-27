@@ -1,0 +1,184 @@
+"""Amharic text corrector (spelling + punctuation) on ONNX Runtime: numpy + onnxruntime only, no torch.
+    from corrector_onnx import OnnxCorrector
+    fix = OnnxCorrector("path/to/textcorrect-char_bart-7m-amh-int8_onnx")
+    fix(["በ ኢትዮጵያ ሀሳቡን ተቀብልዋል ግን ችግሮች አሉ"])            # mode="full": spelling + punctuation
+    fix(["..."], mode="punct")                                # punctuation only: words come back exactly as given
+    python corrector_onnx.py [model_dir] [--mode punct] < in.txt   # one text per line
+Same behaviour as corrector.py in github.com/ethiopicai/amharic-text-corrector (greedy decoding):
+- long texts are cut into chunks of whole words (<= 380 chars) and corrected chunk by chunk;
+- punct mode constrains decoding: each step may only copy the next input character, or put ። ፣ ፤ ? ! after a word;
+- runaway guard: in full mode, a chunk whose output is longer than 1.2 x input + 10 chars is redone in punct mode.
+"""
+import json
+import os
+import re
+import sys
+
+import numpy as np
+import onnxruntime as ort
+
+PUNCT = "።፣፤?!"
+_PUNCT_RE = re.compile(f"[{re.escape(PUNCT)}]")
+PAD, EOS, UNK = 0, 1, 2
+
+
+def clean_punct(s):
+    """One spelling per mark, attached to the word before it, one space after."""
+    s = s.replace("፡፡", "።").replace("::", "።").replace("፧", "?").replace("፥", "፣")
+    s = re.sub(r"\s+([።፣፤?!])", r"\1", s)
+    s = re.sub(r"([።፣፤?!])(?=\S)", r"\1 ", s)
+    return " ".join(s.split())
+
+
+def strip_punct(s):
+    return " ".join(_PUNCT_RE.sub(" ", s).split())
+
+
+def chunks(words, size):
+    out, cur = [], []
+    for w in words:
+        if cur and len(" ".join(cur + [w])) > size:
+            out.append(cur)
+            cur = []
+        cur.append(w)
+    return out + [cur] if cur else out
+
+
+class OnnxCorrector:
+    def __init__(self, model_dir, threads=None, bs=16, chunk_chars=380):
+        meta = json.load(open(os.path.join(model_dir, "meta.json"), encoding="utf-8"))
+        self.chars = json.load(open(os.path.join(model_dir, "char_vocab.json"), encoding="utf-8"))["chars"]
+        self.index = {c: i + 3 for i, c in enumerate(self.chars)}
+        self.V = len(self.chars) + 3
+        self.L, self.H, self.D = meta["decoder_layers"], meta["heads"], meta["head_dim"]
+        self.max_len, self.bs, self.chunk_chars = meta["max_len"], bs, chunk_chars
+        so = ort.SessionOptions()
+        if threads:
+            so.intra_op_num_threads = threads
+        prov = ["CPUExecutionProvider"]
+        self.enc = ort.InferenceSession(os.path.join(model_dir, meta["encoder"]), so, providers=prov)
+        self.dec = ort.InferenceSession(os.path.join(model_dir, meta["decoder_step"]), so, providers=prov)
+        self.punct_ids = np.array(sorted(self.index[c] for c in PUNCT if c in self.index))
+        self.space = self.index[" "]
+
+    # ------------------------------------------------------------------ public
+    def __call__(self, texts, mode="full"):
+        pieces, owner = [], []
+        for k, t in enumerate(texts):
+            words = (strip_punct(t) if mode == "punct" else clean_punct(t)).split()
+            for c in chunks(words, self.chunk_chars):
+                pieces.append(" ".join(c))
+                owner.append(k)
+        out = self._run(pieces, mode)
+        if mode == "full":
+            bad = [i for i, (p, o) in enumerate(zip(pieces, out)) if len(o) > 1.2 * len(p) + 10]
+            for i, o in zip(bad, self._run([strip_punct(pieces[i]) for i in bad], "punct")):
+                out[i] = o
+        res = [[] for _ in texts]
+        for k, o in zip(owner, out):
+            res[k].append(o)
+        return [clean_punct(" ".join(r)) for r in res]
+
+    # ------------------------------------------------------------------ internals
+    def _encode(self, text):
+        return [self.index.get(c, UNK) for c in text[:self.max_len - 1]] + [EOS]
+
+    def _decode(self, ids):
+        out = []
+        for i in ids:
+            if i == EOS:
+                break
+            if i > UNK:
+                out.append(self.chars[i - 3])
+        return "".join(out)
+
+    def _run(self, texts, mode):
+        res = [""] * len(texts)
+        order = sorted((i for i in range(len(texts)) if texts[i]), key=lambda i: len(texts[i]))
+        for k in range(0, len(order), self.bs):
+            idx = order[k:k + self.bs]
+            batch = [texts[i] for i in idx]
+            src = [self._encode(t) for t in batch]
+            x = np.full((len(src), max(map(len, src))), PAD, np.int64)
+            for j, s in enumerate(src):
+                x[j, :len(s)] = s
+            m = (x != PAD).astype(np.int64)
+            con = self._constraint([s[:-1] for s in src]) if mode == "punct" else None
+            gen = self._greedy(x, m, con)
+            for i, t, g in zip(idx, batch, gen):
+                res[i] = clean_punct(self._place_punct(t, g) if mode == "punct" else self._decode(g))
+        return res
+
+    def _greedy(self, ids, mask, constraint):
+        B = ids.shape[0]
+        cross = self.enc.run(None, {"input_ids": ids, "attention_mask": mask})[0]
+        past = np.zeros((self.L, 2, B, self.H, 0, self.D), np.float32)
+        cur = np.full((B, 1), EOS, np.int64)  # decoder start token
+        gen, done = [], np.zeros(B, bool)
+        for _ in range(self.max_len - 1):
+            logits, past = self.dec.run(None, {"ids": cur, "enc": cross, "enc_mask": mask, "past": past})
+            if constraint is not None:
+                logits = constraint(gen, logits)
+            nxt = np.where(done, PAD, logits.argmax(-1))
+            gen.append(nxt)
+            done |= nxt == EOS
+            if done.all():
+                break
+            cur = nxt[:, None].astype(np.int64)
+        g = np.stack(gen, 1)
+        return [[int(v) for v in row] for row in g]
+
+    def _constraint(self, src):
+        """Allowed next tokens: the next source character, or a punctuation mark after a word, or EOS at the end."""
+        S = np.full((len(src), max(map(len, src)) + 1), EOS, np.int64)
+        for k, x in enumerate(src):
+            S[k, :len(x)] = x
+        punct, space = self.punct_ids, self.space
+        is_punct_col = np.zeros(self.V, bool)
+        is_punct_col[punct] = True
+
+        def f(gen, scores):
+            n = scores.shape[0]
+            g = np.stack(gen, 1) if gen else np.zeros((n, 0), np.int64)
+            isp = np.isin(g, punct)
+            p = np.minimum((~isp).sum(1), S.shape[1] - 1)  # source characters copied so far
+            nxt = S[np.arange(n), p]
+            allow = np.zeros_like(scores, bool)
+            allow[np.arange(n), nxt] = True
+            last_p = isp[:, -1] if g.shape[1] else np.ones(n, bool)
+            allow |= (((nxt == space) | (nxt == EOS)) & ~last_p)[:, None] & is_punct_col[None]
+            done = (g == EOS).any(1)  # finished: pad the rest
+            allow[done] = False
+            allow[done, PAD] = True
+            return np.where(allow, scores, -np.inf)
+        return f
+
+    def _place_punct(self, text, gen):
+        """The original words (exact characters, even ones outside the vocabulary) with the generated marks."""
+        words, marks, w = text.split(), {}, 0
+        punct = set(int(p) for p in self.punct_ids)
+        for g in gen:
+            if g == EOS:
+                break
+            if g == self.space:
+                w += 1
+            elif g in punct:
+                marks[w] = self.chars[g - 3]
+        return " ".join(x + marks.get(i, "") for i, x in enumerate(words))
+
+
+def main():
+    args = sys.argv[1:]
+    mode = "full"
+    if "--mode" in args:
+        i = args.index("--mode")
+        mode = args[i + 1]
+        del args[i:i + 2]
+    model_dir = args[0] if args else os.path.dirname(os.path.abspath(__file__))
+    fix = OnnxCorrector(model_dir)
+    for o in fix([l.rstrip("\n") for l in sys.stdin], mode=mode):
+        print(o)
+
+
+if __name__ == "__main__":
+    main()

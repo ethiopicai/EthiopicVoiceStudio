@@ -1,0 +1,24 @@
+{
+  "name": "ethiopic-voice-studio",
+  "version": "0.1.0-rc.2",
+  "private": true,
+  "scripts": {
+    "dev": "cd apps/desktop && tauri dev",
+    "build:desktop": "cd apps/desktop && tauri build --no-bundle",
+    "build:ui": "npm --prefix apps/desktop/ui run build",
+    "fixture": "python3 scripts/fixture-server.py",
+    "test": "cargo test --workspace",
+    "check:rust": "cargo check --workspace",
+    "test:ui": "npm --prefix apps/desktop/ui test",
+    "build:mac-app": "cd apps/desktop && tauri build --bundles app",
+    "build:windows": "cd apps/desktop && tauri build --bundles nsis --target x86_64-pc-windows-msvc",
+    "build:mac-candidate": "python3 scripts/build-macos-release.py --candidate",
+    "build:mac-release": "python3 scripts/build-macos-release.py",
+    "test:release-tools": "python3 -m unittest discover -s scripts/tests -p 'test_*.py'",
+    "catalog:build": "python3 scripts/build-release-catalog.py",
+    "catalog:check": "python3 scripts/build-release-catalog.py --check"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0"
+  }
+}

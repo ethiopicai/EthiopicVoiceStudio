@@ -1,0 +1,95 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {existsSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import {preview} from 'vite';
+import {chromium} from 'playwright-core';
+const executable=process.env.CHROME_PATH||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+
+test('Voice Editing shares Cleanup history/card layout, remembers its own panel settings, and preserves responsive preview and active-task controls',{skip:!existsSync(executable)},async()=>{
+  const server=await preview({root:fileURLToPath(new URL('..',import.meta.url)),preview:{host:'127.0.0.1',port:0,open:false}});
+  const browser=await chromium.launch({executablePath:executable,headless:true});
+  try{
+    const page=await browser.newPage({viewport:{width:1600,height:1000},colorScheme:'dark',reducedMotion:'reduce'});
+    const errors=[];page.on('pageerror',error=>errors.push(error.message));
+    await page.addInitScript(()=>{
+      const bytes=new Uint8Array(64044),v=new DataView(bytes.buffer);
+      for(const [at,text] of [[0,'RIFF'],[8,'WAVE'],[12,'fmt '],[36,'data']])for(let i=0;i<text.length;i++)v.setUint8(at+i,text.charCodeAt(i));
+      v.setUint32(4,bytes.length-8,true);v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,16000,true);v.setUint32(28,32000,true);v.setUint16(32,2,true);v.setUint16(34,16,true);v.setUint32(40,64000,true);
+      window.wav=Array.from(bytes);window.layoutCalls=[];window.failProjects=false;
+      window.editorStatus={selection:{available:true,opt_in_required:false,slow:false,reason:'Voice Editing runs locally on this computer.',tier:'gpu-modern',download_bytes:0,licenses:[]},consent:true,optIn:false,ready:true,runtimePresent:true,busy:false,stage:'',loaded:false};
+      window.editingProjects=Array.from({length:20},(_,i)=>({id:`edit-${i+1}`,name:i===0?'Creator.wav':i===19?'አማርኛ-በጣም-ረጅም-ስም-ያለው-የድምጽ-ቀረጻ-ለሙከራ.wav':`Creator ${i+1}.wav`,created:i+1,revision:0,head:0,duration:2,channels:1,versions:[{audio:'original.wav',text:'ሰላም ልጆች',words:[{word:'ሰላም',start:.1,end:.8},{word:'ልጆች',start:1,end:1.8}],regions:[],parent:null,kind:'import'}]}));
+      window.__TAURI_INTERNALS__={invoke:async(command,args={})=>{
+        window.layoutCalls.push({command,args});
+        if(command==='system_summary')return {os:'macos',arch:'aarch64',logicalCpus:8,totalMemoryBytes:16*1024**3};
+        if(command==='get_asr_status'||command==='get_cleanup_status')return {state:'ready',message:'Ready'};
+        if(command==='get_active_dictation_session'||command==='get_active_cleanup_job')return null;
+        if(command==='list_cleanup_recordings')return [{id:'source-1',name:'Creator.wav'}];
+        if(command==='list_cleanup_results')return [];
+        if(command==='get_cleanup_recording_audio')return {name:'Creator.wav',bytes:window.wav};
+        if(command==='get_voice_edit_status')return structuredClone(window.editorStatus);
+        if(command==='list_voice_edit_projects'){if(window.failProjects)throw 'History temporarily unavailable';return structuredClone(window.editingProjects);}
+        if(command==='list_transcripts')return [];
+        if(command==='get_voice_edit_audio')return {bytes:window.wav};
+        if(command==='cancel_voice_edit'){window.editorStatus.busy=false;return;}
+        if(command==='voice_edit_action'&&args.action==='preview')return {text:args.text,words:[{word:'ሰላም',start:.1,end:.8},{word:'ወዳጆች',start:1,end:1.8}],regions:[{span_in:[1,1.8],span_out:[1,1.8]}],edits:[{span_in:[1,1.8],span_out:[1,1.8]}],seed:args.seed,duration:2};
+        throw Error('Outside this test');
+      }};
+    });
+    const nav=label=>page.locator(`button.nav-item[aria-label="${label}"]`);
+    const cardStyle=element=>{const style=getComputedStyle(element);return {padding:style.padding,borderRadius:style.borderRadius,background:style.backgroundColor,border:style.borderTopColor};};
+    await page.goto(server.resolvedUrls.local[0]);await nav('Voice Cleanup').click();
+    const cleanupHistory=page.getByRole('region',{name:'Cleanup history',exact:true});await cleanupHistory.waitFor();
+    const cleanupBox=await cleanupHistory.boundingBox();
+    await cleanupHistory.getByRole('button',{name:'Open original recording: Creator.wav',exact:true}).click();
+    const cleanupCard=page.getByRole('region',{name:'Original recording',exact:true});
+    await cleanupCard.getByRole('button',{name:'Play Original: Creator.wav',exact:true}).waitFor();
+    const commonCardStyle=await cleanupCard.evaluate(cardStyle);
+    await nav('Voice Editing').click();
+    const editingHistory=page.getByRole('region',{name:'Editing history',exact:true});await editingHistory.waitFor();
+    const editingBox=await editingHistory.boundingBox();
+    assert.equal(editingBox.x,cleanupBox.x);assert.equal(editingBox.y,cleanupBox.y);assert.equal(editingBox.width,cleanupBox.width,'history panels align across tools');
+    await page.waitForFunction(()=>document.querySelectorAll('[data-editing-id]').length===20);
+    assert.equal(await page.evaluate(()=>window.layoutCalls.some(call=>call.command==='voice_edit_action'||call.command==='get_voice_edit_audio')),false,'listing history never loads audio or runs a model');
+    assert.equal(await editingHistory.locator('strong').first().evaluate(element=>element.scrollWidth<=element.clientWidth+1),true,'long filenames wrap');
+    await editingHistory.getByRole('button',{name:'Open editing recording: Creator.wav',exact:true}).click();
+    const source=page.getByRole('region',{name:'Current recording',exact:true});
+    await source.getByRole('button',{name:'Play Current recording',exact:true}).waitFor();
+    assert.deepEqual(await source.evaluate(cardStyle),commonCardStyle,'player cards share padding, borders and theme');
+    await source.getByRole('checkbox',{name:'Highlight words during playback',exact:true}).waitFor();
+    await page.getByRole('button',{name:'Change what is said',exact:true}).click();
+    await page.getByLabel('New wording',{exact:true}).fill('ሰላም ወዳጆች');
+    await page.getByRole('button',{name:'Regenerate',exact:true}).click();
+    const edited=page.getByRole('region',{name:'Edited preview',exact:true});await edited.getByRole('button',{name:'Keep this edit',exact:true}).waitFor();
+    const sourceBox=await source.boundingBox(),previewBox=await edited.boundingBox();
+    assert.ok(Math.abs(sourceBox.y-previewBox.y)<2&&previewBox.x>sourceBox.x,'wide windows show original and preview side by side');
+    const sourceWave=await source.locator('.waveform-player').boundingBox(),previewWave=await edited.locator('.waveform-player').boundingBox();
+    assert.ok(Math.abs(sourceWave.y-previewWave.y)<2,'comparison waveforms align vertically');
+    await page.locator('.editing-content').evaluate(element=>element.scrollTop=0);
+    await page.screenshot({path:'/tmp/ethiopic-editing-layout-wide.png'});
+    await page.setViewportSize({width:1100,height:900});await page.waitForTimeout(50);
+    const sourceNarrow=await source.boundingBox(),previewNarrow=await edited.boundingBox();
+    assert.ok(previewNarrow.y>=sourceNarrow.y+sourceNarrow.height-2,'smaller windows stack players');
+    assert.equal(await page.locator('.editing-content').evaluate(element=>element.scrollWidth<=element.clientWidth+1),true,'cards and editor fit the workspace');
+    const resize=page.getByRole('separator',{name:'Resize editing history',exact:true});const before=Number(await resize.getAttribute('aria-valuenow'));
+    await resize.focus();await page.keyboard.press('ArrowRight');assert.equal(Number(await resize.getAttribute('aria-valuenow')),before+20);
+    await page.evaluate(()=>window.editorStatus.busy=true);
+    await page.waitForFunction(()=>document.querySelector('[data-editing-id]')?.disabled===true);
+    assert.equal(await page.getByRole('button',{name:'Import audio',exact:true}).isDisabled(),true);
+    assert.equal(await source.getByRole('button',{name:'Play Current recording',exact:true}).isEnabled(),true);
+    await page.getByRole('button',{name:'Stop',exact:true}).click();
+    await page.waitForFunction(()=>document.querySelector('[data-editing-id]')?.disabled===false);
+    await page.evaluate(()=>window.failProjects=true);
+    await page.getByRole('button',{name:'Refresh editing history',exact:true}).click();
+    await editingHistory.getByRole('alert').filter({hasText:'Some saved recordings could not be listed.'}).waitFor();
+    assert.equal(await editingHistory.locator('[data-editing-id]').count(),20);
+    await page.getByRole('button',{name:'Hide editing history',exact:true}).click();
+    await nav('Voice Cleanup').click();await cleanupHistory.waitFor();
+    assert.equal((await cleanupHistory.boundingBox()).width,cleanupBox.width,'editing layout preferences do not resize Cleanup');
+    await nav('Voice Editing').click();await page.getByRole('button',{name:'Show editing history',exact:true}).waitFor();
+    await page.evaluate(()=>window.failProjects=false);await page.reload();await nav('Voice Editing').click();
+    await page.getByRole('button',{name:'Show editing history',exact:true}).click();
+    assert.equal(Number(await resize.getAttribute('aria-valuenow')),before+20,'editing history width and collapse survive reopening');
+    assert.deepEqual(errors,[]);
+  }finally{await browser.close();await new Promise((resolve,reject)=>server.httpServer.close(error=>error?reject(error):resolve()));}
+});

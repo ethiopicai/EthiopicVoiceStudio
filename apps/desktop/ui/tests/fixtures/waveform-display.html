@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="UTF-8"><title>Waveform display fixture</title><style>body{padding:24px!important}section{margin-bottom:24px}h1,h2{font-size:16px}</style></head><body><h1>Waveform display</h1><section><h2>Quiet recording</h2><div id="quiet"></div></section><section><h2>Silence</h2><div id="silent"></div></section><button id="word">Play quiet word span</button><script type="module">
+import {mount} from 'svelte';
+import WaveformPlayer from '../../src/WaveformPlayer.svelte';
+import '../../src/style.css';
+function wav(silent){
+ const bytes=new Uint8Array(32044),view=new DataView(bytes.buffer);
+ for(const [at,text] of [[0,'RIFF'],[8,'WAVE'],[12,'fmt '],[36,'data']])for(let i=0;i<text.length;i++)view.setUint8(at+i,text.charCodeAt(i));
+ view.setUint32(4,bytes.length-8,true);view.setUint32(16,16,true);view.setUint16(20,1,true);view.setUint16(22,1,true);view.setUint32(24,16000,true);view.setUint32(28,32000,true);view.setUint16(32,2,true);view.setUint16(34,16,true);view.setUint32(40,32000,true);
+ if(!silent)for(let i=1600;i<16000;i++)view.setInt16(44+i*2,Math.round(50*Math.sin(i*2*Math.PI*180/16000)*(.15+.85*Math.sin(i*.0004)**2)),true);
+ return bytes;
+}
+const quiet=wav(false),silent=wav(true);
+window.waveformFixture={quiet:Array.from(quiet),decoded:[],wordPeak:null,error:null};
+const originalDecode=AudioContext.prototype.decodeAudioData;
+AudioContext.prototype.decodeAudioData=async function(...args){const buffer=await originalDecode.apply(this,args);window.waveformFixture.decoded.push({buffer,snapshot:new Float32Array(buffer.getChannelData(0))});return buffer;};
+const originalSource=AudioContext.prototype.createBufferSource;
+AudioContext.prototype.createBufferSource=function(){const node=originalSource.call(this),start=node.start.bind(node);node.start=(...args)=>{window.waveformFixture.wordPeak=node.buffer.getChannelData(0).reduce((peak,sample)=>Math.max(peak,Math.abs(sample)),0);return start(...args);};return node;};
+const player=mount(WaveformPlayer,{target:document.getElementById('quiet'),props:{src:URL.createObjectURL(new Blob([quiet],{type:'audio/wav'})),id:'quiet',label:'Quiet recording'}});
+mount(WaveformPlayer,{target:document.getElementById('silent'),props:{src:URL.createObjectURL(new Blob([silent],{type:'audio/wav'})),id:'silent',label:'Silence'}});
+document.getElementById('word').onclick=()=>player.playSpan(.4,.7).catch(error=>window.waveformFixture.error=String(error));
+</script></body></html>

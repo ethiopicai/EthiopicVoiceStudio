@@ -1,0 +1,36 @@
+# asr-wav2vec_ctc-300m-amh-3273h-v1.0
+
+amharic-ctc-300m v0.3 (2026-11-12) is the small sibling of amharic-ctc v0.3 (1B): Meta's omniASR_CTC_300M_v2
+(24 layers, 326M parameters, a third of the 1B) with a LoRA fine-tune merged in, trained with exactly the v0.3 recipe
+and data (0.78 h of human-corrected Amilia, manifest v2026-11-04, + snapwre read speech 1:1, letter variants merged).
+It is a separate model line for CPU-only and live-dictation use on weak machines; it does **not** replace the 1B
+(the two families remain separate). Same API, files and tokenizer as the 1B bundle: swap the folder.
+
+## Variants
+
+- `asr-wav2vec_ctc-300m-amh-fp16`: PyTorch inference with FP16-stored weights, approximately 0.65 GB.
+- `asr-wav2vec_ctc-300m-amh-int8_onnx`: ONNX Runtime CPU inference without PyTorch, approximately 0.37 GB.
+
+Use the repository manifest for the exact file inventory, byte sizes and checksums.
+
+## What to expect
+
+Character error rate (letter variants merged, punctuation removed), greedy decoding:
+
+| set | 300M v0.3 | 1B v0.3 | 300M base |
+|---|---|---|---|
+| Amilia test (conversational, 50 clips) | 21.8 | 15.9 | 47.0 |
+| WAXAL (100) | 16.4 | 13.0 | 17.1 |
+| snapwre read speech (200) | 14.9 | 10.4 | 16.5 |
+| leyu phone speech (200) | 16.0 | 11.3 | 16.6 |
+| Amilia heldout1104 (75) | 24.7 | 16.9 | 45.5 |
+
+About 6 CER points worse than the 1B on conversation (word error rate 56% vs 42%): fine for a draft or live
+captions on a weak CPU, but use the 1B for transcripts that will be kept. Output style is the same (Ge'ez as spoken,
+`።` `፣` `?`, numbers as words, common letter of each variant group). Keep `model_version` ("v0.3") and the model
+name (`amharic-ctc-300m`) with every transcript: the two models are different ASR models.
+
+## Use
+
+As for the 1B: `CTCTranscriber("<bundle>/model")`, `StreamingTranscriber` (see STREAMING.md), or for the ONNX
+variant `asr_onnx_infer.OnnxCTCTranscriber("<variant folder>")`.

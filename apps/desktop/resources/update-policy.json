@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "channel": "preview",
+  "catalog_endpoint": "https://ethiopic.ai/studio/releases/preview/catalog.json",
+  "catalog_signature_endpoint": "https://ethiopic.ai/studio/releases/preview/catalog.json.minisig",
+  "app_update_endpoint": "https://ethiopic.ai/studio/version",
+  "check_interval_seconds": 86400,
+  "maximum_catalog_bytes": 1048576,
+  "automatic_checks_enabled": false,
+  "automatic_downloads_enabled": false,
+  "trusted_catalog_keys": [],
+  "app_updater_configured": false,
+  "app_notification_checks_enabled": true,
+  "installation_statistics_enabled_by_default": true
+}

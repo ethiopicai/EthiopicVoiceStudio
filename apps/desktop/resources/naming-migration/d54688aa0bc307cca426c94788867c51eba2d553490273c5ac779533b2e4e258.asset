@@ -1,0 +1,74 @@
+# edit-codec_llm-0.6b-amh-3242h-v1.0
+
+Change, insert or delete words in an Amharic recording. Only the changed words are regenerated, in the same voice and
+room; the rest of the waveform is left untouched, sample for sample. No weights of its own. It uses:
+
+| needs | why |
+|---|---|
+| one of `tts-codec_llm-0.6b-amh-fp16` / `tts-codec_llm-0.6b-amh-fp32` / `tts-codec_llm-0.6b-amh-int8_onnx` | the OmniVoice model that fills the masked span |
+| `codec-higgs_audio_v2-fp32` | audio tokens in and out (always fp32) |
+| `asr-wav2vec_ctc-1b-amh-int8_onnx` | transcription + forced word alignment (CPU, onnxruntime) |
+
+Keep the folders side by side: `<models>/edit-codec_llm-0.6b-amh`, `<models>/tts-codec_llm-0.6b-amh-*`, `<models>/codec-higgs_audio_v2-fp32`,
+`<models>/asr-wav2vec_ctc-1b-amh-int8_onnx`.
+
+Python deps: those of the TTS variant (torch, torchaudio, transformers>=5.3, soundfile, omnivoice) plus onnxruntime
+(for the aligner) and numpy; scipy optional (faster resampling). Tested in a fresh venv: torch 2.9.0+cu130,
+transformers 5.14.1, onnxruntime 1.32.0, omnivoice 0.2.1, soundfile 0.14.0.
+
+## Use
+
+```python
+from edit_omnivoice_infer import SpeechEditor, EditError
+ed = SpeechEditor("<models>/tts-codec_llm-0.6b-amh-fp16")        # codec/aligner found next to it; threads= for the CPU parts
+t = ed.transcribe("clip.wav")                            # {"text", "words": [{"word","start","end"}], "model_version"}
+r = ed.edit("clip.wav", t["text"], "<edited text>", words=t["words"], num_step=32)
+r["audio"], r["sr"]                                      # float32 numpy, 24000
+r["edits"]   # [{"span_in": [s, e], "span_out": [s, e], "orig_words": [...], "new_words": [...]}, ...]
+r["words"]   # word timings of the result -> pass them (with r["audio"], r["new_text"]) to chain the next edit
+```
+
+- **Text in, text out:** `new_text` is the whole edited transcript. The word diff against `orig_text` finds the changes
+  (several at once are fine; changes at most one word apart are merged). Use the transcript the user edits as
+  `orig_text`; for a fresh recording, `transcribe()` gives it.
+- **Pass `words`** when you have them (from `transcribe()`, `align()` or the previous `edit()`): that skips one full
+  ASR pass and halves GPU latency. Without `words`, the audio is transcribed and aligned, and `orig_text` must agree
+  with the transcript (CER <= 0.6), otherwise `EditError("text_mismatch")`; `force=True` overrides.
+- **`num_step`:** use the tier's `tts_num_step` (32 on gpu-modern, 16 elsewhere). Below 16 is refused.
+- **`span_duration`** (seconds) overrides the length of the new words (single-change edits only); `speed` scales it.
+- **Limits:** clips up to 30 s (`EditError("too_long")`). For longer recordings, cut out the sentence (or a <= 30 s
+  window around the edit, at a pause), edit it and splice it back; chunking is not built in.
+- **Undo** is the caller's job: keep the previous audio + text + words.
+- `seed` (default 0) makes results repeatable; a different seed gives another take of the same edit.
+
+Errors: `EditError(kind, message)`, a `ValueError` subclass, with `kind` in `empty_text`, `too_long`, `too_short`,
+`bad_num_step`, `no_change`, `text_mismatch`, `alignment_failed`.
+
+CLI:
+
+```bash
+python edit_omnivoice_infer.py --tts <models>/tts-codec_llm-0.6b-amh-fp16 --audio in.wav               # print transcript + words
+python edit_omnivoice_infer.py --tts <models>/tts-codec_llm-0.6b-amh-fp16 --audio in.wav \
+    --new-text "<edited text>" [--orig-text "..."] [--num-step 32] [--span-duration 0.8] --out out.wav
+```
+
+## How it works
+
+1. Word timings: CTC Viterbi forced alignment with amharic-ctc v0.3 (ONNX int8; letter variants folded,
+   punctuation ignored).
+2. The changed words' audio is cut half-way into the neighbouring pauses (at most 0.3 s); an insertion goes in the
+   middle of the pause.
+3. New length = the context's speaking rate (OmniVoice's character weights, over up to 6 s each side) x the new words
+   + typical pauses.
+4. Tokens `[left context | MASK x N | right context]` with the edited transcript as text; OmniVoice fills the masked
+   frames by iterative unmasking, text guidance 2.0 (the unconditional branch keeps the audio context).
+5. Only the new span is decoded into the original waveform, with 20 ms crossfades inside the pauses. A deletion is a
+   cut plus a 0.32 s regeneration across the seam.
+6. Several changes are edited right to left; between them, the timings shift and the generated words are re-aligned
+   in a short window.
+
+## Licenses
+
+OmniVoice weights CC-BY-NC (non-commercial). amharic-ctc fine-tuned weights: non-commercial (training data includes
+Amilia). This code: Apache-2.0 (the forced-alignment routine is adapted from pocket-tts, MIT). Edited audio is
+synthetic: the app should make that clear and must not be used to misrepresent what someone said.

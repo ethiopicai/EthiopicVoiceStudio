@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "releases": [
+    {
+      "profile": "cpu-high",
+      "os": "windows",
+      "arch": "x86_64",
+      "model_version": "v0.3",
+      "minimum_windows": "10.0.19041",
+      "packs": [
+        {
+          "kind": "model",
+          "sha256": "adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c",
+          "size": 1261204759,
+          "unpacked_size": 1401521102,
+          "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz"
+        },
+        {
+          "kind": "runtime",
+          "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5",
+          "size": 100868240,
+          "unpacked_size": 272689844,
+          "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz"
+        }
+      ]
+    },
+    {
+      "profile": "cpu-low",
+      "os": "windows",
+      "arch": "x86_64",
+      "model_version": "v0.3",
+      "minimum_windows": "10.0.19041",
+      "packs": [
+        {
+          "kind": "model",
+          "sha256": "f548411d29143d278569f72fa3435944d42b94769895cc9b394895dec578bb4b",
+          "size": 331240531,
+          "unpacked_size": 366893140,
+          "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-low.tar.gz"
+        },
+        {
+          "kind": "runtime",
+          "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5",
+          "size": 100868240,
+          "unpacked_size": 272689844,
+          "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz"
+        }
+      ]
+    },
+    {
+      "profile": "gpu-modern",
+      "os": "windows",
+      "arch": "x86_64",
+      "model_version": "v0.3",
+      "minimum_windows": "10.0.19041",
+      "packs": [
+        {
+          "kind": "model",
+          "sha256": "1ae88eda156f10bacf4162399251bbfa104b090f446cd3f0875ff3d844027951",
+          "size": 1806995102,
+          "unpacked_size": 1951574594,
+          "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-gpu-modern.tar.gz"
+        },
+        {
+          "kind": "runtime",
+          "sha256": "43a06eb36596764fa208dc231a3544ad7bb9ffd6424c560a90a17961295ffc0d",
+          "size": 3067969324,
+          "unpacked_size": 4850551907,
+          "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-cuda.tar.gz"
+        }
+      ]
+    },
+    {
+      "profile": "cpu-mid",
+      "os": "windows",
+      "arch": "x86_64",
+      "model_version": "v0.3",
+      "minimum_windows": "10.0.19041",
+      "packs": [
+        {
+          "kind": "model",
+          "sha256": "adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c",
+          "size": 1261204759,
+          "unpacked_size": 1401521102,
+          "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz"
+        },
+        {
+          "kind": "runtime",
+          "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5",
+          "size": 100868240,
+          "unpacked_size": 272689844,
+          "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz"
+        }
+      ]
+    },
+    {
+      "profile": "gpu-low",
+      "os": "windows",
+      "arch": "x86_64",
+      "model_version": "v0.3",
+      "minimum_windows": "10.0.19041",
+      "packs": [
+        {
+          "kind": "model",
+          "sha256": "adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c",
+          "size": 1261204759,
+          "unpacked_size": 1401521102,
+          "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz"
+        },
+        {
+          "kind": "runtime",
+          "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5",
+          "size": 100868240,
+          "unpacked_size": 272689844,
+          "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz"
+        }
+      ]
+    },
+    {
+      "profile": "gpu-pascal",
+      "os": "windows",
+      "arch": "x86_64",
+      "model_version": "v0.3",
+      "minimum_windows": "10.0.19041",
+      "packs": [
+        {
+          "kind": "model",
+          "sha256": "adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c",
+          "size": 1261204759,
+          "unpacked_size": 1401521102,
+          "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz"
+        },
+        {
+          "kind": "runtime",
+          "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5",
+          "size": 100868240,
+          "unpacked_size": 272689844,
+          "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz"
+        }
+      ]
+    },
+    {
+      "os": "macos",
+      "arch": "aarch64",
+      "minimum_macos": "14.0",
+      "model_version": "v0.3",
+      "packs": [
+        {
+          "kind": "model",
+          "sha256": "163a43588884d9ff8afab0dc2e90a478b62de2a49873bc04a2f55d42fe21de28",
+          "size": 1261204954,
+          "unpacked_size": 1401520967,
+          "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-macos-aarch64.tar.gz"
+        },
+        {
+          "kind": "runtime",
+          "sha256": "0a0503288adc4ecce5fd5daf36f0daa74b09a2452052bf1f767deeb7e5b05a8e",
+          "size": 74121512,
+          "unpacked_size": 227072455,
+          "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-macos-aarch64.tar.gz"
+        }
+      ]
+    }
+  ]
+}

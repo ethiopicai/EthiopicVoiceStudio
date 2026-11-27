@@ -1,0 +1,124 @@
+# Live dictation with amharic-ctc: `StreamingTranscriber`
+
+This guide is for the voice studio app. It covers how to show text while the user speaks, using the same bundle and
+model as `CTCTranscriber`. Nothing extra needs installing. Tested with models v0 (2026-10-30), v0.1 (2026-10-31) and v0.2 (2026-11-02).
+
+## How it works, in one paragraph
+
+The model reads a whole clip in both directions, so it can't emit text frame by frame as audio arrives. Instead,
+`StreamingTranscriber` decodes the recent audio again every `update_sec` (0.4 s): the not-yet-final speech plus
+`context_sec` (5 s) of audio before it, so earlier speech informs the next words. A word becomes **final** once
+`commit_sec` (2 s) of audio has followed it, or at once when the speaker pauses for `pause_sec` (0.6 s). Final words
+never change. Everything after them is **partial**: the last couple of seconds, which can change on every update.
+
+## Use
+
+```python
+import sys; sys.path.insert(0, "<bundle dir>")
+import numpy as np, torch
+from omniasr_hf.transcribe import CTCTranscriber, StreamingTranscriber
+
+asr = CTCTranscriber("<bundle dir>/model", dtype=torch.float16)   # load once; fp16 on GPU (same accuracy, 2.5x faster)
+asr.decode(np.zeros(16000, np.float32))                             # warm-up: the first decode is slower (~250 ms)
+
+stream = StreamingTranscriber(asr)        # one per dictation session
+for piece in mic:                         # 16 kHz mono float32 numpy, any size (e.g. 100 ms)
+    ev = stream.feed(piece)               # None, or an event every update_sec of audio
+    if ev:
+        transcript.append(ev["final"])    # append: these words are fixed
+        tail.replace(ev["partial"])       # replace the whole tail with this list (it may be empty)
+ev = stream.finish()                      # when the user stops: the rest becomes final
+transcript.append(ev["final"]); tail.replace([])
+```
+
+Every word is `{"word": "ሰላም", "start": 0.42, "end": 0.86}`, with times in seconds since the session's first audio.
+
+## Rules for the app
+
+1. **Two text zones.** Show final words as normal text and the partial tail in grey or italics. On every event,
+   append `final` and replace the tail with `partial`. Never edit a final word because of a later event, and never
+   keep an old tail. A word can be finalised without ever having shown as partial, and partial words can change or
+   disappear.
+2. **Don't decode on the audio thread.** `feed()` takes 40 ms (GPU fp16) to 2 s (CPU) when it decodes. Put mic pieces
+   in a queue and let one worker thread call `feed()`. If the worker falls behind, take **everything** waiting in the
+   queue, join it into one array and feed it at once. That decodes once and catches up, and nothing is lost.
+3. **One `StreamingTranscriber` per session, used from one thread.** It isn't thread-safe. Several sessions can share
+   one `CTCTranscriber`, but guard its calls with a lock: one GPU decodes one buffer at a time anyway.
+4. **Call `finish()` when recording stops,** or the last up-to-2 s of speech never becomes final. After `finish()`
+   the stream is reset and word times start again from 0 for the next session.
+5. **Input format:** 16 kHz, mono, float32 in −1..1. Resample in the app if the mic gives 44.1 or 48 kHz. Automatic gain
+   isn't needed: the model normalises every buffer itself. Noise suppression hasn't been tested.
+6. **Store `asr.version`** (e.g. `"v0.2"`) with every dictated transcript, as for offline transcripts.
+7. **Optional best-accuracy pass.** Offline transcription is slightly more accurate (see below). If the user hasn't
+   edited the dictated text, the app may re-run `asr.transcribe(whole_recording)` after `finish()` and offer the
+   result. Never overwrite text the user has edited.
+
+## Settings
+
+`StreamingTranscriber(asr, update_sec=0.4, commit_sec=2.0, pause_sec=0.6, context_sec=5.0, max_utt_sec=20.0)`
+
+| Setting | What it changes | Notes |
+|---|---|---|
+| `update_sec` | how often partial text refreshes | Each update costs one decode. On CPU it must exceed the decode time (see below). |
+| `commit_sec` | how long a word stays partial | 1 s finalises faster but costs ~0.7 CER points; 3 s gains nothing over 2 s. |
+| `pause_sec` | silence after which everything is finalised | |
+| `context_sec` | audio before the partial part fed as context | 10 s matched offline on podcast speech but was worse when unrelated clips were joined; 5 s is the safer default. Larger means slower decodes. |
+| `max_utt_sec` | safety limit | Finalises everything if nothing became final for this long (e.g. noise read as one endless word). The model takes at most 40 s. |
+
+## Measured on v0 (NVIDIA GB10, 2026-10-30)
+
+Each test set was joined into one stream with 0.8 s of near-silence between clips. Then it was played in simulated
+real time in 100 ms pieces, and every final word was scored against its clip's human reference. CER is the
+character error rate with punctuation removed; lower is better.
+
+| Test set | Audio | CER streaming | CER offline, same joined stream | CER offline, per clip |
+|---|---|---|---|---|
+| Amilia (conversational podcasts and news) | 8 min | 17.5% | 17.1% | 17.0% |
+| WAXAL (read, many speakers) | 31 min | 15.4% | 14.3% | 13.7% |
+| snapwre (read speech) | 38 min | 12.4% | 12.0% | 11.5% |
+
+**v0.1** (same settings, fp16): streaming CER 17.1% on Amilia (offline on the same stream 16.5%) and 15.6% on WAXAL
+(14.4%), with the same latency.
+**v0.2** (same settings, fp16): streaming CER 17.0% on Amilia (offline on the same stream 16.1%) and 15.2% on WAXAL
+(13.8%), with the same latency (scored with letter variants merged, so not directly comparable with the rows above). Streaming costs 0.4–1.2 points against offline transcription of the same stream. Joining unrelated clips costs
+WAXAL and snapwre another 0.5 point; real dictation is one speaker and shouldn't pay that. On three whole podcast
+segments (4.5–6 min each, no references) the streamed text differed from offline text by 11–13% of characters.
+Most of that is "different, not worse": on Amilia the texts differ by 8.5% while CER differs by only 0.5 point.
+
+**Latency** (fp16 GPU, the same on every set):
+
+| | Median | 95th percentile |
+|---|---|---|
+| A word first shows (partial), after it is spoken | 0.4 s | 1.6–2.2 s |
+| A word becomes final, after it is spoken | 2.2 s | 2.4 s |
+| One update (decode) | 40 ms (fp32: 100 ms) | 41 ms (fp32: 115 ms) |
+
+About 40% of the distinct partial words shown are later revised, which is why the tail must look tentative.
+
+### CPU
+
+It works on CPU, but the text lags further behind. Measured with 8 threads of this machine's ARM CPU (NVIDIA GB10;
+the app's machine will differ):
+
+- One decode of the default ~7.5 s buffer takes about 2.2 s, so updates can't come every 0.4 s. **Don't lower
+  `update_sec` by hand.** Follow rule 2 (feed everything waiting in the queue at once): the stream then settles at
+  one update per decode time, here every ≈2.2 s, and doesn't fall further behind.
+- With the defaults, a word shows about 3.7 s after it is spoken and becomes final after about 5.3 s (95th
+  percentile 6.4 s).
+- Accuracy stays the same at that slower update rate: CER 17.3% on Amilia and 15.1% on WAXAL, scored on GPU at the
+  same 2.2 s update rate.
+- A lighter setting, `StreamingTranscriber(asr, context_sec=2, commit_sec=1.5)`, makes words final after about
+  3.3 s but costs 0.8–1.5 CER points (18.7% / 15.9%). Use it only if the lag matters more than accuracy.
+- Load the model in fp32 on CPU (`dtype=torch.float32`, the default): fp16 is slow on CPU.
+- On a CPU-only machine, consider offering "transcribe after I stop" (`asr.transcribe`) as the default and live
+  dictation as an option. To decide at startup, time `asr.decode()` on 7.5 s of audio: if it takes over about
+  1 s, the live text will lag 3 s or more.
+
+## Limits
+
+- One speaker at a time. Overlapping speakers aren't separated.
+- Numbers come out as words and English words in Ge'ez spelling, as in offline transcription.
+- No punctuation or capitalisation commands ("new line", "full stop"): the model writes `።` and `፣` itself where it
+  hears them.
+- Tested by simulation on recorded audio, not yet with a live microphone. A live mic adds its own buffering delay
+  (typically 20–100 ms) on top of the numbers above.

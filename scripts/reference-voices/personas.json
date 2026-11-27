@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "notice": "Fictional Ethiopian UI personas; names and portraits do not identify the original reference speakers.",
+  "personas": [
+    {
+      "sourcePersonaId": "abrahan-mack",
+      "name": "Tesfaye",
+      "amharicName": "ተስፋዬ",
+      "avatarPresentation": "male",
+      "image": "/profile-images/presets/tesfaye-v2.jpg"
+    },
+    {
+      "sourcePersonaId": "adde-michal",
+      "name": "Dawit",
+      "amharicName": "ዳዊት",
+      "avatarPresentation": "male",
+      "image": "/profile-images/presets/dawit-v2.jpg"
+    },
+    {
+      "sourcePersonaId": "asya-anara",
+      "name": "Hana",
+      "amharicName": "ሀና",
+      "avatarPresentation": "female",
+      "image": "/profile-images/presets/hana-v2.jpg"
+    },
+    {
+      "sourcePersonaId": "craig-gutsy",
+      "name": "Bereket",
+      "amharicName": "በረከት",
+      "avatarPresentation": "male",
+      "image": "/profile-images/presets/bereket-v2.jpg"
+    },
+    {
+      "sourcePersonaId": "damien-black",
+      "name": "Natnael",
+      "amharicName": "ናትናኤል",
+      "avatarPresentation": "male",
+      "image": "/profile-images/presets/natnael-v2.jpg"
+    },
+    {
+      "sourcePersonaId": "dionisio-schuyler",
+      "name": "Solomon",
+      "amharicName": "ሰለሞን",
+      "avatarPresentation": "male",
+      "image": "/profile-images/presets/solomon-v2.jpg"
+    },
+    {
+      "sourcePersonaId": "gitta-nikolina",
+      "name": "Sara",
+      "amharicName": "ሳራ",
+      "avatarPresentation": "female",
+      "image": "/profile-images/presets/sara-v2.jpg"
+    },
+    {
+      "sourcePersonaId": "ludvig-milivoj",
+      "name": "Girma",
+      "amharicName": "ግርማ",
+      "avatarPresentation": "male",
+      "image": "/profile-images/presets/girma-v2.jpg"
+    },
+    {
+      "sourcePersonaId": "nova-hogarth",
+      "name": "Meron",
+      "amharicName": "ሜሮን",
+      "avatarPresentation": "female",
+      "image": "/profile-images/presets/meron-v2.jpg"
+    },
+    {
+      "sourcePersonaId": "royston-min",
+      "name": "Abel",
+      "amharicName": "አቤል",
+      "avatarPresentation": "male",
+      "image": "/profile-images/presets/abel-v2.jpg"
+    },
+    {
+      "sourcePersonaId": "viktor-eka",
+      "name": "Yonas",
+      "amharicName": "ዮናስ",
+      "avatarPresentation": "male",
+      "image": "/profile-images/presets/yonas-v2.jpg"
+    },
+    {
+      "sourcePersonaId": "viktor-menelaos",
+      "name": "Asfaw",
+      "amharicName": "አስፋው",
+      "avatarPresentation": "male",
+      "image": "/profile-images/presets/asfaw-v2.jpg"
+    },
+    {
+      "sourcePersonaId": "vjollca-johnnie",
+      "name": "Tigist",
+      "amharicName": "ትዕግሥት",
+      "avatarPresentation": "female",
+      "image": "/profile-images/presets/tigist-v2.jpg"
+    },
+    {
+      "sourcePersonaId": "zacharie-aimilios",
+      "name": "Elias",
+      "amharicName": "ኤልያስ",
+      "avatarPresentation": "male",
+      "image": "/profile-images/presets/elias-v2.jpg"
+    }
+  ]
+}

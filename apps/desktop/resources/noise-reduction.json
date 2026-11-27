@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "release": "inworld-realtime-v1-mac-arm64-py311-torch291",
+  "os": "macos",
+  "arch": "aarch64",
+  "pythonVersion": "3.11",
+  "torchVersion": "2.9.1",
+  "modelRevision": "9b0285b3fe8403aa8e2f1dbb2165a80a4294c970",
+  "files": [
+    {
+      "name": "denoiser_realtime.safetensors",
+      "url": "https://huggingface.co/inworld/voice-isolator/resolve/9b0285b3fe8403aa8e2f1dbb2165a80a4294c970/denoiser_realtime.safetensors",
+      "bytes": 232780800,
+      "sha256": "76598f05523c0669e76562a8b2f31c9d395fca316e80c907ee11775e7497ae0f",
+      "kind": "model"
+    },
+    {
+      "name": "inworld_voice_isolation-1.0.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/71/2c/b6ca545c08adbbb877367bf8c7228390f787f18c9d2730877216fdc05b2e/inworld_voice_isolation-1.0.0-py3-none-any.whl",
+      "bytes": 58080,
+      "sha256": "0691e3a536f6f66dd32163355dd16324bfbe01a50c23fd3294df28b01ce3df0b",
+      "kind": "wheel"
+    },
+    {
+      "name": "torchaudio-2.9.1-cp311-cp311-macosx_11_0_arm64.whl",
+      "url": "https://files.pythonhosted.org/packages/3f/6b/34e489fcb4adc4b571a166f2670cc7f156cbe3337867a892fade0a1a5224/torchaudio-2.9.1-cp311-cp311-macosx_11_0_arm64.whl",
+      "bytes": 807349,
+      "sha256": "6e3f5943135701168d30196e2befd46290180cdbb9ee508b167730d51f43208f",
+      "kind": "wheel"
+    },
+    {
+      "name": "soundfile-0.13.1-py2.py3-none-macosx_11_0_arm64.whl",
+      "url": "https://files.pythonhosted.org/packages/a0/e5/58fd1a8d7b26fc113af244f966ee3aecf03cb9293cb935daaddc1e455e18/soundfile-0.13.1-py2.py3-none-macosx_11_0_arm64.whl",
+      "bytes": 1101406,
+      "sha256": "743f12c12c4054921e15736c6be09ac26b3b3d603aef6fd69f9dde68748f2593",
+      "kind": "wheel"
+    },
+    {
+      "name": "cffi-2.0.0-cp311-cp311-macosx_11_0_arm64.whl",
+      "url": "https://files.pythonhosted.org/packages/4f/8b/f0e4c441227ba756aafbe78f117485b25bb26b1c059d01f137fa6d14896b/cffi-2.0.0-cp311-cp311-macosx_11_0_arm64.whl",
+      "bytes": 180560,
+      "sha256": "2de9a304e27f7596cd03d16f1b7c72219bd944e99cc52b84d0145aefb07cbd3c",
+      "kind": "wheel"
+    },
+    {
+      "name": "pycparser-2.23-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a0/e3/59cd50310fc9b59512193629e1984c1f95e5c8ae6e5d8c69532ccc65a7fe/pycparser-2.23-py3-none-any.whl",
+      "bytes": 118140,
+      "sha256": "e5c6e8d3fbad53479cab09ac03729e0a9faf2bee3db8208a550daf5af81a5934",
+      "kind": "wheel"
+    }
+  ]
+}

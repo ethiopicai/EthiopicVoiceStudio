@@ -1,0 +1,20 @@
+# codec-higgs_audio_v2 (third-party, unchanged)
+
+Shared audio tokenizer for the Amharic OmniVoice variants. It uses eight codebooks
+with 1,024 entries at 25 code frames per second, with 24 kHz audio.
+
+The weights are unchanged from the upstream Higgs Audio v2 tokenizer. Their source
+snapshot is recorded in the repository manifest.
+
+- Keep this folder beside the selected `tts-codec_llm-0.6b-amh-*` folder, or supply its
+  location through the inference API's codec argument.
+- Always use FP32 for the codec, including with FP16 TTS weights. FP16 codec
+  execution can produce invalid tokens and non-finite audio.
+- The codec can run on CPU or GPU. Reference measurements were approximately
+  0.8 GB of memory and 0.2–0.3 seconds per decode on a GB10; other hardware varies.
+
+## Terms
+
+The [Boson Higgs Audio 2 agreement](../LICENSES/Boson-Higgs-Audio-2.txt),
+incorporated [Meta Llama 3 agreement](../LICENSES/Meta-Llama-3.txt), and
+[NOTICE](../NOTICE) apply. See the [codec model card](../cards/codec.md).

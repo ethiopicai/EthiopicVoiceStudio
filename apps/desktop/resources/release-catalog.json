@@ -1,0 +1,2427 @@
+{
+  "schema_version": 1,
+  "product": "ethiopic-voice-studio",
+  "channel": "preview",
+  "release_status": "draft",
+  "sequence": 0,
+  "published_at": null,
+  "expires_at": null,
+  "minimum_app_version": "0.1.0-rc.2",
+  "bundled_app_version": "0.1.0-rc.2",
+  "supported_app_platforms": [
+    "macos-aarch64",
+    "windows-x86_64"
+  ],
+  "update_policy": {
+    "schema_version": 1,
+    "channel": "preview",
+    "catalog_endpoint": "https://ethiopic.ai/studio/releases/preview/catalog.json",
+    "catalog_signature_endpoint": "https://ethiopic.ai/studio/releases/preview/catalog.json.minisig",
+    "app_update_endpoint": "https://ethiopic.ai/studio/version",
+    "check_interval_seconds": 86400,
+    "maximum_catalog_bytes": 1048576,
+    "automatic_checks_enabled": false,
+    "automatic_downloads_enabled": false,
+    "trusted_catalog_keys": [],
+    "app_updater_configured": false,
+    "app_notification_checks_enabled": true,
+    "installation_statistics_enabled_by_default": true
+  },
+  "inventory": [
+    {
+      "id": "asr-wav2vec_ctc-1b-amh-fp16",
+      "component": "asr",
+      "version": "v1.0",
+      "artifact_status": "available-with-naming-migration",
+      "family": "asr-wav2vec_ctc-1b-amh",
+      "release": "asr-wav2vec_ctc-1b-amh-3273h-v1.0",
+      "license": "EthiopicAI Amharic ASR and alignment weights: CC BY 4.0 (commercial use permitted with attribution). Upstream Meta Omnilingual ASR code and base models: Apache-2.0. Inference adapter code: MIT. See MODEL_LICENSES.md.",
+      "catalog": "models",
+      "requires": [],
+      "requires_one_of": []
+    },
+    {
+      "id": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+      "component": "asr",
+      "version": "v1.0",
+      "artifact_status": "available-with-naming-migration",
+      "family": "asr-wav2vec_ctc-1b-amh",
+      "release": "asr-wav2vec_ctc-1b-amh-3273h-v1.0",
+      "license": "EthiopicAI Amharic ASR and alignment weights: CC BY 4.0 (commercial use permitted with attribution). Upstream Meta Omnilingual ASR code and base models: Apache-2.0. Inference adapter code: MIT. See MODEL_LICENSES.md.",
+      "catalog": "models",
+      "requires": [],
+      "requires_one_of": []
+    },
+    {
+      "id": "asr-wav2vec_ctc-300m-amh-fp16",
+      "component": "asr",
+      "version": "v1.0",
+      "artifact_status": "available-with-naming-migration",
+      "family": "asr-wav2vec_ctc-300m-amh",
+      "release": "asr-wav2vec_ctc-300m-amh-3273h-v1.0",
+      "license": "EthiopicAI Amharic ASR and alignment weights: CC BY 4.0 (commercial use permitted with attribution). Upstream Meta Omnilingual ASR code and base models: Apache-2.0. Inference adapter code: MIT. See MODEL_LICENSES.md.",
+      "catalog": "models",
+      "requires": [],
+      "requires_one_of": []
+    },
+    {
+      "id": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+      "component": "asr",
+      "version": "v1.0",
+      "artifact_status": "available-with-naming-migration",
+      "family": "asr-wav2vec_ctc-300m-amh",
+      "release": "asr-wav2vec_ctc-300m-amh-3273h-v1.0",
+      "license": "EthiopicAI Amharic ASR and alignment weights: CC BY 4.0 (commercial use permitted with attribution). Upstream Meta Omnilingual ASR code and base models: Apache-2.0. Inference adapter code: MIT. See MODEL_LICENSES.md.",
+      "catalog": "models",
+      "requires": [],
+      "requires_one_of": []
+    },
+    {
+      "id": "codec-higgs_audio_v2-fp32",
+      "component": "tts-codec",
+      "version": null,
+      "artifact_status": "available-with-naming-migration",
+      "family": "codec-higgs_audio_v2",
+      "release": "codec-higgs_audio_v2 (third-party, unchanged)",
+      "license": "Boson Higgs Audio 2 Community License Agreement and the incorporated Meta Llama 3 Community License Agreement. See LICENSES/Boson-Higgs-Audio-2.txt, LICENSES/Meta-Llama-3.txt, NOTICE and cards/codec.md.",
+      "catalog": "models",
+      "requires": [],
+      "requires_one_of": []
+    },
+    {
+      "id": "edit-codec_llm-0.6b-amh",
+      "component": "edit",
+      "version": "v1.0",
+      "artifact_status": "available-with-naming-migration",
+      "family": "edit-codec_llm-0.6b-amh",
+      "release": "edit-codec_llm-0.6b-amh-3242h-v1.0",
+      "license": "Editor code: Apache-2.0; alignment routine adapted from MIT-licensed code. EthiopicAI speech-generation and ASR alignment weights: CC BY 4.0. Codec and runtime dependencies retain their own licenses. See MODEL_LICENSES.md.",
+      "catalog": "models",
+      "requires": [
+        "codec-higgs_audio_v2-fp32",
+        "asr-wav2vec_ctc-1b-amh-int8_onnx"
+      ],
+      "requires_one_of": [
+        "tts-codec_llm-0.6b-amh-fp16",
+        "tts-codec_llm-0.6b-amh-fp32",
+        "tts-codec_llm-0.6b-amh-int8_onnx"
+      ]
+    },
+    {
+      "id": "textcorrect-char_bart-7m-amh-fp32_onnx",
+      "component": "corrector",
+      "version": "v1.0",
+      "artifact_status": "available-with-naming-migration",
+      "family": "textcorrect-char_bart-7m-amh",
+      "release": "textcorrect-char_bart-7m-amh-v1.0",
+      "license": "EthiopicAI Amharic text-correction weights: CC BY 4.0 (commercial use permitted with attribution). Inference adapter code: MIT. See MODEL_LICENSES.md.",
+      "catalog": "models",
+      "requires": [],
+      "requires_one_of": []
+    },
+    {
+      "id": "textcorrect-char_bart-7m-amh-int8_onnx",
+      "component": "corrector",
+      "version": "v1.0",
+      "artifact_status": "available-with-naming-migration",
+      "family": "textcorrect-char_bart-7m-amh",
+      "release": "textcorrect-char_bart-7m-amh-v1.0",
+      "license": "EthiopicAI Amharic text-correction weights: CC BY 4.0 (commercial use permitted with attribution). Inference adapter code: MIT. See MODEL_LICENSES.md.",
+      "catalog": "models",
+      "requires": [],
+      "requires_one_of": []
+    },
+    {
+      "id": "tts-codec_llm-0.6b-amh-fp16",
+      "component": "tts",
+      "version": "v1.0",
+      "artifact_status": "available-with-naming-migration",
+      "family": "tts-codec_llm-0.6b-amh",
+      "release": "tts-codec_llm-0.6b-amh-3242h-v1.0",
+      "license": "EthiopicAI Amharic speech-generation weights, trained from scratch: CC BY 4.0 (commercial use permitted with attribution). OmniVoice library code: Apache-2.0. Codec and other dependencies retain their own licenses. See MODEL_LICENSES.md.",
+      "catalog": "models",
+      "requires": [
+        "codec-higgs_audio_v2-fp32"
+      ],
+      "requires_one_of": []
+    },
+    {
+      "id": "tts-codec_llm-0.6b-amh-fp32",
+      "component": "tts",
+      "version": "v1.0",
+      "artifact_status": "available-with-naming-migration",
+      "family": "tts-codec_llm-0.6b-amh",
+      "release": "tts-codec_llm-0.6b-amh-3242h-v1.0",
+      "license": "EthiopicAI Amharic speech-generation weights, trained from scratch: CC BY 4.0 (commercial use permitted with attribution). OmniVoice library code: Apache-2.0. Codec and other dependencies retain their own licenses. See MODEL_LICENSES.md.",
+      "catalog": "models",
+      "requires": [
+        "codec-higgs_audio_v2-fp32"
+      ],
+      "requires_one_of": []
+    },
+    {
+      "id": "tts-codec_llm-0.6b-amh-int8_onnx",
+      "component": "tts",
+      "version": "v1.0",
+      "artifact_status": "available-with-naming-migration",
+      "family": "tts-codec_llm-0.6b-amh",
+      "release": "tts-codec_llm-0.6b-amh-3242h-v1.0",
+      "license": "EthiopicAI Amharic speech-generation weights, trained from scratch: CC BY 4.0 (commercial use permitted with attribution). OmniVoice library code: Apache-2.0. Codec and other dependencies retain their own licenses. See MODEL_LICENSES.md.",
+      "catalog": "models",
+      "requires": [
+        "codec-higgs_audio_v2-fp32"
+      ],
+      "requires_one_of": []
+    },
+    {
+      "id": "tts-flow_lm-90m-amh-fp32",
+      "component": "tts",
+      "version": "v1.0",
+      "artifact_status": "available-with-naming-migration",
+      "family": "tts-flow_lm-90m-amh",
+      "release": "tts-flow_lm-90m-amh-3242h-v1.0",
+      "license": "pocket-tts code: MIT. Base weights: Kyutai Pocket TTS, CC-BY-4.0 under Kyutai's gated acceptable-use policy (accepted). Fine-tune training data: Amilia (YouTube-derived Amharic speech), non-commercial use only. amharic-ctc was used only for data filtering, alignment and evaluation.",
+      "catalog": "models",
+      "requires": [],
+      "requires_one_of": []
+    },
+    {
+      "id": "recognition-noise-reduction",
+      "component": "noise-reduction",
+      "version": "v1-realtime",
+      "artifact_status": "published",
+      "license": "Apache-2.0",
+      "catalog": "noise_reduction",
+      "platforms": [
+        "macos-aarch64"
+      ],
+      "requires_base_runtime": {
+        "python": "3.11",
+        "torch": "2.9.1"
+      }
+    },
+    {
+      "id": "legacy-amharic-ctc",
+      "component": "asr",
+      "version": "v0.2",
+      "artifact_status": "local-development-installation",
+      "catalog": "recognition_packages",
+      "managed_download_available": false
+    },
+    {
+      "id": "voice-cleanup-reuse",
+      "component": "cleanup",
+      "version": "nemotronlabs-re-use-31f82f2-cpu-v1",
+      "artifact_status": "local-validated-provider",
+      "license": "OpenMDW-1.1",
+      "upstream_repository": "nvidia/NVIDIA-NemotronLabs-RE-USE",
+      "upstream_revision": "31f82f2efad1095034492f236e8dac9239ba713b",
+      "managed_download_available": false
+    }
+  ],
+  "catalogs": {
+    "models": {
+      "manifest_version": 2,
+      "generated": "2026-11-26",
+      "naming": "NAMING.md",
+      "aliases": {
+        "asr-ctc-1b-fp16": "asr-wav2vec_ctc-1b-amh-fp16",
+        "asr-ctc-1b-onnx-int8": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+        "asr-ctc-300m-fp16": "asr-wav2vec_ctc-300m-amh-fp16",
+        "asr-ctc-300m-onnx-int8": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+        "tts-codec-higgs": "codec-higgs_audio_v2-fp32",
+        "edit-omnivoice": "edit-codec_llm-0.6b-amh",
+        "corrector-tiny-onnx-fp32": "textcorrect-char_bart-7m-amh-fp32_onnx",
+        "corrector-tiny-onnx-int8": "textcorrect-char_bart-7m-amh-int8_onnx",
+        "tts-omnivoice-fp16": "tts-codec_llm-0.6b-amh-fp16",
+        "tts-omnivoice-fp32": "tts-codec_llm-0.6b-amh-fp32",
+        "tts-omnivoice-cpu-int8": "tts-codec_llm-0.6b-amh-int8_onnx",
+        "tts-small-cpu": "tts-flow_lm-90m-amh-fp32"
+      },
+      "bundles": {
+        "gpu-modern": {
+          "asr": "asr-wav2vec_ctc-1b-amh-fp16",
+          "asr_live": "asr-wav2vec_ctc-1b-amh-fp16",
+          "corrector": "textcorrect-char_bart-7m-amh-int8_onnx",
+          "tts": "tts-codec_llm-0.6b-amh-fp16",
+          "tts_num_step": 32,
+          "edit": "edit-codec_llm-0.6b-amh"
+        },
+        "gpu-low": {
+          "asr": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+          "asr_live": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+          "corrector": "textcorrect-char_bart-7m-amh-int8_onnx",
+          "tts": "tts-codec_llm-0.6b-amh-fp16",
+          "tts_num_step": 16,
+          "edit": "edit-codec_llm-0.6b-amh"
+        },
+        "gpu-pascal": {
+          "asr": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+          "asr_live": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+          "corrector": "textcorrect-char_bart-7m-amh-int8_onnx",
+          "tts": "tts-codec_llm-0.6b-amh-fp32",
+          "tts_num_step": 16,
+          "edit": "edit-codec_llm-0.6b-amh"
+        },
+        "cpu-high": {
+          "asr": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+          "asr_live": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+          "corrector": "textcorrect-char_bart-7m-amh-int8_onnx",
+          "tts": "tts-flow_lm-90m-amh-fp32",
+          "tts_optin": "tts-codec_llm-0.6b-amh-int8_onnx",
+          "tts_num_step": 16,
+          "edit": null,
+          "edit_optin": "edit-codec_llm-0.6b-amh"
+        },
+        "cpu-mid": {
+          "asr": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+          "asr_live": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+          "corrector": "textcorrect-char_bart-7m-amh-int8_onnx",
+          "tts": "tts-flow_lm-90m-amh-fp32",
+          "edit": null
+        },
+        "cpu-low": {
+          "asr": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+          "asr_live": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+          "corrector": "textcorrect-char_bart-7m-amh-int8_onnx",
+          "tts": "tts-flow_lm-90m-amh-fp32",
+          "edit": null
+        },
+        "apple-arm": {
+          "asr": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+          "asr_live": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+          "corrector": "textcorrect-char_bart-7m-amh-int8_onnx",
+          "tts": "tts-flow_lm-90m-amh-fp32",
+          "edit": null
+        }
+      },
+      "variants": [
+        {
+          "id": "asr-wav2vec_ctc-1b-amh-fp16",
+          "family": "asr-wav2vec_ctc-1b-amh",
+          "release": "asr-wav2vec_ctc-1b-amh-3273h-v1.0",
+          "aliases": [
+            "asr-ctc-1b-fp16"
+          ],
+          "model_version": "v1.0",
+          "previous_name": "amharic-ctc v0.3",
+          "component": "asr",
+          "runtime": "torch-cuda (transformers Wav2Vec2ForCTC)",
+          "precision": "fp16",
+          "files": [
+            {
+              "path": "README.md",
+              "bytes": 4637,
+              "sha256": "437831a22d3ec0be76d39e352eb0a5c7096c55b901eeabf7851cec527cd25c7f"
+            },
+            {
+              "path": "STREAMING.md",
+              "bytes": 8316,
+              "sha256": "f76169c1f36da16e413085e5f8ce3d26827744b3274310b132dbb1ed13990164"
+            },
+            {
+              "path": "requirements.txt",
+              "bytes": 164,
+              "sha256": "15636157a9dc688ebe34af18e0f7ef1081632686b36b9ece41ff1cf448cbd333"
+            },
+            {
+              "path": "model/config.json",
+              "bytes": 1973,
+              "sha256": "b5b5f87b659361942239b4f79698352e8c76d2a69c9b59110270df3b26caabf3"
+            },
+            {
+              "path": "model/model.safetensors",
+              "bytes": 1951451016,
+              "sha256": "30ae0f19a3c4096326bffea3154bd0adf9adc05e0bb70efb36b1f14e60b7b43a"
+            },
+            {
+              "path": "model/tokenizer.model",
+              "bytes": 91481,
+              "sha256": "8aa11a1092142ef472537476ef6e76541123e2f0d789b79f3ebd119008240b1e"
+            },
+            {
+              "path": "model/version.json",
+              "bytes": 589,
+              "sha256": "53520bc805335760d28f6500ad33408609c9b0b499251916c72df035e1f7f06a"
+            },
+            {
+              "path": "omniasr_hf/__init__.py",
+              "bytes": 106,
+              "sha256": "73367fdb9680db07aaf0b7bf5ebdb820dd6a26e648d5753f6f1df29fab607c76"
+            },
+            {
+              "path": "omniasr_hf/audio_text.py",
+              "bytes": 890,
+              "sha256": "81a0f5dd0957f642b168720a201f90c2d4083a9dd7b7d5e8338d70e2b29c158f"
+            },
+            {
+              "path": "omniasr_hf/transcribe.py",
+              "bytes": 9030,
+              "sha256": "f054704b3af9ba79d8d20506483468620af52227c50fabe94924e42e94a728b3"
+            }
+          ],
+          "model": "amharic-ctc",
+          "ram_mb_est": 2800,
+          "vram_mb_est": 2600,
+          "cer": {
+            "amilia_test": 15.9,
+            "waxal": 13.0,
+            "snapwre200": 10.4
+          },
+          "cpu_latency_10s_4threads_s": null,
+          "min_tier": "gpu-low",
+          "entry": "omniasr_hf.transcribe.CTCTranscriber(<this folder>/model, dtype=torch.float16); StreamingTranscriber; see README.md, STREAMING.md",
+          "notes": "Released amharic-ctc v0.3 1B PyTorch inference bundle. Peak VRAM 2.2 GB allocated for a 30 s piece (+ CUDA context). Catalog default for gpu-modern; on gpu-low (4 GB) the default bundle runs ASR on CPU (asr-wav2vec_ctc-1b-amh-int8_onnx) to leave VRAM for TTS. On Pascal load with dtype=torch.float32.",
+          "license": "EthiopicAI Amharic ASR and alignment weights: CC BY 4.0 (commercial use permitted with attribution). Upstream Meta Omnilingual ASR code and base models: Apache-2.0. Inference adapter code: MIT. See MODEL_LICENSES.md.",
+          "folder": "asr-wav2vec_ctc-1b-amh-fp16",
+          "requires": [],
+          "total_bytes": 1951568202
+        },
+        {
+          "id": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+          "family": "asr-wav2vec_ctc-1b-amh",
+          "release": "asr-wav2vec_ctc-1b-amh-3273h-v1.0",
+          "aliases": [
+            "asr-ctc-1b-onnx-int8"
+          ],
+          "model_version": "v1.0",
+          "previous_name": "amharic-ctc v0.3",
+          "component": "asr",
+          "runtime": "onnxruntime-cpu",
+          "precision": "int8 dynamic, per-channel, MatMul/Gemm only (activations fp32)",
+          "files": [
+            {
+              "path": "asr.int8.onnx",
+              "bytes": 1034452282,
+              "sha256": "1d373c9bf1cf643e7b05c4f4b8674b380a4753d34296832ccea82f77a0a109bc"
+            },
+            {
+              "path": "asr_onnx_infer.py",
+              "bytes": 9386,
+              "sha256": "1bc50dd769df68f43b2594d011a4fdf8b60c2f2043d6dee5cceeffbc540e0f9c"
+            },
+            {
+              "path": "preprocessor.json",
+              "bytes": 623,
+              "sha256": "96ae755636581c79927ac061abbf97e6e3dc14ebe8a51a31156ed7276c12c4a3"
+            },
+            {
+              "path": "tokenizer.model",
+              "bytes": 91481,
+              "sha256": "8aa11a1092142ef472537476ef6e76541123e2f0d789b79f3ebd119008240b1e"
+            },
+            {
+              "path": "vocab.json",
+              "bytes": 70878,
+              "sha256": "e3ad1610f100cbcd659db40a02268dc35c5d39cea608922c4f00645d84c727c6"
+            }
+          ],
+          "model": "amharic-ctc",
+          "ram_mb_est": 2600,
+          "vram_mb_est": 0,
+          "cer": {
+            "amilia_test": 15.61,
+            "waxal": 12.95,
+            "snapwre200": 10.5
+          },
+          "cer_torch_fp32": {
+            "amilia_test": 15.92,
+            "waxal": 12.95,
+            "snapwre200": 10.4
+          },
+          "cpu_latency_10s_4threads_s": 2.395,
+          "min_tier": "cpu-mid",
+          "entry": "asr_onnx_infer.py: OnnxCTCTranscriber(<this folder>).transcribe(path or 16 kHz array)",
+          "notes": "ONNX INT8 export of the released amharic-ctc v0.3 1B checkpoint. int8 vs torch fp32: -0.3 Amilia / 0.0 WAXAL / +0.1 snapwre CER. RAM 2.5 GB peak for a 30 s piece with the ORT arena off, 2.1 GB for 10 s. 3.5x faster than the fp32 ONNX. On the GB10's fast X925 cores (under load) 10 s took ~1.0 s. CPU latency measured on 4 pinned Cortex-A725 cores (2.8 GHz efficiency cores of the ARM GB10, machine shared): relative only, x86 still to measure.",
+          "license": "EthiopicAI Amharic ASR and alignment weights: CC BY 4.0 (commercial use permitted with attribution). Upstream Meta Omnilingual ASR code and base models: Apache-2.0. Inference adapter code: MIT. See MODEL_LICENSES.md.",
+          "folder": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+          "requires": [],
+          "total_bytes": 1034624650
+        },
+        {
+          "id": "asr-wav2vec_ctc-300m-amh-fp16",
+          "family": "asr-wav2vec_ctc-300m-amh",
+          "release": "asr-wav2vec_ctc-300m-amh-3273h-v1.0",
+          "aliases": [
+            "asr-ctc-300m-fp16"
+          ],
+          "model_version": "v1.0",
+          "previous_name": "amharic-ctc v0.3",
+          "component": "asr",
+          "runtime": "torch-cuda (transformers Wav2Vec2ForCTC)",
+          "precision": "fp16",
+          "files": [
+            {
+              "path": "README.md",
+              "bytes": 1939,
+              "sha256": "9974fe1d21cd1ea25edc5fcca329e4929b9fe7e072178a751138ad006f1a95a8"
+            },
+            {
+              "path": "STREAMING.md",
+              "bytes": 8316,
+              "sha256": "f76169c1f36da16e413085e5f8ce3d26827744b3274310b132dbb1ed13990164"
+            },
+            {
+              "path": "requirements.txt",
+              "bytes": 164,
+              "sha256": "15636157a9dc688ebe34af18e0f7ef1081632686b36b9ece41ff1cf448cbd333"
+            },
+            {
+              "path": "model/config.json",
+              "bytes": 1973,
+              "sha256": "b823a48cb5ecec2f70521c1b1e8b88091649b7ed0d8bc957bbc903890a563f7b"
+            },
+            {
+              "path": "model/model.safetensors",
+              "bytes": 652018072,
+              "sha256": "ef5fea081ff3a3a88891cc92ed88cb0ab42c4d2cc153ea6476cab33009afd825"
+            },
+            {
+              "path": "model/tokenizer.model",
+              "bytes": 91481,
+              "sha256": "8aa11a1092142ef472537476ef6e76541123e2f0d789b79f3ebd119008240b1e"
+            },
+            {
+              "path": "model/version.json",
+              "bytes": 566,
+              "sha256": "0d3e90b0db263adbc09204820bd4c2a46fa5e6596b2a254b1702c8a6a6ed579e"
+            },
+            {
+              "path": "omniasr_hf/__init__.py",
+              "bytes": 106,
+              "sha256": "73367fdb9680db07aaf0b7bf5ebdb820dd6a26e648d5753f6f1df29fab607c76"
+            },
+            {
+              "path": "omniasr_hf/audio_text.py",
+              "bytes": 890,
+              "sha256": "81a0f5dd0957f642b168720a201f90c2d4083a9dd7b7d5e8338d70e2b29c158f"
+            },
+            {
+              "path": "omniasr_hf/transcribe.py",
+              "bytes": 9030,
+              "sha256": "f054704b3af9ba79d8d20506483468620af52227c50fabe94924e42e94a728b3"
+            }
+          ],
+          "model": "amharic-ctc-300m",
+          "ram_mb_est": 1600,
+          "vram_mb_est": 1300,
+          "cer": {
+            "amilia_test": 21.8,
+            "waxal": 16.4,
+            "snapwre200": 14.9
+          },
+          "cpu_latency_10s_4threads_s": null,
+          "min_tier": "gpu-low",
+          "entry": "omniasr_hf.transcribe.CTCTranscriber(<this folder>/model, dtype=torch.float16); StreamingTranscriber; see README.md, STREAMING.md",
+          "notes": "Released amharic-ctc-300m v0.3 PyTorch inference bundle. CER is torch fp32; fp16 measured 21.9 Amilia / 16.5 WAXAL. Peak VRAM 1.0 GB allocated for a 30 s piece (+ CUDA context). GPU live dictation (fp16, update 0.4 s): stream CER 23.8 vs 22.5 offline-joined on Amilia, 18.5 vs 17.8 on WAXAL, ~100 ms per update. On Pascal load with dtype=torch.float32 (fp16 unusable there).",
+          "license": "EthiopicAI Amharic ASR and alignment weights: CC BY 4.0 (commercial use permitted with attribution). Upstream Meta Omnilingual ASR code and base models: Apache-2.0. Inference adapter code: MIT. See MODEL_LICENSES.md.",
+          "folder": "asr-wav2vec_ctc-300m-amh-fp16",
+          "requires": [],
+          "total_bytes": 652132537
+        },
+        {
+          "id": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+          "family": "asr-wav2vec_ctc-300m-amh",
+          "release": "asr-wav2vec_ctc-300m-amh-3273h-v1.0",
+          "aliases": [
+            "asr-ctc-300m-onnx-int8"
+          ],
+          "model_version": "v1.0",
+          "previous_name": "amharic-ctc v0.3",
+          "component": "asr",
+          "runtime": "onnxruntime-cpu",
+          "precision": "int8 dynamic, per-channel, MatMul/Gemm only (activations fp32)",
+          "files": [
+            {
+              "path": "asr.int8.onnx",
+              "bytes": 366716233,
+              "sha256": "5d42b8aea342b2907fb9745f67a887db7b968abe463454bd20adcda78ecd01c5"
+            },
+            {
+              "path": "asr_onnx_infer.py",
+              "bytes": 9386,
+              "sha256": "1bc50dd769df68f43b2594d011a4fdf8b60c2f2043d6dee5cceeffbc540e0f9c"
+            },
+            {
+              "path": "preprocessor.json",
+              "bytes": 623,
+              "sha256": "03f84908c28179afb876e620a8ab24666b5ca51e10e2fa7df65c0bf3a3ce0dff"
+            },
+            {
+              "path": "tokenizer.model",
+              "bytes": 91481,
+              "sha256": "8aa11a1092142ef472537476ef6e76541123e2f0d789b79f3ebd119008240b1e"
+            },
+            {
+              "path": "vocab.json",
+              "bytes": 70878,
+              "sha256": "e3ad1610f100cbcd659db40a02268dc35c5d39cea608922c4f00645d84c727c6"
+            }
+          ],
+          "model": "amharic-ctc-300m",
+          "ram_mb_est": 1400,
+          "vram_mb_est": 0,
+          "cer": {
+            "amilia_test": 22.18,
+            "waxal": 16.5,
+            "snapwre200": 15.11
+          },
+          "cer_torch_fp32": {
+            "amilia_test": 21.83,
+            "waxal": 16.44,
+            "snapwre200": 14.91
+          },
+          "cpu_latency_10s_4threads_s": 1.344,
+          "min_tier": "cpu-low",
+          "entry": "asr_onnx_infer.py: OnnxCTCTranscriber(<this folder>).transcribe(path or 16 kHz array)",
+          "notes": "omniASR_CTC_300M_v2 + LoRA (v0.3 recipe/data). ~6 CER points worse than the 1B on conversation; 1.8x faster than asr-wav2vec_ctc-1b-amh-int8_onnx on CPU and a third of the download. int8 vs torch fp32: +0.35 Amilia / +0.06 WAXAL / +0.2 snapwre CER (within noise). RAM: 1.3 GB peak for a 30 s piece with the ORT arena off (default in asr_onnx_infer.py), ~0.9 GB for 10 s. Live dictation (StreamingTranscriber logic on this ONNX, 4 A725 cores, Amilia): context_sec 2 -> 0.62 s per update, words first shown 1.3 s / final 2.9 s after spoken, stream CER 24.0; default context 5 s -> 1.5 s per update, 3.0 / 4.3 s, CER 23.2 (offline 22.0). The 1B int8 on the same cores: 3.6 s per update, 6.5 / 7.8 s, CER 16.2: too slow for live use there. Needs numpy + onnxruntime only (soundfile/scipy optional). CPU latency measured on 4 pinned Cortex-A725 cores (2.8 GHz efficiency cores of the ARM GB10, machine shared): relative only, x86 still to measure.",
+          "license": "EthiopicAI Amharic ASR and alignment weights: CC BY 4.0 (commercial use permitted with attribution). Upstream Meta Omnilingual ASR code and base models: Apache-2.0. Inference adapter code: MIT. See MODEL_LICENSES.md.",
+          "folder": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+          "requires": [],
+          "total_bytes": 366888601
+        },
+        {
+          "id": "codec-higgs_audio_v2-fp32",
+          "family": "codec-higgs_audio_v2",
+          "release": "codec-higgs_audio_v2 (third-party, unchanged)",
+          "aliases": [
+            "tts-codec-higgs"
+          ],
+          "component": "tts-codec",
+          "runtime": "torch (cuda or cpu)",
+          "precision": "fp32",
+          "source": "eustlb/higgs-audio-v2-tokenizer snapshot 0e3a9177c2991016b8e5e17d23aa474ee665bef2 (same weights as bosonai/higgs-audio-v2-tokenizer)",
+          "vram_mb_est": 900,
+          "ram_mb_est": 1000,
+          "license": "Boson Higgs Audio 2 Community License Agreement and the incorporated Meta Llama 3 Community License Agreement. See LICENSES/Boson-Higgs-Audio-2.txt, LICENSES/Meta-Llama-3.txt, NOTICE and cards/codec.md.",
+          "used_by": [
+            "tts-codec_llm-0.6b-amh-fp32",
+            "tts-codec_llm-0.6b-amh-fp16",
+            "tts-codec_llm-0.6b-amh-int8_onnx"
+          ],
+          "notes": "Shared by all OmniVoice variants: download once and keep beside the TTS variant folder (../codec-higgs_audio_v2-fp32). Use FP32 for the codec. FP16 codec execution can produce invalid tokens and non-finite decoded audio.",
+          "files": [
+            {
+              "path": "README.md",
+              "bytes": 1010,
+              "sha256": "a687a8383e6836bdcd3c340e06bb52e42ecf708254f1ef57ca3923dc5857130a"
+            },
+            {
+              "path": "config.json",
+              "bytes": 2531,
+              "sha256": "eefb20806f7104e77c9a5277c9df0f9bb8826b08eb1d4e8ab2b9829b6ef9fac1"
+            },
+            {
+              "path": "model.safetensors",
+              "bytes": 805665628,
+              "sha256": "fe7c5e8785e0a05833e1bfc3e002ec7f55af21e306b2e7154a448c1f54ccfb0d"
+            },
+            {
+              "path": "preprocessor_config.json",
+              "bytes": 206,
+              "sha256": "ae61eea88558608ee2fa86d2aec9fce8d99a5ff75d09cb7651ccce21ae1d9084"
+            }
+          ],
+          "total_bytes": 805669375,
+          "folder": "codec-higgs_audio_v2-fp32",
+          "requires": []
+        },
+        {
+          "id": "edit-codec_llm-0.6b-amh",
+          "family": "edit-codec_llm-0.6b-amh",
+          "release": "edit-codec_llm-0.6b-amh-3242h-v1.0",
+          "aliases": [
+            "edit-omnivoice"
+          ],
+          "model_version": "v1.0",
+          "previous_name": "edit-omnivoice (code only, 2026-11-15)",
+          "component": "edit",
+          "runtime": "same as the chosen tts-omnivoice variant (torch-cuda, or onnxruntime-cpu for tts-codec_llm-0.6b-amh-int8_onnx) + onnxruntime-cpu for the aligner",
+          "precision": "code only: uses the TTS variant's weights (fp16 / fp32 / int8), codec fp32, aligner int8",
+          "requires": [
+            "codec-higgs_audio_v2-fp32",
+            "asr-wav2vec_ctc-1b-amh-int8_onnx"
+          ],
+          "requires_one_of": [
+            "tts-codec_llm-0.6b-amh-fp16",
+            "tts-codec_llm-0.6b-amh-fp32",
+            "tts-codec_llm-0.6b-amh-int8_onnx"
+          ],
+          "requires_one_of_note": "use the tier's bundle 'tts' variant when it is an OmniVoice one (gpu-modern/gpu-low: tts-codec_llm-0.6b-amh-fp16, gpu-pascal: tts-codec_llm-0.6b-amh-fp32); on cpu-high (opt-in) tts-codec_llm-0.6b-amh-int8_onnx. Pass its folder as tts_dir.",
+          "entry": "edit_omnivoice_infer.py: SpeechEditor(<models>/tts-omnivoice-*).edit(audio, orig_text, new_text, words=None, span_duration=None, num_step=None, seed=0) -> {audio, sr, edits, words, ...}; transcribe(audio); align(audio, text)",
+          "runtime_deps": "the TTS variant's (torch, torchaudio, transformers>=5.3, soundfile, omnivoice) + onnxruntime>=1.20, numpy; scipy optional. Tested in a fresh venv: torch 2.9.0+cu130, transformers 5.14.1, onnxruntime 1.32.0, omnivoice 0.2.1, soundfile 0.14.0",
+          "recommended_num_step": "the tier's tts_num_step (32 gpu-modern, 16 elsewhere); never below 16 (refused)",
+          "max_audio_sec": 30,
+          "latency_s": {
+            "note": "one 1-3 word replace on 8-12 s held-out clips (mean 10.1 s), mean (max) of 6 after warm-up; GB10 GPU / 4-6 Cortex-X925 cores, no other load. 'cold' = edit() without words (one full aligner pass + the orig_text check); 'with_words' = word timings passed in (the normal studio flow after transcribe() or a previous edit()). Includes alignment of the result.",
+            "gpu_fp16_32_steps": {
+              "cold": 2.19,
+              "with_words": 1.28,
+              "with_words_max": 1.49
+            },
+            "gpu_fp16_16_steps": {
+              "cold": 1.68,
+              "with_words": 0.79,
+              "with_words_max": 0.91
+            },
+            "gpu_fp32_16_steps": {
+              "cold": 2.47,
+              "with_words": 1.58,
+              "with_words_max": 1.85
+            },
+            "gpu_fp32_32_steps": {
+              "cold": 3.74,
+              "with_words": 2.85,
+              "with_words_max": 3.41
+            },
+            "cpu_int8_16_steps_4_threads": {
+              "cold": 17.59,
+              "with_words": 16.75,
+              "with_words_max": 20.38
+            },
+            "cpu_int8_16_steps_6_threads": {
+              "cold": 14.68,
+              "with_words": 13.82,
+              "with_words_max": 17.09
+            },
+            "aligner_full_pass_10s_clip_4_threads": 0.9
+          },
+          "vram_mb_est": 3300,
+          "vram_mb_est_note": "fp16: torch peak 2.36 GB (LLM fp16 + codec fp32) + CUDA context; fp32: torch peak 3.5 GB -> about 4.3 GB. Aligner on CPU.",
+          "ram_mb_est": 6200,
+          "ram_mb_est_note": "process peak RSS: GPU variants 4.2-4.4 GB (aligner 1B int8 + host copies); cpu-int8 6.2 GB",
+          "aligner_vs_pytorch": {
+            "set": "202 held-out clips (17 recordings never in training), 3,637 words, transcript forced-aligned with the ONNX int8 1B vs the PyTorch amharic-ctc v0.3 (bf16 GPU) used in research",
+            "boundaries_identical": 0.973,
+            "within_20ms": 0.998,
+            "mean_abs_diff_ms": 0.7,
+            "p99_ms": 20,
+            "max_ms": 741,
+            "unalignable": 0
+          },
+          "eval_subset100": {
+            "set": "100 held-out edit tasks (50 replace, 25 insert, 25 delete) through this edit() with tts-codec_llm-0.6b-amh-fp16, 32 steps, seed 0; ASR window CER = amharic-ctc on the span + one neighbour word each side",
+            "this_variant": {
+              "window_cer": 0.176,
+              "clip_cer": 0.086,
+              "seam_mel": 8.96,
+              "seam_db": 4.74
+            },
+            "research_checkpoint6000": {
+              "window_cer": 0.176,
+              "clip_cer": 0.084,
+              "seam_mel": 9.02,
+              "seam_db": 4.59
+            },
+            "original_audio": {
+              "window_cer": 0.176,
+              "clip_cer": 0.071,
+              "seam_mel": 7.8,
+              "seam_db": 3.35
+            },
+            "paired_diff_window_cer": "+0.000 [-0.023, +0.023] (replace +0.027 [+0.001, +0.054], insert -0.008, delete -0.045; seed-to-seed noise of the research editor on the same tasks: +-0.01-0.02 per type)",
+            "verdict": "same quality as the research editor"
+          },
+          "license": "Editor code: Apache-2.0; alignment routine adapted from MIT-licensed code. EthiopicAI speech-generation and ASR alignment weights: CC BY 4.0. Codec and runtime dependencies retain their own licenses. See MODEL_LICENSES.md.",
+          "notes": "Word-level editing (replace / insert / delete) of a recording: only the changed words are regenerated with OmniVoice masked-middle inference (audio context on both sides), the rest of the waveform is untouched sample for sample. Uses the released Amharic OmniVoice weights. Deletes = cut + 0.32 s seam regeneration. Several changes per call (right to left). Refuses: num_step < 16, audio > 30 s, orig_text that disagrees with the ASR transcript (CER > 0.6, unless force=True), no word change. cpu-int8 is borderline-slow (about 14-18 s per edit on 6 fast ARM cores; x86 not measured): offer it as opt-in only. Edited audio is synthetic: label it in the UI.",
+          "files": [
+            {
+              "path": "README.md",
+              "bytes": 4851,
+              "sha256": "d54688aa0bc307cca426c94788867c51eba2d553490273c5ac779533b2e4e258"
+            },
+            {
+              "path": "amharic_text.py",
+              "bytes": 1957,
+              "sha256": "d9da6da09790750c31f63f3e63fbb05095d06e2396e136e3edbb562fd7a5c0de"
+            },
+            {
+              "path": "edit_omnivoice_infer.py",
+              "bytes": 31275,
+              "sha256": "00a39b2ed1cd725d0f709eda7aefd17db44ab71a9ce8559121c790e5cf4aa9c4"
+            }
+          ],
+          "total_bytes": 38083,
+          "folder": "edit-codec_llm-0.6b-amh"
+        },
+        {
+          "id": "textcorrect-char_bart-7m-amh-fp32_onnx",
+          "family": "textcorrect-char_bart-7m-amh",
+          "release": "textcorrect-char_bart-7m-amh-v1.0",
+          "aliases": [
+            "corrector-tiny-onnx-fp32"
+          ],
+          "model_version": "v1.0",
+          "previous_name": "amharic-corrector-tiny v2-cs",
+          "component": "corrector",
+          "runtime": "onnxruntime-cpu",
+          "precision": "fp32",
+          "files": [
+            {
+              "path": "encoder.onnx",
+              "bytes": 21111677,
+              "sha256": "ed5e0b020ee5577043f510885eaec7fc11485af6964ac61e3ed40152351633a6"
+            },
+            {
+              "path": "decoder_step.onnx",
+              "bytes": 8948485,
+              "sha256": "380361fda6ad12ecba53b8dc12de13afcfd72c96b6d0e7975b7c62664d51492c"
+            },
+            {
+              "path": "char_vocab.json",
+              "bytes": 1238,
+              "sha256": "8ba92f2377b180d5688ad630d9cf8be080280058333a1017f9f4a1493b947a83"
+            },
+            {
+              "path": "meta.json",
+              "bytes": 188,
+              "sha256": "ef5afb731062855fb110f7f1c9714d2198ac76cb22d98894401e0c6f3fad6453"
+            },
+            {
+              "path": "corrector_onnx.py",
+              "bytes": 7909,
+              "sha256": "6ca44fc5de39a451e92b2392dec4d8a7b778be8daca57cca3454bd2452f0815e"
+            },
+            {
+              "path": "LICENSE",
+              "bytes": 474,
+              "sha256": "4f057dcdb326faa3829cb9f371bb468334b03346a8941c7160ec3d4238a7b100"
+            }
+          ],
+          "ram_mb_est": 180,
+          "vram_mb_est": 0,
+          "device": "cpu",
+          "min_tier": "cpu-low",
+          "tiers": [],
+          "entry_point": "corrector_onnx.py: OnnxCorrector(model_dir)(texts, mode='full'|'punct')",
+          "python_deps": [
+            "numpy",
+            "onnxruntime>=1.17"
+          ],
+          "quality": {
+            "full/test": {
+              "cer": 0.59,
+              "wer": 3.07,
+              "punct_f1": 77.28,
+              "words_changed": 6.67
+            },
+            "full/test_clean": {
+              "cer": 0.11,
+              "wer": 0.66,
+              "punct_f1": 73.82,
+              "words_changed": 0.66
+            },
+            "full/test_codeswitch": {
+              "cer": 0.11,
+              "wer": 0.62,
+              "punct_f1": 72.46,
+              "words_changed": 0.62
+            },
+            "full/asr_real": {
+              "cer": 41.08,
+              "wer": 62.89,
+              "punct_f1": 37.03,
+              "words_changed": 6.57
+            },
+            "punct/test": {
+              "cer": 1.41,
+              "wer": 7.93,
+              "punct_f1": 73.8,
+              "words_changed": 0.0
+            },
+            "punct/test_clean": {
+              "cer": 0.0,
+              "wer": 0.0,
+              "punct_f1": 73.88,
+              "words_changed": 0.0
+            },
+            "punct/test_codeswitch": {
+              "cer": 0.0,
+              "wer": 0.0,
+              "punct_f1": 72.57,
+              "words_changed": 0.0
+            },
+            "punct/asr_real": {
+              "cer": 41.87,
+              "wer": 64.86,
+              "punct_f1": 37.41,
+              "words_changed": 0.0
+            }
+          },
+          "cpu_ms_per_text_4threads": {
+            "full/test": 41.7,
+            "full/test_clean": 42.1,
+            "full/test_codeswitch": 37.6,
+            "full/asr_real": 41.6,
+            "punct/test": 38.2,
+            "punct/test_clean": 47.0,
+            "punct/test_codeswitch": 41.1,
+            "punct/asr_real": 23.7
+          },
+          "license": "EthiopicAI Amharic text-correction weights: CC BY 4.0 (commercial use permitted with attribution). Inference adapter code: MIT. See MODEL_LICENSES.md.",
+          "source": "github.com/ethiopicai/amharic-text-corrector models/amharic-corrector-tiny (v2-cs)",
+          "notes": "Fallback if int8 misbehaves on a platform. Identical to the PyTorch model on 98-99% of texts.",
+          "folder": "textcorrect-char_bart-7m-amh-fp32_onnx",
+          "total_bytes": 30069971,
+          "requires": [],
+          "entry": "corrector_onnx.py: OnnxCorrector(model_dir)(texts, mode='full'|'punct')"
+        },
+        {
+          "id": "textcorrect-char_bart-7m-amh-int8_onnx",
+          "family": "textcorrect-char_bart-7m-amh",
+          "release": "textcorrect-char_bart-7m-amh-v1.0",
+          "aliases": [
+            "corrector-tiny-onnx-int8"
+          ],
+          "model_version": "v1.0",
+          "previous_name": "amharic-corrector-tiny v2-cs",
+          "component": "corrector",
+          "runtime": "onnxruntime-cpu",
+          "precision": "int8",
+          "files": [
+            {
+              "path": "encoder.onnx",
+              "bytes": 5494392,
+              "sha256": "572e247317212f6d9d67c090c0d09dc4e05fd38fb89cdfbf0cdccae2016d6443"
+            },
+            {
+              "path": "decoder_step.onnx",
+              "bytes": 2374954,
+              "sha256": "c63ad877ac581ef84d1db754627d93806fc72062a86678253244a668d2b6bd89"
+            },
+            {
+              "path": "char_vocab.json",
+              "bytes": 1238,
+              "sha256": "8ba92f2377b180d5688ad630d9cf8be080280058333a1017f9f4a1493b947a83"
+            },
+            {
+              "path": "meta.json",
+              "bytes": 188,
+              "sha256": "ef5afb731062855fb110f7f1c9714d2198ac76cb22d98894401e0c6f3fad6453"
+            },
+            {
+              "path": "corrector_onnx.py",
+              "bytes": 7909,
+              "sha256": "6ca44fc5de39a451e92b2392dec4d8a7b778be8daca57cca3454bd2452f0815e"
+            },
+            {
+              "path": "LICENSE",
+              "bytes": 474,
+              "sha256": "4f057dcdb326faa3829cb9f371bb468334b03346a8941c7160ec3d4238a7b100"
+            }
+          ],
+          "ram_mb_est": 120,
+          "vram_mb_est": 0,
+          "device": "cpu",
+          "min_tier": "cpu-low",
+          "tiers": [
+            "gpu-modern",
+            "gpu-low",
+            "gpu-pascal",
+            "cpu-high",
+            "cpu-mid",
+            "cpu-low",
+            "apple-arm"
+          ],
+          "entry_point": "corrector_onnx.py: OnnxCorrector(model_dir)(texts, mode='full'|'punct')",
+          "python_deps": [
+            "numpy",
+            "onnxruntime>=1.17"
+          ],
+          "quality": {
+            "full/test": {
+              "cer": 0.59,
+              "wer": 3.06,
+              "punct_f1": 77.26,
+              "words_changed": 6.81
+            },
+            "full/test_clean": {
+              "cer": 0.12,
+              "wer": 0.71,
+              "punct_f1": 73.57,
+              "words_changed": 0.71
+            },
+            "full/test_codeswitch": {
+              "cer": 0.12,
+              "wer": 0.68,
+              "punct_f1": 72.51,
+              "words_changed": 0.68
+            },
+            "full/asr_real": {
+              "cer": 41.09,
+              "wer": 62.89,
+              "punct_f1": 36.16,
+              "words_changed": 6.77
+            },
+            "punct/test": {
+              "cer": 1.41,
+              "wer": 7.93,
+              "punct_f1": 73.84,
+              "words_changed": 0.0
+            },
+            "punct/test_clean": {
+              "cer": 0.0,
+              "wer": 0.0,
+              "punct_f1": 73.64,
+              "words_changed": 0.0
+            },
+            "punct/test_codeswitch": {
+              "cer": 0.0,
+              "wer": 0.0,
+              "punct_f1": 72.62,
+              "words_changed": 0.0
+            },
+            "punct/asr_real": {
+              "cer": 41.87,
+              "wer": 64.86,
+              "punct_f1": 36.42,
+              "words_changed": 0.0
+            }
+          },
+          "cpu_ms_per_text_4threads": {
+            "full/test": 13.5,
+            "full/test_clean": 19.6,
+            "full/test_codeswitch": 24.6,
+            "full/asr_real": 27.4,
+            "punct/test": 24.2,
+            "punct/test_clean": 26.9,
+            "punct/test_codeswitch": 34.8,
+            "punct/asr_real": 20.3
+          },
+          "license": "EthiopicAI Amharic text-correction weights: CC BY 4.0 (commercial use permitted with attribution). Inference adapter code: MIT. See MODEL_LICENSES.md.",
+          "source": "github.com/ethiopicai/amharic-text-corrector models/amharic-corrector-tiny (v2-cs)",
+          "notes": "Default for every tier. int8 dynamic-quantized weights; scores equal to fp32.",
+          "folder": "textcorrect-char_bart-7m-amh-int8_onnx",
+          "total_bytes": 7879155,
+          "requires": [],
+          "entry": "corrector_onnx.py: OnnxCorrector(model_dir)(texts, mode='full'|'punct')"
+        },
+        {
+          "id": "tts-codec_llm-0.6b-amh-fp16",
+          "family": "tts-codec_llm-0.6b-amh",
+          "release": "tts-codec_llm-0.6b-amh-3242h-v1.0",
+          "aliases": [
+            "tts-omnivoice-fp16"
+          ],
+          "model_version": "v1.0",
+          "previous_name": "OmniVoice checkpoint-6000",
+          "component": "tts",
+          "runtime": "torch-cuda",
+          "precision": "fp16",
+          "requires": [
+            "codec-higgs_audio_v2-fp32"
+          ],
+          "source_checkpoint": "EthiopicAI Amharic speech-generation model trained from scratch using the OmniVoice architecture; these are EthiopicAI-trained weights, not fine-tuned upstream OmniVoice pretrained weights.",
+          "vram_mb_est": 3000,
+          "cer_162": 0.117,
+          "cer_162_median": 0.097,
+          "cer_162_vs_fp32": {
+            "diff": -0.006,
+            "ci95": [
+              -0.024,
+              0.007
+            ],
+            "worse_better": "58/58",
+            "verdict": "no measurable difference"
+          },
+          "cer_by_num_step": {
+            "32": 0.117,
+            "16": 0.134,
+            "8": 0.204,
+            "16_vs_32": "+0.016 [-0.001, +0.036], 64/64, median 0.096 vs 0.097 (difference comes from 5 vs 1 catastrophic clips)",
+            "8_vs_32": "+0.086 [+0.035, +0.164], 103/39: clearly worse"
+          },
+          "rtf_gpu": {
+            "num_step_32": 1.08,
+            "num_step_16": 0.53,
+            "num_step_8": 0.28,
+            "hardware": "GB10 shared with 2-3 training jobs; 12 sentences; indicative only"
+          },
+          "recommended_num_step": 32,
+          "recommended_num_step_note": "gpu-modern: 32 (16 as a 'fast' option); gpu-low (4 GB Turing): 16. Never 8.",
+          "recommended_speed": 0.9,
+          "license": "EthiopicAI Amharic speech-generation weights, trained from scratch: CC BY 4.0 (commercial use permitted with attribution). OmniVoice library code: Apache-2.0. Codec and other dependencies retain their own licenses. See MODEL_LICENSES.md.",
+          "notes": "fp16 LLM with the codec kept in fp32 (codec fp16 is broken). No overflow: residual-stream max |h| 14,768 (fp16 limit 65,504), 0 non-finite values over all 162 sentences. Needs Turing or newer; never on Pascal (1/64-rate fp16).",
+          "files": [
+            {
+              "path": "chat_template.jinja",
+              "bytes": 4168,
+              "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8"
+            },
+            {
+              "path": "config.json",
+              "bytes": 2238,
+              "sha256": "b23c97c706396124d82cbd93c0bd0b11503fc01dde1f314c69ef3006089942f2"
+            },
+            {
+              "path": "model.safetensors",
+              "bytes": 1225189240,
+              "sha256": "f8cafa544a598d89e5d143c1e6abe21f8315f088b8ab235240a09eeed4775f7e"
+            },
+            {
+              "path": "tokenizer.json",
+              "bytes": 11423986,
+              "sha256": "408f669b7e2b045fdf54201d815bd364e6667dbd845115da81239c40bc6dcfd1"
+            },
+            {
+              "path": "tokenizer_config.json",
+              "bytes": 562,
+              "sha256": "0a36b8b56a6090efc92bb08e00b570ac2d2eaa4a8747a28beac1d98f876c7c49"
+            },
+            {
+              "path": "tts_omnivoice_infer.py",
+              "bytes": 7831,
+              "sha256": "2aba0ac8819b0468e7718d1a73527e5956fcf21574b90485ee66f60aeb524f8a"
+            }
+          ],
+          "total_bytes": 1236628025,
+          "folder": "tts-codec_llm-0.6b-amh-fp16"
+        },
+        {
+          "id": "tts-codec_llm-0.6b-amh-fp32",
+          "family": "tts-codec_llm-0.6b-amh",
+          "release": "tts-codec_llm-0.6b-amh-3242h-v1.0",
+          "aliases": [
+            "tts-omnivoice-fp32"
+          ],
+          "model_version": "v1.0",
+          "previous_name": "OmniVoice checkpoint-6000",
+          "component": "tts",
+          "runtime": "torch-cuda",
+          "precision": "fp32",
+          "requires": [
+            "codec-higgs_audio_v2-fp32"
+          ],
+          "source_checkpoint": "EthiopicAI Amharic speech-generation model trained from scratch using the OmniVoice architecture; these are EthiopicAI-trained weights, not fine-tuned upstream OmniVoice pretrained weights.",
+          "vram_mb_est": 4500,
+          "cer_162": 0.124,
+          "cer_162_median": 0.093,
+          "cer_162_note": "reference for the fp16 comparison; num_step 32, speed 1.0, seed 0. fp32 num_step 16: 0.125 (diff +0.002 [-0.015, +0.015])",
+          "rtf_gpu": {
+            "num_step_32": 2.64,
+            "num_step_16": 1.32,
+            "num_step_8": 0.68,
+            "hardware": "GB10 shared with 2-3 training jobs; 12 sentences; indicative only"
+          },
+          "recommended_num_step": 16,
+          "recommended_num_step_note": "gpu-pascal tier: 16 (fp32 on GTX 10xx is slow; 16 vs 32 not significantly different here). 32 if the GPU is fast enough. Never 8.",
+          "recommended_speed": 0.9,
+          "license": "EthiopicAI Amharic speech-generation weights, trained from scratch: CC BY 4.0 (commercial use permitted with attribution). OmniVoice library code: Apache-2.0. Codec and other dependencies retain their own licenses. See MODEL_LICENSES.md.",
+          "notes": "Load with tts_omnivoice_infer.py and the Apache-2.0 OmniVoice library. Use Amharic text and an exact reference transcript. This variant is intended for Pascal GPUs without useful FP16 throughput or as the FP32 quality reference. Newer compatible GPUs normally use the FP16 variant.",
+          "files": [
+            {
+              "path": "chat_template.jinja",
+              "bytes": 4168,
+              "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8"
+            },
+            {
+              "path": "config.json",
+              "bytes": 2239,
+              "sha256": "d5af4ab7446675a5b511a609400b9a562bf4c69f161da58cd0389c4e5c1d8f90"
+            },
+            {
+              "path": "model.safetensors",
+              "bytes": 2450344144,
+              "sha256": "c1dbcf7a807154b55279d028bdbc4c1236951a5ea74d19ce96a1ad6ab863e975"
+            },
+            {
+              "path": "tokenizer.json",
+              "bytes": 11423986,
+              "sha256": "408f669b7e2b045fdf54201d815bd364e6667dbd845115da81239c40bc6dcfd1"
+            },
+            {
+              "path": "tokenizer_config.json",
+              "bytes": 562,
+              "sha256": "0a36b8b56a6090efc92bb08e00b570ac2d2eaa4a8747a28beac1d98f876c7c49"
+            },
+            {
+              "path": "tts_omnivoice_infer.py",
+              "bytes": 7831,
+              "sha256": "2aba0ac8819b0468e7718d1a73527e5956fcf21574b90485ee66f60aeb524f8a"
+            }
+          ],
+          "total_bytes": 2461782930,
+          "folder": "tts-codec_llm-0.6b-amh-fp32"
+        },
+        {
+          "id": "tts-codec_llm-0.6b-amh-int8_onnx",
+          "family": "tts-codec_llm-0.6b-amh",
+          "release": "tts-codec_llm-0.6b-amh-3242h-v1.0",
+          "aliases": [
+            "tts-omnivoice-cpu-int8"
+          ],
+          "model_version": "v1.0",
+          "previous_name": "OmniVoice checkpoint-6000",
+          "component": "tts",
+          "runtime": "onnxruntime-cpu",
+          "precision": "int8 (weight-only blockwise MatMulNBits bits=8, block 128, symmetric, accuracy_level 4) + fp16 embedding tables",
+          "onnx_file": "backbone_step.int8.onnx",
+          "requires": [
+            "codec-higgs_audio_v2-fp32"
+          ],
+          "runtime_deps": "onnxruntime>=1.20 (tested 1.31.1), torch CPU + omnivoice package for the sampling loop and the codec",
+          "ram_mb_est": 3800,
+          "cer_162": null,
+          "cer_subset40": 0.125,
+          "cer_subset40_fp32_ref": 0.131,
+          "cer_subset40_vs_fp32": {
+            "diff": -0.006,
+            "ci95": [
+              -0.023,
+              0.011
+            ],
+            "worse_better": "14/21",
+            "verdict": "no measurable difference"
+          },
+          "cer_subset_note": "40 of the 162 sentences (10 per unseen dev voice), num_step 16, seed 0; fp32 reference uses the same CPU RNG stream.",
+          "rtf_cpu_4threads": 7.7,
+          "rtf_cpu_4threads_ref": {
+            "torch_fp32": 14.4,
+            "ort_fp32": 11.3
+          },
+          "rtf_cpu_note": "num_step 16, 4 ARM Cortex-X925 cores of the GB10 under heavy contention from other jobs; same conditions for all three. Uncontended torch fp32 was 9.0 earlier, so expect about 5 for this variant. Not measured on x86.",
+          "recommended_num_step": 16,
+          "license": "EthiopicAI Amharic speech-generation weights, trained from scratch: CC BY 4.0 (commercial use permitted with attribution). OmniVoice library code: Apache-2.0. Codec and other dependencies retain their own licenses. See MODEL_LICENSES.md.",
+          "notes": "Opt-in slow TTS for cpu-high: measured at about 5–8 times slower than real time on the reference ARM CPU. This export uses blockwise activation quantization (accuracy_level 4). The codec remains FP32; x86 speed has not been measured here.",
+          "files": [
+            {
+              "path": "backbone_step.int8.onnx",
+              "bytes": 464276322,
+              "sha256": "aa0d8daad4b6b87a0562240c9511c904d3ba1d6ee6692817bd2f8fccb4c3c447"
+            },
+            {
+              "path": "chat_template.jinja",
+              "bytes": 4168,
+              "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8"
+            },
+            {
+              "path": "config.json",
+              "bytes": 2239,
+              "sha256": "d5af4ab7446675a5b511a609400b9a562bf4c69f161da58cd0389c4e5c1d8f90"
+            },
+            {
+              "path": "embeddings.safetensors",
+              "bytes": 327426424,
+              "sha256": "dbed40bae26fa9cce9563d82a00f610195658a250651ce91081edd1708cd81a6"
+            },
+            {
+              "path": "tokenizer.json",
+              "bytes": 11423986,
+              "sha256": "408f669b7e2b045fdf54201d815bd364e6667dbd845115da81239c40bc6dcfd1"
+            },
+            {
+              "path": "tokenizer_config.json",
+              "bytes": 562,
+              "sha256": "0a36b8b56a6090efc92bb08e00b570ac2d2eaa4a8747a28beac1d98f876c7c49"
+            },
+            {
+              "path": "tts_omnivoice_infer.py",
+              "bytes": 7831,
+              "sha256": "2aba0ac8819b0468e7718d1a73527e5956fcf21574b90485ee66f60aeb524f8a"
+            }
+          ],
+          "total_bytes": 803141532,
+          "folder": "tts-codec_llm-0.6b-amh-int8_onnx",
+          "source_checkpoint": "EthiopicAI Amharic speech-generation model trained from scratch using the OmniVoice architecture; these are EthiopicAI-trained weights, not fine-tuned upstream OmniVoice pretrained weights."
+        },
+        {
+          "id": "tts-flow_lm-90m-amh-fp32",
+          "family": "tts-flow_lm-90m-amh",
+          "release": "tts-flow_lm-90m-amh-3242h-v1.0",
+          "aliases": [
+            "tts-small-cpu"
+          ],
+          "model_version": "v1.0",
+          "previous_name": "tts-small-cpu v0.1 (distill step 16000)",
+          "component": "tts",
+          "runtime": "torch-cpu (pocket-tts)",
+          "precision": "fp32 weights; optional dynamic int8 (torchao) at load time via int8=True",
+          "files": [
+            {
+              "path": "config.yaml",
+              "bytes": 2051,
+              "sha256": "6d6d5a1edcb2283446912d4fbe87d696d7c568991f201bf43b73b1bd7f906990"
+            },
+            {
+              "path": "model.safetensors",
+              "bytes": 438033312,
+              "sha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621"
+            },
+            {
+              "path": "tokenizer.model",
+              "bytes": 78016,
+              "sha256": "50e5df0ba8f39d9b40a02ba7e41b610d5dbb27763ef4a87ceb41745079e385a5"
+            },
+            {
+              "path": "tts_small_infer.py",
+              "bytes": 4612,
+              "sha256": "9896f19a72204df8adbfd6763e607a8bb0a0a21487f2310aba9eda992fcf6d85"
+            },
+            {
+              "path": "voices/default.wav",
+              "bytes": 173384,
+              "sha256": "51572b382982ffe53407a0a83332c0986eb5916eebb98e005f6049bf0aaa24e4"
+            },
+            {
+              "path": "README.md",
+              "bytes": 2749,
+              "sha256": "a83dd21ebc0cf89648ca197345f600fbcb6e1f979c5b04638cd53a869885b80e"
+            }
+          ],
+          "model": "Kyutai Pocket TTS 6-layer student, Amharic",
+          "source_checkpoint": "EMA weights of a six-layer Amharic Pocket TTS student, distilled from an Amharic-adapted 24-layer teacher.",
+          "ram_mb_est": 1700,
+          "vram_mb_est": 0,
+          "sample_rate": 24000,
+          "cer_clean100": 0.074,
+          "cer_clean100_median": 0.064,
+          "cer_162": 0.112,
+          "cer_162_median": 0.094,
+          "cer_clean100_app": {
+            "fp32": 0.061,
+            "int8": 0.053,
+            "note": "full clean100 through tts_small_infer.py on CPU (punctuated text, sentence split, pocket-tts sampler); this is what the app runs. cer_clean100 above is the GPU research eval (normalised text, batched), comparable with the teacher rows."
+          },
+          "spk_sim_clean100": 0.952,
+          "spk_sim_162": 0.951,
+          "reference": {
+            "teacher_24l_cer_clean100": 0.084,
+            "teacher_24l_cer_162": 0.107,
+            "omnivoice_step6000_cer_clean100": 0.047,
+            "omnivoice_step6000_cer_162": 0.1,
+            "omnivoice_step6000_cer_162_median": 0.078,
+            "omnivoice_step6000_spk_sim_clean100": 0.961,
+            "omnivoice_step6000_spk_sim_162": 0.946,
+            "real_audio_cer_162": 0.236,
+            "real_audio_cer_162_median": 0.206,
+            "real_audio_spk_sim_162_subset93": 0.901
+          },
+          "eval_note": "CER = amharic-ctc v0.3 greedy transcript vs text, letters folded, spaces/punctuation ignored. clean100 = 100 held-out human-edited written sentences (primary). 162 = OmniVoice's test, texts are ASR transcripts with errors (real audio scores 0.236 on it). Same 5 held-out voice prompts (<= 5 s) for every model. spk sim = WavLM-base-plus-sv cosine, generated clip vs its prompt; the real-audio figure covers only 93 recoverable clips.",
+          "rtf_cpu_4threads": {
+            "fp32": 0.554,
+            "int8": 0.528,
+            "hardware": "4 pinned Cortex-X925 cores (GB10 ARM), machine shared with GPU training; measured with the GPU idle; English 6-layer release on the same cores: 0.547 / 0.513"
+          },
+          "min_tier": "cpu-low",
+          "entry": "tts_small_infer.py: AmharicTTS(threads=4, int8=True).synth(text, voice=None|path) -> float32 numpy at 24 kHz",
+          "requires_python": [
+            "pocket-tts (tested: git v4.0.1-19-gee2ebc8, github.com/kyutai-labs/pocket-tts; the PyPI 4.0.1 wheel is untested)",
+            "torch",
+            "sentencepiece",
+            "pyyaml",
+            "numpy",
+            "soundfile",
+            "torchao (int8 only)"
+          ],
+          "license": "pocket-tts code: MIT. Base weights: Kyutai Pocket TTS, CC-BY-4.0 under Kyutai's gated acceptable-use policy (accepted). Fine-tune training data: Amilia (YouTube-derived Amharic speech), non-commercial use only. amharic-ctc was used only for data filtering, alignment and evaluation.",
+          "notes": "Kyutai Pocket TTS English 24-layer teacher fine-tuned on Amharic (new sentencepiece text embedding; 964 h news to step 5k, then 1,593 h news+podcasts to 15k, then 2.5k polish steps at lr 5e-5 on 415 h of the cleanest clips), distilled to 6 layers with classifier-free guidance (cfg 2.0) baked in, so inference is a single pass with no CFG. Voice cloning from a 3-5 s clip, no transcript needed. synth() generates sentence by sentence (split on ። ? !), 0.2 s pause between sentences. Digits and Latin script are read poorly: spell numbers out. int8 is not less intelligible than fp32 (app path, clean100: fp32 0.061 / int8 0.053). Slightly less accurate than OmniVoice (clean100 0.053 vs 0.047, speaker sim 0.956 vs 0.961) but runs about 2x faster than real time on 4 CPU cores, where OmniVoice int8 is 5-8x slower than real time.",
+          "folder": "tts-flow_lm-90m-amh-fp32",
+          "requires": [],
+          "total_bytes": 438294124
+        }
+      ],
+      "hf_repo": "ethiopic/ethiopic-studio-models",
+      "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774"
+    },
+    "recognition_packages": {
+      "schema_version": 1,
+      "releases": [
+        {
+          "profile": "cpu-high",
+          "os": "windows",
+          "arch": "x86_64",
+          "model_version": "v0.3",
+          "minimum_windows": "10.0.19041",
+          "packs": [
+            {
+              "kind": "model",
+              "sha256": "adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c",
+              "size": 1261204759,
+              "unpacked_size": 1401521102,
+              "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz"
+            },
+            {
+              "kind": "runtime",
+              "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5",
+              "size": 100868240,
+              "unpacked_size": 272689844,
+              "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz"
+            }
+          ]
+        },
+        {
+          "profile": "cpu-low",
+          "os": "windows",
+          "arch": "x86_64",
+          "model_version": "v0.3",
+          "minimum_windows": "10.0.19041",
+          "packs": [
+            {
+              "kind": "model",
+              "sha256": "f548411d29143d278569f72fa3435944d42b94769895cc9b394895dec578bb4b",
+              "size": 331240531,
+              "unpacked_size": 366893140,
+              "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-low.tar.gz"
+            },
+            {
+              "kind": "runtime",
+              "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5",
+              "size": 100868240,
+              "unpacked_size": 272689844,
+              "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz"
+            }
+          ]
+        },
+        {
+          "profile": "gpu-modern",
+          "os": "windows",
+          "arch": "x86_64",
+          "model_version": "v0.3",
+          "minimum_windows": "10.0.19041",
+          "packs": [
+            {
+              "kind": "model",
+              "sha256": "1ae88eda156f10bacf4162399251bbfa104b090f446cd3f0875ff3d844027951",
+              "size": 1806995102,
+              "unpacked_size": 1951574594,
+              "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-gpu-modern.tar.gz"
+            },
+            {
+              "kind": "runtime",
+              "sha256": "43a06eb36596764fa208dc231a3544ad7bb9ffd6424c560a90a17961295ffc0d",
+              "size": 3067969324,
+              "unpacked_size": 4850551907,
+              "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-cuda.tar.gz"
+            }
+          ]
+        },
+        {
+          "profile": "cpu-mid",
+          "os": "windows",
+          "arch": "x86_64",
+          "model_version": "v0.3",
+          "minimum_windows": "10.0.19041",
+          "packs": [
+            {
+              "kind": "model",
+              "sha256": "adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c",
+              "size": 1261204759,
+              "unpacked_size": 1401521102,
+              "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz"
+            },
+            {
+              "kind": "runtime",
+              "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5",
+              "size": 100868240,
+              "unpacked_size": 272689844,
+              "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz"
+            }
+          ]
+        },
+        {
+          "profile": "gpu-low",
+          "os": "windows",
+          "arch": "x86_64",
+          "model_version": "v0.3",
+          "minimum_windows": "10.0.19041",
+          "packs": [
+            {
+              "kind": "model",
+              "sha256": "adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c",
+              "size": 1261204759,
+              "unpacked_size": 1401521102,
+              "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz"
+            },
+            {
+              "kind": "runtime",
+              "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5",
+              "size": 100868240,
+              "unpacked_size": 272689844,
+              "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz"
+            }
+          ]
+        },
+        {
+          "profile": "gpu-pascal",
+          "os": "windows",
+          "arch": "x86_64",
+          "model_version": "v0.3",
+          "minimum_windows": "10.0.19041",
+          "packs": [
+            {
+              "kind": "model",
+              "sha256": "adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c",
+              "size": 1261204759,
+              "unpacked_size": 1401521102,
+              "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz"
+            },
+            {
+              "kind": "runtime",
+              "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5",
+              "size": 100868240,
+              "unpacked_size": 272689844,
+              "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz"
+            }
+          ]
+        },
+        {
+          "os": "macos",
+          "arch": "aarch64",
+          "minimum_macos": "14.0",
+          "model_version": "v0.3",
+          "packs": [
+            {
+              "kind": "model",
+              "sha256": "163a43588884d9ff8afab0dc2e90a478b62de2a49873bc04a2f55d42fe21de28",
+              "size": 1261204954,
+              "unpacked_size": 1401520967,
+              "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-macos-aarch64.tar.gz"
+            },
+            {
+              "kind": "runtime",
+              "sha256": "0a0503288adc4ecce5fd5daf36f0daa74b09a2452052bf1f767deeb7e5b05a8e",
+              "size": 74121512,
+              "unpacked_size": 227072455,
+              "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-macos-aarch64.tar.gz"
+            }
+          ]
+        }
+      ]
+    },
+    "recognition_routes": {
+      "schema_version": 1,
+      "releases": [
+        {
+          "profile": "cpu-high",
+          "model_version": "v0.3",
+          "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+          "transcription": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+          "dictation": "asr-wav2vec_ctc-300m-amh-int8_onnx"
+        },
+        {
+          "profile": "cpu-low",
+          "model_version": "v0.3",
+          "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+          "transcription": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+          "dictation": "asr-wav2vec_ctc-300m-amh-int8_onnx"
+        },
+        {
+          "profile": "gpu-modern",
+          "model_version": "v0.3",
+          "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+          "transcription": "asr-wav2vec_ctc-1b-amh-fp16",
+          "dictation": "asr-wav2vec_ctc-1b-amh-fp16"
+        },
+        {
+          "profile": "cpu-mid",
+          "model_version": "v0.3",
+          "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+          "transcription": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+          "dictation": "asr-wav2vec_ctc-300m-amh-int8_onnx"
+        },
+        {
+          "profile": "gpu-low",
+          "model_version": "v0.3",
+          "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+          "transcription": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+          "dictation": "asr-wav2vec_ctc-300m-amh-int8_onnx"
+        },
+        {
+          "profile": "gpu-pascal",
+          "model_version": "v0.3",
+          "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+          "transcription": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+          "dictation": "asr-wav2vec_ctc-300m-amh-int8_onnx"
+        },
+        {
+          "profile": null,
+          "model_version": "v0.3",
+          "hf_revision": "ce4b919ca0e27bcc5886ca3dc447e507466c2774",
+          "transcription": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+          "dictation": "asr-wav2vec_ctc-300m-amh-int8_onnx"
+        }
+      ]
+    },
+    "speech_runtimes": {
+      "schema_version": 1,
+      "releases": [
+        {
+          "os": "macos",
+          "arch": "aarch64",
+          "tiers": [
+            "apple-arm",
+            "cpu-low",
+            "cpu-mid",
+            "cpu-high"
+          ],
+          "version": "small-tts-macos-2026-11-16",
+          "artifact": {
+            "kind": "runtime",
+            "sha256": "013456dc06cedb57f0358be03815e7a615c7a92ee036d74cdfbc3d589df16046",
+            "size": 160204361,
+            "unpacked_size": 567523441,
+            "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-runtime-macos-aarch64-small-tts-macos-2026-11-16.tar.gz"
+          }
+        },
+        {
+          "os": "windows",
+          "arch": "x86_64",
+          "tiers": [
+            "cpu-low",
+            "cpu-mid",
+            "cpu-high"
+          ],
+          "version": "voice-20261125-cpu",
+          "artifact": {
+            "kind": "runtime",
+            "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-runtime-windows-x86_64-voice-20261125-cpu.tar.gz",
+            "sha256": "6fd4799fa4ff0468dbd0adbdbd9ff2877a019974ebcdee336efa291f654caa8b",
+            "size": 232906611,
+            "unpacked_size": 726918660
+          }
+        }
+      ]
+    },
+    "editing_runtimes": {
+      "schema_version": 1,
+      "releases": [
+        {
+          "os": "windows",
+          "arch": "x86_64",
+          "tiers": [
+            "gpu-modern"
+          ],
+          "version": "voice-20261125-gpu",
+          "artifact": {
+            "kind": "runtime",
+            "sha256": "b25132f87a4d00f8328e1fb9a27370aa57265678bcf7b453280bedac9ba21da6",
+            "size": 3212223767,
+            "unpacked_size": 5241292771,
+            "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/editing-runtime-windows-x86_64-voice-20261125-gpu.tar.gz"
+          }
+        }
+      ]
+    },
+    "noise_reduction": {
+      "schemaVersion": 1,
+      "release": "inworld-realtime-v1-mac-arm64-py311-torch291",
+      "os": "macos",
+      "arch": "aarch64",
+      "pythonVersion": "3.11",
+      "torchVersion": "2.9.1",
+      "modelRevision": "9b0285b3fe8403aa8e2f1dbb2165a80a4294c970",
+      "files": [
+        {
+          "name": "denoiser_realtime.safetensors",
+          "url": "https://huggingface.co/inworld/voice-isolator/resolve/9b0285b3fe8403aa8e2f1dbb2165a80a4294c970/denoiser_realtime.safetensors",
+          "bytes": 232780800,
+          "sha256": "76598f05523c0669e76562a8b2f31c9d395fca316e80c907ee11775e7497ae0f",
+          "kind": "model"
+        },
+        {
+          "name": "inworld_voice_isolation-1.0.0-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/71/2c/b6ca545c08adbbb877367bf8c7228390f787f18c9d2730877216fdc05b2e/inworld_voice_isolation-1.0.0-py3-none-any.whl",
+          "bytes": 58080,
+          "sha256": "0691e3a536f6f66dd32163355dd16324bfbe01a50c23fd3294df28b01ce3df0b",
+          "kind": "wheel"
+        },
+        {
+          "name": "torchaudio-2.9.1-cp311-cp311-macosx_11_0_arm64.whl",
+          "url": "https://files.pythonhosted.org/packages/3f/6b/34e489fcb4adc4b571a166f2670cc7f156cbe3337867a892fade0a1a5224/torchaudio-2.9.1-cp311-cp311-macosx_11_0_arm64.whl",
+          "bytes": 807349,
+          "sha256": "6e3f5943135701168d30196e2befd46290180cdbb9ee508b167730d51f43208f",
+          "kind": "wheel"
+        },
+        {
+          "name": "soundfile-0.13.1-py2.py3-none-macosx_11_0_arm64.whl",
+          "url": "https://files.pythonhosted.org/packages/a0/e5/58fd1a8d7b26fc113af244f966ee3aecf03cb9293cb935daaddc1e455e18/soundfile-0.13.1-py2.py3-none-macosx_11_0_arm64.whl",
+          "bytes": 1101406,
+          "sha256": "743f12c12c4054921e15736c6be09ac26b3b3d603aef6fd69f9dde68748f2593",
+          "kind": "wheel"
+        },
+        {
+          "name": "cffi-2.0.0-cp311-cp311-macosx_11_0_arm64.whl",
+          "url": "https://files.pythonhosted.org/packages/4f/8b/f0e4c441227ba756aafbe78f117485b25bb26b1c059d01f137fa6d14896b/cffi-2.0.0-cp311-cp311-macosx_11_0_arm64.whl",
+          "bytes": 180560,
+          "sha256": "2de9a304e27f7596cd03d16f1b7c72219bd944e99cc52b84d0145aefb07cbd3c",
+          "kind": "wheel"
+        },
+        {
+          "name": "pycparser-2.23-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/a0/e3/59cd50310fc9b59512193629e1984c1f95e5c8ae6e5d8c69532ccc65a7fe/pycparser-2.23-py3-none-any.whl",
+          "bytes": 118140,
+          "sha256": "e5c6e8d3fbad53479cab09ac03729e0a9faf2bee3db8208a550daf5af81a5934",
+          "kind": "wheel"
+        }
+      ]
+    }
+  },
+  "artifacts": {
+    "model:asr-wav2vec_ctc-1b-amh-fp16:README.md": {
+      "kind": "bundled-model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-fp16",
+      "path": "README.md",
+      "bytes": 4637,
+      "sha256": "437831a22d3ec0be76d39e352eb0a5c7096c55b901eeabf7851cec527cd25c7f"
+    },
+    "model:asr-wav2vec_ctc-1b-amh-fp16:STREAMING.md": {
+      "kind": "bundled-model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-fp16",
+      "path": "STREAMING.md",
+      "bytes": 8316,
+      "sha256": "f76169c1f36da16e413085e5f8ce3d26827744b3274310b132dbb1ed13990164"
+    },
+    "model:asr-wav2vec_ctc-1b-amh-fp16:requirements.txt": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-fp16",
+      "path": "requirements.txt",
+      "bytes": 164,
+      "sha256": "15636157a9dc688ebe34af18e0f7ef1081632686b36b9ece41ff1cf448cbd333",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-1b-amh-fp16/requirements.txt"
+    },
+    "model:asr-wav2vec_ctc-1b-amh-fp16:model/config.json": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-fp16",
+      "path": "model/config.json",
+      "bytes": 1973,
+      "sha256": "b5b5f87b659361942239b4f79698352e8c76d2a69c9b59110270df3b26caabf3",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-1b-amh-fp16/model/config.json"
+    },
+    "model:asr-wav2vec_ctc-1b-amh-fp16:model/model.safetensors": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-fp16",
+      "path": "model/model.safetensors",
+      "bytes": 1951451016,
+      "sha256": "30ae0f19a3c4096326bffea3154bd0adf9adc05e0bb70efb36b1f14e60b7b43a",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-1b-amh-fp16/model/model.safetensors"
+    },
+    "model:asr-wav2vec_ctc-1b-amh-fp16:model/tokenizer.model": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-fp16",
+      "path": "model/tokenizer.model",
+      "bytes": 91481,
+      "sha256": "8aa11a1092142ef472537476ef6e76541123e2f0d789b79f3ebd119008240b1e",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-1b-amh-fp16/model/tokenizer.model"
+    },
+    "model:asr-wav2vec_ctc-1b-amh-fp16:model/version.json": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-fp16",
+      "path": "model/version.json",
+      "bytes": 589,
+      "sha256": "53520bc805335760d28f6500ad33408609c9b0b499251916c72df035e1f7f06a",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-1b-amh-fp16/model/version.json"
+    },
+    "model:asr-wav2vec_ctc-1b-amh-fp16:omniasr_hf/__init__.py": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-fp16",
+      "path": "omniasr_hf/__init__.py",
+      "bytes": 106,
+      "sha256": "73367fdb9680db07aaf0b7bf5ebdb820dd6a26e648d5753f6f1df29fab607c76",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-1b-amh-fp16/omniasr_hf/__init__.py"
+    },
+    "model:asr-wav2vec_ctc-1b-amh-fp16:omniasr_hf/audio_text.py": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-fp16",
+      "path": "omniasr_hf/audio_text.py",
+      "bytes": 890,
+      "sha256": "81a0f5dd0957f642b168720a201f90c2d4083a9dd7b7d5e8338d70e2b29c158f",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-1b-amh-fp16/omniasr_hf/audio_text.py"
+    },
+    "model:asr-wav2vec_ctc-1b-amh-fp16:omniasr_hf/transcribe.py": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-fp16",
+      "path": "omniasr_hf/transcribe.py",
+      "bytes": 9030,
+      "sha256": "f054704b3af9ba79d8d20506483468620af52227c50fabe94924e42e94a728b3",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-1b-amh-fp16/omniasr_hf/transcribe.py"
+    },
+    "model:asr-wav2vec_ctc-1b-amh-int8_onnx:asr.int8.onnx": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+      "path": "asr.int8.onnx",
+      "bytes": 1034452282,
+      "sha256": "1d373c9bf1cf643e7b05c4f4b8674b380a4753d34296832ccea82f77a0a109bc",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-1b-amh-int8_onnx/asr.int8.onnx"
+    },
+    "model:asr-wav2vec_ctc-1b-amh-int8_onnx:asr_onnx_infer.py": {
+      "kind": "bundled-model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+      "path": "asr_onnx_infer.py",
+      "bytes": 9386,
+      "sha256": "1bc50dd769df68f43b2594d011a4fdf8b60c2f2043d6dee5cceeffbc540e0f9c"
+    },
+    "model:asr-wav2vec_ctc-1b-amh-int8_onnx:preprocessor.json": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+      "path": "preprocessor.json",
+      "bytes": 623,
+      "sha256": "96ae755636581c79927ac061abbf97e6e3dc14ebe8a51a31156ed7276c12c4a3",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-1b-amh-int8_onnx/preprocessor.json"
+    },
+    "model:asr-wav2vec_ctc-1b-amh-int8_onnx:tokenizer.model": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+      "path": "tokenizer.model",
+      "bytes": 91481,
+      "sha256": "8aa11a1092142ef472537476ef6e76541123e2f0d789b79f3ebd119008240b1e",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-1b-amh-int8_onnx/tokenizer.model"
+    },
+    "model:asr-wav2vec_ctc-1b-amh-int8_onnx:vocab.json": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-1b-amh-int8_onnx",
+      "path": "vocab.json",
+      "bytes": 70878,
+      "sha256": "e3ad1610f100cbcd659db40a02268dc35c5d39cea608922c4f00645d84c727c6",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-1b-amh-int8_onnx/vocab.json"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-fp16:README.md": {
+      "kind": "bundled-model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-fp16",
+      "path": "README.md",
+      "bytes": 1939,
+      "sha256": "9974fe1d21cd1ea25edc5fcca329e4929b9fe7e072178a751138ad006f1a95a8"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-fp16:STREAMING.md": {
+      "kind": "bundled-model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-fp16",
+      "path": "STREAMING.md",
+      "bytes": 8316,
+      "sha256": "f76169c1f36da16e413085e5f8ce3d26827744b3274310b132dbb1ed13990164"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-fp16:requirements.txt": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-fp16",
+      "path": "requirements.txt",
+      "bytes": 164,
+      "sha256": "15636157a9dc688ebe34af18e0f7ef1081632686b36b9ece41ff1cf448cbd333",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-300m-amh-fp16/requirements.txt"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-fp16:model/config.json": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-fp16",
+      "path": "model/config.json",
+      "bytes": 1973,
+      "sha256": "b823a48cb5ecec2f70521c1b1e8b88091649b7ed0d8bc957bbc903890a563f7b",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-300m-amh-fp16/model/config.json"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-fp16:model/model.safetensors": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-fp16",
+      "path": "model/model.safetensors",
+      "bytes": 652018072,
+      "sha256": "ef5fea081ff3a3a88891cc92ed88cb0ab42c4d2cc153ea6476cab33009afd825",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-300m-amh-fp16/model/model.safetensors"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-fp16:model/tokenizer.model": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-fp16",
+      "path": "model/tokenizer.model",
+      "bytes": 91481,
+      "sha256": "8aa11a1092142ef472537476ef6e76541123e2f0d789b79f3ebd119008240b1e",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-300m-amh-fp16/model/tokenizer.model"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-fp16:model/version.json": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-fp16",
+      "path": "model/version.json",
+      "bytes": 566,
+      "sha256": "0d3e90b0db263adbc09204820bd4c2a46fa5e6596b2a254b1702c8a6a6ed579e",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-300m-amh-fp16/model/version.json"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-fp16:omniasr_hf/__init__.py": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-fp16",
+      "path": "omniasr_hf/__init__.py",
+      "bytes": 106,
+      "sha256": "73367fdb9680db07aaf0b7bf5ebdb820dd6a26e648d5753f6f1df29fab607c76",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-300m-amh-fp16/omniasr_hf/__init__.py"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-fp16:omniasr_hf/audio_text.py": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-fp16",
+      "path": "omniasr_hf/audio_text.py",
+      "bytes": 890,
+      "sha256": "81a0f5dd0957f642b168720a201f90c2d4083a9dd7b7d5e8338d70e2b29c158f",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-300m-amh-fp16/omniasr_hf/audio_text.py"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-fp16:omniasr_hf/transcribe.py": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-fp16",
+      "path": "omniasr_hf/transcribe.py",
+      "bytes": 9030,
+      "sha256": "f054704b3af9ba79d8d20506483468620af52227c50fabe94924e42e94a728b3",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-300m-amh-fp16/omniasr_hf/transcribe.py"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-int8_onnx:asr.int8.onnx": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+      "path": "asr.int8.onnx",
+      "bytes": 366716233,
+      "sha256": "5d42b8aea342b2907fb9745f67a887db7b968abe463454bd20adcda78ecd01c5",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-300m-amh-int8_onnx/asr.int8.onnx"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-int8_onnx:asr_onnx_infer.py": {
+      "kind": "bundled-model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+      "path": "asr_onnx_infer.py",
+      "bytes": 9386,
+      "sha256": "1bc50dd769df68f43b2594d011a4fdf8b60c2f2043d6dee5cceeffbc540e0f9c"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-int8_onnx:preprocessor.json": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+      "path": "preprocessor.json",
+      "bytes": 623,
+      "sha256": "03f84908c28179afb876e620a8ab24666b5ca51e10e2fa7df65c0bf3a3ce0dff",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-300m-amh-int8_onnx/preprocessor.json"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-int8_onnx:tokenizer.model": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+      "path": "tokenizer.model",
+      "bytes": 91481,
+      "sha256": "8aa11a1092142ef472537476ef6e76541123e2f0d789b79f3ebd119008240b1e",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-300m-amh-int8_onnx/tokenizer.model"
+    },
+    "model:asr-wav2vec_ctc-300m-amh-int8_onnx:vocab.json": {
+      "kind": "model-file",
+      "component": "asr-wav2vec_ctc-300m-amh-int8_onnx",
+      "path": "vocab.json",
+      "bytes": 70878,
+      "sha256": "e3ad1610f100cbcd659db40a02268dc35c5d39cea608922c4f00645d84c727c6",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/asr-wav2vec_ctc-300m-amh-int8_onnx/vocab.json"
+    },
+    "model:codec-higgs_audio_v2-fp32:README.md": {
+      "kind": "bundled-model-file",
+      "component": "codec-higgs_audio_v2-fp32",
+      "path": "README.md",
+      "bytes": 1010,
+      "sha256": "a687a8383e6836bdcd3c340e06bb52e42ecf708254f1ef57ca3923dc5857130a"
+    },
+    "model:codec-higgs_audio_v2-fp32:config.json": {
+      "kind": "model-file",
+      "component": "codec-higgs_audio_v2-fp32",
+      "path": "config.json",
+      "bytes": 2531,
+      "sha256": "eefb20806f7104e77c9a5277c9df0f9bb8826b08eb1d4e8ab2b9829b6ef9fac1",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/codec-higgs_audio_v2-fp32/config.json"
+    },
+    "model:codec-higgs_audio_v2-fp32:model.safetensors": {
+      "kind": "model-file",
+      "component": "codec-higgs_audio_v2-fp32",
+      "path": "model.safetensors",
+      "bytes": 805665628,
+      "sha256": "fe7c5e8785e0a05833e1bfc3e002ec7f55af21e306b2e7154a448c1f54ccfb0d",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/codec-higgs_audio_v2-fp32/model.safetensors"
+    },
+    "model:codec-higgs_audio_v2-fp32:preprocessor_config.json": {
+      "kind": "model-file",
+      "component": "codec-higgs_audio_v2-fp32",
+      "path": "preprocessor_config.json",
+      "bytes": 206,
+      "sha256": "ae61eea88558608ee2fa86d2aec9fce8d99a5ff75d09cb7651ccce21ae1d9084",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/codec-higgs_audio_v2-fp32/preprocessor_config.json"
+    },
+    "model:edit-codec_llm-0.6b-amh:README.md": {
+      "kind": "bundled-model-file",
+      "component": "edit-codec_llm-0.6b-amh",
+      "path": "README.md",
+      "bytes": 4851,
+      "sha256": "d54688aa0bc307cca426c94788867c51eba2d553490273c5ac779533b2e4e258"
+    },
+    "model:edit-codec_llm-0.6b-amh:amharic_text.py": {
+      "kind": "bundled-model-file",
+      "component": "edit-codec_llm-0.6b-amh",
+      "path": "amharic_text.py",
+      "bytes": 1957,
+      "sha256": "d9da6da09790750c31f63f3e63fbb05095d06e2396e136e3edbb562fd7a5c0de"
+    },
+    "model:edit-codec_llm-0.6b-amh:edit_omnivoice_infer.py": {
+      "kind": "bundled-model-file",
+      "component": "edit-codec_llm-0.6b-amh",
+      "path": "edit_omnivoice_infer.py",
+      "bytes": 31275,
+      "sha256": "00a39b2ed1cd725d0f709eda7aefd17db44ab71a9ce8559121c790e5cf4aa9c4"
+    },
+    "model:textcorrect-char_bart-7m-amh-fp32_onnx:encoder.onnx": {
+      "kind": "model-file",
+      "component": "textcorrect-char_bart-7m-amh-fp32_onnx",
+      "path": "encoder.onnx",
+      "bytes": 21111677,
+      "sha256": "ed5e0b020ee5577043f510885eaec7fc11485af6964ac61e3ed40152351633a6",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/textcorrect-char_bart-7m-amh-fp32_onnx/encoder.onnx"
+    },
+    "model:textcorrect-char_bart-7m-amh-fp32_onnx:decoder_step.onnx": {
+      "kind": "model-file",
+      "component": "textcorrect-char_bart-7m-amh-fp32_onnx",
+      "path": "decoder_step.onnx",
+      "bytes": 8948485,
+      "sha256": "380361fda6ad12ecba53b8dc12de13afcfd72c96b6d0e7975b7c62664d51492c",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/textcorrect-char_bart-7m-amh-fp32_onnx/decoder_step.onnx"
+    },
+    "model:textcorrect-char_bart-7m-amh-fp32_onnx:char_vocab.json": {
+      "kind": "model-file",
+      "component": "textcorrect-char_bart-7m-amh-fp32_onnx",
+      "path": "char_vocab.json",
+      "bytes": 1238,
+      "sha256": "8ba92f2377b180d5688ad630d9cf8be080280058333a1017f9f4a1493b947a83",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/textcorrect-char_bart-7m-amh-fp32_onnx/char_vocab.json"
+    },
+    "model:textcorrect-char_bart-7m-amh-fp32_onnx:meta.json": {
+      "kind": "model-file",
+      "component": "textcorrect-char_bart-7m-amh-fp32_onnx",
+      "path": "meta.json",
+      "bytes": 188,
+      "sha256": "ef5afb731062855fb110f7f1c9714d2198ac76cb22d98894401e0c6f3fad6453",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/textcorrect-char_bart-7m-amh-fp32_onnx/meta.json"
+    },
+    "model:textcorrect-char_bart-7m-amh-fp32_onnx:corrector_onnx.py": {
+      "kind": "bundled-model-file",
+      "component": "textcorrect-char_bart-7m-amh-fp32_onnx",
+      "path": "corrector_onnx.py",
+      "bytes": 7909,
+      "sha256": "6ca44fc5de39a451e92b2392dec4d8a7b778be8daca57cca3454bd2452f0815e"
+    },
+    "model:textcorrect-char_bart-7m-amh-fp32_onnx:LICENSE": {
+      "kind": "model-file",
+      "component": "textcorrect-char_bart-7m-amh-fp32_onnx",
+      "path": "LICENSE",
+      "bytes": 474,
+      "sha256": "4f057dcdb326faa3829cb9f371bb468334b03346a8941c7160ec3d4238a7b100",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/textcorrect-char_bart-7m-amh-fp32_onnx/LICENSE"
+    },
+    "model:textcorrect-char_bart-7m-amh-int8_onnx:encoder.onnx": {
+      "kind": "model-file",
+      "component": "textcorrect-char_bart-7m-amh-int8_onnx",
+      "path": "encoder.onnx",
+      "bytes": 5494392,
+      "sha256": "572e247317212f6d9d67c090c0d09dc4e05fd38fb89cdfbf0cdccae2016d6443",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/textcorrect-char_bart-7m-amh-int8_onnx/encoder.onnx"
+    },
+    "model:textcorrect-char_bart-7m-amh-int8_onnx:decoder_step.onnx": {
+      "kind": "model-file",
+      "component": "textcorrect-char_bart-7m-amh-int8_onnx",
+      "path": "decoder_step.onnx",
+      "bytes": 2374954,
+      "sha256": "c63ad877ac581ef84d1db754627d93806fc72062a86678253244a668d2b6bd89",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/textcorrect-char_bart-7m-amh-int8_onnx/decoder_step.onnx"
+    },
+    "model:textcorrect-char_bart-7m-amh-int8_onnx:char_vocab.json": {
+      "kind": "model-file",
+      "component": "textcorrect-char_bart-7m-amh-int8_onnx",
+      "path": "char_vocab.json",
+      "bytes": 1238,
+      "sha256": "8ba92f2377b180d5688ad630d9cf8be080280058333a1017f9f4a1493b947a83",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/textcorrect-char_bart-7m-amh-int8_onnx/char_vocab.json"
+    },
+    "model:textcorrect-char_bart-7m-amh-int8_onnx:meta.json": {
+      "kind": "model-file",
+      "component": "textcorrect-char_bart-7m-amh-int8_onnx",
+      "path": "meta.json",
+      "bytes": 188,
+      "sha256": "ef5afb731062855fb110f7f1c9714d2198ac76cb22d98894401e0c6f3fad6453",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/textcorrect-char_bart-7m-amh-int8_onnx/meta.json"
+    },
+    "model:textcorrect-char_bart-7m-amh-int8_onnx:corrector_onnx.py": {
+      "kind": "bundled-model-file",
+      "component": "textcorrect-char_bart-7m-amh-int8_onnx",
+      "path": "corrector_onnx.py",
+      "bytes": 7909,
+      "sha256": "6ca44fc5de39a451e92b2392dec4d8a7b778be8daca57cca3454bd2452f0815e"
+    },
+    "model:textcorrect-char_bart-7m-amh-int8_onnx:LICENSE": {
+      "kind": "model-file",
+      "component": "textcorrect-char_bart-7m-amh-int8_onnx",
+      "path": "LICENSE",
+      "bytes": 474,
+      "sha256": "4f057dcdb326faa3829cb9f371bb468334b03346a8941c7160ec3d4238a7b100",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/textcorrect-char_bart-7m-amh-int8_onnx/LICENSE"
+    },
+    "model:tts-codec_llm-0.6b-amh-fp16:chat_template.jinja": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-fp16",
+      "path": "chat_template.jinja",
+      "bytes": 4168,
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-fp16/chat_template.jinja"
+    },
+    "model:tts-codec_llm-0.6b-amh-fp16:config.json": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-fp16",
+      "path": "config.json",
+      "bytes": 2238,
+      "sha256": "b23c97c706396124d82cbd93c0bd0b11503fc01dde1f314c69ef3006089942f2",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-fp16/config.json"
+    },
+    "model:tts-codec_llm-0.6b-amh-fp16:model.safetensors": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-fp16",
+      "path": "model.safetensors",
+      "bytes": 1225189240,
+      "sha256": "f8cafa544a598d89e5d143c1e6abe21f8315f088b8ab235240a09eeed4775f7e",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-fp16/model.safetensors"
+    },
+    "model:tts-codec_llm-0.6b-amh-fp16:tokenizer.json": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-fp16",
+      "path": "tokenizer.json",
+      "bytes": 11423986,
+      "sha256": "408f669b7e2b045fdf54201d815bd364e6667dbd845115da81239c40bc6dcfd1",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-fp16/tokenizer.json"
+    },
+    "model:tts-codec_llm-0.6b-amh-fp16:tokenizer_config.json": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-fp16",
+      "path": "tokenizer_config.json",
+      "bytes": 562,
+      "sha256": "0a36b8b56a6090efc92bb08e00b570ac2d2eaa4a8747a28beac1d98f876c7c49",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-fp16/tokenizer_config.json"
+    },
+    "model:tts-codec_llm-0.6b-amh-fp16:tts_omnivoice_infer.py": {
+      "kind": "bundled-model-file",
+      "component": "tts-codec_llm-0.6b-amh-fp16",
+      "path": "tts_omnivoice_infer.py",
+      "bytes": 7831,
+      "sha256": "2aba0ac8819b0468e7718d1a73527e5956fcf21574b90485ee66f60aeb524f8a"
+    },
+    "model:tts-codec_llm-0.6b-amh-fp32:chat_template.jinja": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-fp32",
+      "path": "chat_template.jinja",
+      "bytes": 4168,
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-fp32/chat_template.jinja"
+    },
+    "model:tts-codec_llm-0.6b-amh-fp32:config.json": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-fp32",
+      "path": "config.json",
+      "bytes": 2239,
+      "sha256": "d5af4ab7446675a5b511a609400b9a562bf4c69f161da58cd0389c4e5c1d8f90",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-fp32/config.json"
+    },
+    "model:tts-codec_llm-0.6b-amh-fp32:model.safetensors": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-fp32",
+      "path": "model.safetensors",
+      "bytes": 2450344144,
+      "sha256": "c1dbcf7a807154b55279d028bdbc4c1236951a5ea74d19ce96a1ad6ab863e975",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-fp32/model.safetensors"
+    },
+    "model:tts-codec_llm-0.6b-amh-fp32:tokenizer.json": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-fp32",
+      "path": "tokenizer.json",
+      "bytes": 11423986,
+      "sha256": "408f669b7e2b045fdf54201d815bd364e6667dbd845115da81239c40bc6dcfd1",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-fp32/tokenizer.json"
+    },
+    "model:tts-codec_llm-0.6b-amh-fp32:tokenizer_config.json": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-fp32",
+      "path": "tokenizer_config.json",
+      "bytes": 562,
+      "sha256": "0a36b8b56a6090efc92bb08e00b570ac2d2eaa4a8747a28beac1d98f876c7c49",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-fp32/tokenizer_config.json"
+    },
+    "model:tts-codec_llm-0.6b-amh-fp32:tts_omnivoice_infer.py": {
+      "kind": "bundled-model-file",
+      "component": "tts-codec_llm-0.6b-amh-fp32",
+      "path": "tts_omnivoice_infer.py",
+      "bytes": 7831,
+      "sha256": "2aba0ac8819b0468e7718d1a73527e5956fcf21574b90485ee66f60aeb524f8a"
+    },
+    "model:tts-codec_llm-0.6b-amh-int8_onnx:backbone_step.int8.onnx": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-int8_onnx",
+      "path": "backbone_step.int8.onnx",
+      "bytes": 464276322,
+      "sha256": "aa0d8daad4b6b87a0562240c9511c904d3ba1d6ee6692817bd2f8fccb4c3c447",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-int8_onnx/backbone_step.int8.onnx"
+    },
+    "model:tts-codec_llm-0.6b-amh-int8_onnx:chat_template.jinja": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-int8_onnx",
+      "path": "chat_template.jinja",
+      "bytes": 4168,
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-int8_onnx/chat_template.jinja"
+    },
+    "model:tts-codec_llm-0.6b-amh-int8_onnx:config.json": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-int8_onnx",
+      "path": "config.json",
+      "bytes": 2239,
+      "sha256": "d5af4ab7446675a5b511a609400b9a562bf4c69f161da58cd0389c4e5c1d8f90",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-int8_onnx/config.json"
+    },
+    "model:tts-codec_llm-0.6b-amh-int8_onnx:embeddings.safetensors": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-int8_onnx",
+      "path": "embeddings.safetensors",
+      "bytes": 327426424,
+      "sha256": "dbed40bae26fa9cce9563d82a00f610195658a250651ce91081edd1708cd81a6",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-int8_onnx/embeddings.safetensors"
+    },
+    "model:tts-codec_llm-0.6b-amh-int8_onnx:tokenizer.json": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-int8_onnx",
+      "path": "tokenizer.json",
+      "bytes": 11423986,
+      "sha256": "408f669b7e2b045fdf54201d815bd364e6667dbd845115da81239c40bc6dcfd1",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-int8_onnx/tokenizer.json"
+    },
+    "model:tts-codec_llm-0.6b-amh-int8_onnx:tokenizer_config.json": {
+      "kind": "model-file",
+      "component": "tts-codec_llm-0.6b-amh-int8_onnx",
+      "path": "tokenizer_config.json",
+      "bytes": 562,
+      "sha256": "0a36b8b56a6090efc92bb08e00b570ac2d2eaa4a8747a28beac1d98f876c7c49",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-codec_llm-0.6b-amh-int8_onnx/tokenizer_config.json"
+    },
+    "model:tts-codec_llm-0.6b-amh-int8_onnx:tts_omnivoice_infer.py": {
+      "kind": "bundled-model-file",
+      "component": "tts-codec_llm-0.6b-amh-int8_onnx",
+      "path": "tts_omnivoice_infer.py",
+      "bytes": 7831,
+      "sha256": "2aba0ac8819b0468e7718d1a73527e5956fcf21574b90485ee66f60aeb524f8a"
+    },
+    "model:tts-flow_lm-90m-amh-fp32:config.yaml": {
+      "kind": "bundled-model-file",
+      "component": "tts-flow_lm-90m-amh-fp32",
+      "path": "config.yaml",
+      "bytes": 2051,
+      "sha256": "6d6d5a1edcb2283446912d4fbe87d696d7c568991f201bf43b73b1bd7f906990"
+    },
+    "model:tts-flow_lm-90m-amh-fp32:model.safetensors": {
+      "kind": "model-file",
+      "component": "tts-flow_lm-90m-amh-fp32",
+      "path": "model.safetensors",
+      "bytes": 438033312,
+      "sha256": "60d6385a7eaada0ec0b6d4f0ab80b864df4ef15b685c8c202dfafc77c741c621",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-flow_lm-90m-amh-fp32/model.safetensors"
+    },
+    "model:tts-flow_lm-90m-amh-fp32:tokenizer.model": {
+      "kind": "model-file",
+      "component": "tts-flow_lm-90m-amh-fp32",
+      "path": "tokenizer.model",
+      "bytes": 78016,
+      "sha256": "50e5df0ba8f39d9b40a02ba7e41b610d5dbb27763ef4a87ceb41745079e385a5",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-flow_lm-90m-amh-fp32/tokenizer.model"
+    },
+    "model:tts-flow_lm-90m-amh-fp32:tts_small_infer.py": {
+      "kind": "bundled-model-file",
+      "component": "tts-flow_lm-90m-amh-fp32",
+      "path": "tts_small_infer.py",
+      "bytes": 4612,
+      "sha256": "9896f19a72204df8adbfd6763e607a8bb0a0a21487f2310aba9eda992fcf6d85"
+    },
+    "model:tts-flow_lm-90m-amh-fp32:voices/default.wav": {
+      "kind": "model-file",
+      "component": "tts-flow_lm-90m-amh-fp32",
+      "path": "voices/default.wav",
+      "bytes": 173384,
+      "sha256": "51572b382982ffe53407a0a83332c0986eb5916eebb98e005f6049bf0aaa24e4",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-flow_lm-90m-amh-fp32/voices/default.wav"
+    },
+    "model:tts-flow_lm-90m-amh-fp32:README.md": {
+      "kind": "bundled-model-file",
+      "component": "tts-flow_lm-90m-amh-fp32",
+      "path": "README.md",
+      "bytes": 2749,
+      "sha256": "a83dd21ebc0cf89648ca197345f600fbcb6e1f979c5b04638cd53a869885b80e"
+    },
+    "noise-reduction:denoiser_realtime.safetensors": {
+      "kind": "model",
+      "component": "recognition-noise-reduction",
+      "path": "denoiser_realtime.safetensors",
+      "url": "https://huggingface.co/inworld/voice-isolator/resolve/9b0285b3fe8403aa8e2f1dbb2165a80a4294c970/denoiser_realtime.safetensors",
+      "bytes": 232780800,
+      "sha256": "76598f05523c0669e76562a8b2f31c9d395fca316e80c907ee11775e7497ae0f"
+    },
+    "noise-reduction:inworld_voice_isolation-1.0.0-py3-none-any.whl": {
+      "kind": "wheel",
+      "component": "recognition-noise-reduction",
+      "path": "inworld_voice_isolation-1.0.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/71/2c/b6ca545c08adbbb877367bf8c7228390f787f18c9d2730877216fdc05b2e/inworld_voice_isolation-1.0.0-py3-none-any.whl",
+      "bytes": 58080,
+      "sha256": "0691e3a536f6f66dd32163355dd16324bfbe01a50c23fd3294df28b01ce3df0b"
+    },
+    "noise-reduction:torchaudio-2.9.1-cp311-cp311-macosx_11_0_arm64.whl": {
+      "kind": "wheel",
+      "component": "recognition-noise-reduction",
+      "path": "torchaudio-2.9.1-cp311-cp311-macosx_11_0_arm64.whl",
+      "url": "https://files.pythonhosted.org/packages/3f/6b/34e489fcb4adc4b571a166f2670cc7f156cbe3337867a892fade0a1a5224/torchaudio-2.9.1-cp311-cp311-macosx_11_0_arm64.whl",
+      "bytes": 807349,
+      "sha256": "6e3f5943135701168d30196e2befd46290180cdbb9ee508b167730d51f43208f"
+    },
+    "noise-reduction:soundfile-0.13.1-py2.py3-none-macosx_11_0_arm64.whl": {
+      "kind": "wheel",
+      "component": "recognition-noise-reduction",
+      "path": "soundfile-0.13.1-py2.py3-none-macosx_11_0_arm64.whl",
+      "url": "https://files.pythonhosted.org/packages/a0/e5/58fd1a8d7b26fc113af244f966ee3aecf03cb9293cb935daaddc1e455e18/soundfile-0.13.1-py2.py3-none-macosx_11_0_arm64.whl",
+      "bytes": 1101406,
+      "sha256": "743f12c12c4054921e15736c6be09ac26b3b3d603aef6fd69f9dde68748f2593"
+    },
+    "noise-reduction:cffi-2.0.0-cp311-cp311-macosx_11_0_arm64.whl": {
+      "kind": "wheel",
+      "component": "recognition-noise-reduction",
+      "path": "cffi-2.0.0-cp311-cp311-macosx_11_0_arm64.whl",
+      "url": "https://files.pythonhosted.org/packages/4f/8b/f0e4c441227ba756aafbe78f117485b25bb26b1c059d01f137fa6d14896b/cffi-2.0.0-cp311-cp311-macosx_11_0_arm64.whl",
+      "bytes": 180560,
+      "sha256": "2de9a304e27f7596cd03d16f1b7c72219bd944e99cc52b84d0145aefb07cbd3c"
+    },
+    "noise-reduction:pycparser-2.23-py3-none-any.whl": {
+      "kind": "wheel",
+      "component": "recognition-noise-reduction",
+      "path": "pycparser-2.23-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a0/e3/59cd50310fc9b59512193629e1984c1f95e5c8ae6e5d8c69532ccc65a7fe/pycparser-2.23-py3-none-any.whl",
+      "bytes": 118140,
+      "sha256": "e5c6e8d3fbad53479cab09ac03729e0a9faf2bee3db8208a550daf5af81a5934"
+    },
+    "runtime:recognition_packages:windows:x86_64:cpu-high:adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c": {
+      "kind": "model",
+      "component": "recognition_packages",
+      "path": "amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz",
+      "bytes": 1261204759,
+      "sha256": "adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c"
+    },
+    "runtime:recognition_packages:windows:x86_64:cpu-high:a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5": {
+      "kind": "runtime",
+      "component": "recognition_packages",
+      "path": "amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz",
+      "bytes": 100868240,
+      "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5"
+    },
+    "runtime:recognition_packages:windows:x86_64:cpu-low:f548411d29143d278569f72fa3435944d42b94769895cc9b394895dec578bb4b": {
+      "kind": "model",
+      "component": "recognition_packages",
+      "path": "amharic-asr-v0.3-model-windows-x86_64-cpu-low.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-low.tar.gz",
+      "bytes": 331240531,
+      "sha256": "f548411d29143d278569f72fa3435944d42b94769895cc9b394895dec578bb4b"
+    },
+    "runtime:recognition_packages:windows:x86_64:cpu-low:a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5": {
+      "kind": "runtime",
+      "component": "recognition_packages",
+      "path": "amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz",
+      "bytes": 100868240,
+      "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5"
+    },
+    "runtime:recognition_packages:windows:x86_64:gpu-modern:1ae88eda156f10bacf4162399251bbfa104b090f446cd3f0875ff3d844027951": {
+      "kind": "model",
+      "component": "recognition_packages",
+      "path": "amharic-asr-v0.3-model-windows-x86_64-gpu-modern.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-gpu-modern.tar.gz",
+      "bytes": 1806995102,
+      "sha256": "1ae88eda156f10bacf4162399251bbfa104b090f446cd3f0875ff3d844027951"
+    },
+    "runtime:recognition_packages:windows:x86_64:gpu-modern:43a06eb36596764fa208dc231a3544ad7bb9ffd6424c560a90a17961295ffc0d": {
+      "kind": "runtime",
+      "component": "recognition_packages",
+      "path": "amharic-asr-v0.3-runtime-windows-x86_64-cuda.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-cuda.tar.gz",
+      "bytes": 3067969324,
+      "sha256": "43a06eb36596764fa208dc231a3544ad7bb9ffd6424c560a90a17961295ffc0d"
+    },
+    "runtime:recognition_packages:windows:x86_64:cpu-mid:adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c": {
+      "kind": "model",
+      "component": "recognition_packages",
+      "path": "amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz",
+      "bytes": 1261204759,
+      "sha256": "adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c"
+    },
+    "runtime:recognition_packages:windows:x86_64:cpu-mid:a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5": {
+      "kind": "runtime",
+      "component": "recognition_packages",
+      "path": "amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz",
+      "bytes": 100868240,
+      "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5"
+    },
+    "runtime:recognition_packages:windows:x86_64:gpu-low:adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c": {
+      "kind": "model",
+      "component": "recognition_packages",
+      "path": "amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz",
+      "bytes": 1261204759,
+      "sha256": "adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c"
+    },
+    "runtime:recognition_packages:windows:x86_64:gpu-low:a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5": {
+      "kind": "runtime",
+      "component": "recognition_packages",
+      "path": "amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz",
+      "bytes": 100868240,
+      "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5"
+    },
+    "runtime:recognition_packages:windows:x86_64:gpu-pascal:adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c": {
+      "kind": "model",
+      "component": "recognition_packages",
+      "path": "amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-windows-x86_64-cpu-high.tar.gz",
+      "bytes": 1261204759,
+      "sha256": "adcff3417bf457fbd2d93265c806af43f6eccb686e0f0bce3bc73bc7b0796d7c"
+    },
+    "runtime:recognition_packages:windows:x86_64:gpu-pascal:a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5": {
+      "kind": "runtime",
+      "component": "recognition_packages",
+      "path": "amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-windows-x86_64-onnx.tar.gz",
+      "bytes": 100868240,
+      "sha256": "a1697d3f752d93584cd6b6f3886ef46d3839587d7aa9da94b0a686014fd640e5"
+    },
+    "runtime:recognition_packages:macos:aarch64::163a43588884d9ff8afab0dc2e90a478b62de2a49873bc04a2f55d42fe21de28": {
+      "kind": "model",
+      "component": "recognition_packages",
+      "path": "amharic-asr-v0.3-model-macos-aarch64.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-model-macos-aarch64.tar.gz",
+      "bytes": 1261204954,
+      "sha256": "163a43588884d9ff8afab0dc2e90a478b62de2a49873bc04a2f55d42fe21de28"
+    },
+    "runtime:recognition_packages:macos:aarch64::0a0503288adc4ecce5fd5daf36f0daa74b09a2452052bf1f767deeb7e5b05a8e": {
+      "kind": "runtime",
+      "component": "recognition_packages",
+      "path": "amharic-asr-v0.3-runtime-macos-aarch64.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/amharic-asr-v0.3-runtime-macos-aarch64.tar.gz",
+      "bytes": 74121512,
+      "sha256": "0a0503288adc4ecce5fd5daf36f0daa74b09a2452052bf1f767deeb7e5b05a8e"
+    },
+    "runtime:speech_runtimes:macos:aarch64::013456dc06cedb57f0358be03815e7a615c7a92ee036d74cdfbc3d589df16046": {
+      "kind": "runtime",
+      "component": "speech_runtimes",
+      "path": "tts-runtime-macos-aarch64-small-tts-macos-2026-11-16.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-runtime-macos-aarch64-small-tts-macos-2026-11-16.tar.gz",
+      "bytes": 160204361,
+      "sha256": "013456dc06cedb57f0358be03815e7a615c7a92ee036d74cdfbc3d589df16046"
+    },
+    "runtime:speech_runtimes:windows:x86_64::6fd4799fa4ff0468dbd0adbdbd9ff2877a019974ebcdee336efa291f654caa8b": {
+      "kind": "runtime",
+      "component": "speech_runtimes",
+      "path": "tts-runtime-windows-x86_64-voice-20261125-cpu.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-runtime-windows-x86_64-voice-20261125-cpu.tar.gz",
+      "bytes": 232906611,
+      "sha256": "6fd4799fa4ff0468dbd0adbdbd9ff2877a019974ebcdee336efa291f654caa8b"
+    },
+    "runtime:editing_runtimes:windows:x86_64::b25132f87a4d00f8328e1fb9a27370aa57265678bcf7b453280bedac9ba21da6": {
+      "kind": "runtime",
+      "component": "editing_runtimes",
+      "path": "editing-runtime-windows-x86_64-voice-20261125-gpu.tar.gz",
+      "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/editing-runtime-windows-x86_64-voice-20261125-gpu.tar.gz",
+      "bytes": 3212223767,
+      "sha256": "b25132f87a4d00f8328e1fb9a27370aa57265678bcf7b453280bedac9ba21da6"
+    }
+  },
+  "source_sha256": {
+    "studio-manifest.json": "78d26ac9041b99793589664f632311999765fca250f0571042f7a070bd85b80a",
+    "asr-catalog.json": "15f49a6c7876e22d464658ffa2a91f5e4ebce658898e33c6496b8cc7d119f5d8",
+    "asr-routes.json": "3591f3a41f27e75297b1d534b81f6d706dcba1a898d7f1260134045caf4d694d",
+    "tts-runtimes.json": "9649ab99aa1ac163ba328a86a9ccc8d41faae0131d97fec7df882425dcb5793d",
+    "editing-runtimes.json": "b15f4294d535a5ee283c9f732c8abd13816be974fcc240461d903e9c3c36d7fd",
+    "noise-reduction.json": "904fe11c3aaf47dea1c0761fea9a77e1d6ec241a911d0976fb454e9a7cb4bc76"
+  }
+}

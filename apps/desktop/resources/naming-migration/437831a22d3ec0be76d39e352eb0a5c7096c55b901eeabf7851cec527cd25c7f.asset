@@ -1,0 +1,84 @@
+# asr-wav2vec_ctc-1b-amh-3273h-v1.0
+
+v0.3 (2026-11-04) is the fourth release, a minor update of v0.2 (2026-11-02): the same recipe trained on more
+human corrections (0.78 h from 172 recordings instead of 0.63 h from 105), now including the first news-channel clips
+and more vocal-/speaker-separated audio. Letter variants (ሠ/ሰ, ሐ/ኀ/ሀ, ...) stay merged as in v0.2. It is Meta's
+omniASR_CTC_1B_v2 with a LoRA fine-tune merged in, trained on human-corrected Amilia clips plus read speech. It returns
+Amharic text with word timings for audio of any length. The API, files and sizes are unchanged from v0.2: swap the
+bundle folder.
+
+## Model files
+
+This released variant contains its weights, tokenizer, inference package and
+streaming guide. Download the files listed for `asr-wav2vec_ctc-1b-amh-fp16` in the repository
+manifest into one local folder. The weights are approximately 1.95 GB.
+
+- `model/model.safetensors`, `model/config.json`, `model/tokenizer.model` and
+  `model/version.json` contain the model and its provenance.
+- `omniasr_hf/` provides the inference implementation.
+- `requirements.txt` and `STREAMING.md` describe dependencies and streaming use.
+
+## Minimum requirements
+
+- **Python** ≥ 3.9.
+- **Packages:**
+  - `torch` ≥ 2.1
+  - `transformers` ≥ 4.40, < 5
+  - `sentencepiece`
+  - `numpy`
+  - `librosa`, only if you pass file paths. Pass a 16 kHz mono float32 array and it isn't needed.
+  - Tested only with torch 2.9.1 and transformers 4.55.4. The lower bounds are untested estimates.
+- **No network access:** everything loads from the folder, and no `preprocessor_config.json` or HF processor is
+  needed.
+- **Memory and speed:**
+
+  | Setup | Memory | 10 s of audio |
+  |---|---|---|
+  | GPU, `dtype=torch.float32` (default) | 4.7 GB peak | a few hundredths of a second |
+  | GPU, `dtype=torch.float16` | 2.5 GB peak | — |
+  | CPU, fp32 (fp16 is slow on CPU) | about 4–5 GB RAM (estimated from the weight size, not measured) | about 2.3 s on 8 threads |
+
+  On GPU, fp16 changes the error rate by at most 0.03 points, though about 1 transcript in 12 differs by a character
+  or so.
+- **Input:** any sample rate or format librosa reads, or a 16 kHz mono float array. There is no length limit; audio
+  over 30 s is cut at quiet points automatically.
+
+## Use
+
+```python
+import sys; sys.path.insert(0, "<bundle dir>")            # or copy omniasr_hf/ into the app
+from omniasr_hf.transcribe import CTCTranscriber
+asr = CTCTranscriber("<bundle dir>/model")                 # GPU if available; dtype=torch.float16 to halve GPU memory
+r = asr.transcribe("clip.wav")                              # or a 16 kHz mono float32 numpy array
+r["text"]            # "ሰላም ነው። ..."
+r["words"]           # [{"word": "ሰላም", "start": 0.42, "end": 0.86}, ...] seconds
+r["model_version"]   # "v0.3": store it with every transcript
+```
+
+Command line: `python -m omniasr_hf.transcribe <bundle>/model a.wav b.mp3 [--words]`, run from the bundle folder.
+
+**Live dictation:** `StreamingTranscriber` in the same file shows final and partial text while the user speaks.
+Read `STREAMING.md` before using it: it covers the threading rules, the two text zones, settings for GPU and CPU,
+and the measured accuracy and latency.
+
+## What to expect
+
+- **Output:** Ge'ez script written as spoken, including disfluencies, with `።` `፣` `?`. English words come out in Ge'ez
+  spelling. Numbers come out as words.
+- **Accuracy (character error rate, letter variants merged, punctuation removed):**
+  - 15.9% on conversational podcast/news clips (word error rate 42.1%; v0.2: 16.5% / 41.7%)
+  - 13.0% on WAXAL (v0.2: 13.1%)
+  - 10.4% on read speech (v0.2: 10.4%)
+  - The changes from v0.2 are within the noise of these small test sets (Amilia interval −1.2 to +0.1 points):
+    expect similar output, perhaps slightly fewer character errors on conversational speech.
+  - **Spelling:** as in v0.2, only the common letter of each variant group is written (ሰ not ሠ, ሀ not ሐ/ኀ, አ not
+    ዐ/ዓ, ጸ not ፀ); no variant letters on the three test sets. Words such as ዓመት come out as አመት.
+- **Word times:** taken from the CTC path with 20 ms resolution. Edges can be off by a frame or two.
+- **Limits:** trained on only 0.78 h of corrected conversation, and the test sets are small. It is a research model;
+  the Amilia transcripts are for non-commercial use.
+
+## Updates
+
+Use the repository manifest to select a released variant and verify its file
+sizes and SHA-256 checksums. Keep the model name and `model_version` with saved
+transcripts so recognition results remain traceable across updates.

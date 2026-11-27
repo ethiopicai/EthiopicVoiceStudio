@@ -1,0 +1,32 @@
+<!doctype html><html><head><meta charset="UTF-8"><title>Voice editing fixture</title><style>html,body,#app{height:100%;margin:0}#app{display:flex;min-height:0}</style></head><body><div id="app"></div><script type="module">
+import {mount} from 'svelte';
+import VoiceEditing from '../../src/VoiceEditing.svelte';
+import '../../src/style.css';
+const wav=new Uint8Array(44+96000),v=new DataView(wav.buffer);
+function ascii(at,text){for(let i=0;i<text.length;i++)wav[at+i]=text.charCodeAt(i);}
+ascii(0,'RIFF');v.setUint32(4,wav.length-8,true);ascii(8,'WAVEfmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,24000,true);v.setUint32(28,48000,true);v.setUint16(32,2,true);v.setUint16(34,16,true);ascii(36,'data');v.setUint32(40,96000,true);
+let project={id:'owned-project',name:'My recording.wav',created:1,revision:0,head:0,duration:2,channels:1,versions:[{audio:'original.wav',text:'ሰላም ልጆች',words:[{word:'ሰላም',start:.1,end:.8},{word:'ልጆች',start:1,end:1.8}],regions:[],parent:null,kind:'import'}]};
+let status={selection:{available:true,opt_in_required:false,slow:false,reason:'Voice Editing runs locally on this computer.',tier:'gpu-modern',download_bytes:1},consent:false,optIn:false,ready:true,runtimePresent:true,busy:false,stage:'',loaded:false};
+if(new URL(location.href).searchParams.has('unaligned'))project.versions[0].words=[];
+let preview=null;const calls=[];
+window.editFixture={calls,failPreview:false,configure(value){Object.assign(status,value);},unsupported(){status.selection={...status.selection,available:false,reason:'Voice Editing is unavailable on this hardware.'};status.ready=false;}};
+window.__TAURI_INTERNALS__={invoke:async(command,args={})=>{
+ calls.push({command,args:structuredClone(args)});
+ if(command==='get_voice_edit_status')return structuredClone(status);
+ if(command==='accept_voice_edit_consent'){status.consent=true;return;}
+ if(command==='list_voice_edit_projects')return [structuredClone(project)];
+ if(command==='list_transcripts')return [];
+ if(command==='get_voice_edit_audio')return {bytes:Array.from(wav)};
+ if(command==='export_voice_edit_project')return '/Downloads/Ethiopic-Voice-Edit-test';
+ if(command==='voice_edit_action'){
+   const current=project.versions[project.head];
+   if(args.action==='preview'&&window.editFixture.failPreview)throw Error('Some words could not be located. Check the original transcript and align it again.');
+   if(args.action==='preview')return preview={text:args.text,words:args.text.split(' ').map((word,i)=>({word,start:.1+i*.9,end:.8+i*.9})),regions:[{span_in:[1,1.8],span_out:[1,1.8]}],edits:[{span_in:[1,1.8],span_out:[1,1.8]}],seed:args.seed,duration:2};
+   if(args.action==='undo'){project.head=current.parent;project.revision++;return structuredClone(project);}
+   const next={...current,parent:project.head,kind:args.action==='keep'?'edit':'fix',text:args.action==='keep'?preview.text:args.text,regions:args.action==='keep'?preview.regions:current.regions,seed:args.action==='keep'?preview.seed:null};
+   next.words=next.text.split(' ').map((word,i)=>({word,start:.1+i*.9,end:.8+i*.9}));project.versions.push(next);project.head=project.versions.length-1;project.revision++;return structuredClone(project);
+ }
+ throw new Error('Unexpected fixture command '+command);
+}};
+mount(VoiceEditing,{target:document.getElementById('app'),props:{onSetup(){}}});
+</script></body></html>

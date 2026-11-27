@@ -1,0 +1,98 @@
+"""tts-flow_lm-90m-amh-fp32: Amharic text (+ optional reference voice) -> 24 kHz wav, on CPU. Kyutai Pocket TTS fine-tuned on
+Amharic (see variant.json).
+
+    python tts_small_infer.py --text "ሰላም ጤና ይስጥልኝ።" --out out.wav [--voice ref.wav] [--threads 4] [--int8]
+
+Python:
+    from tts_small_infer import AmharicTTS
+    tts = AmharicTTS()                      # loads from this folder
+    wav = tts.synth("ሰላም ጤና ይስጥልኝ።", voice="ref.wav")   # float32 numpy, tts.sample_rate (24000)
+
+Needs: pocket-tts (tested at git v4.0.1-19-gee2ebc8; PyPI 4.0.1 untested), torch>=2.5, sentencepiece, pyyaml, numpy, soundfile (for files);
+torchao for --int8. The voice prompt should be a clean 3-5 s clip of one speaker (longer clips are cut to 5 s:
+the model was trained with <= 5 s prompts). Without --voice, voices/default.wav from this folder is used.
+Input text: Amharic in Ethiopic script. Letter variants are merged (ሐ->ሀ, ሠ->ሰ, ...) and punctuation mapped by
+the config; ። ? ! end sentences (each sentence is generated separately). Digits and Latin-script words are rare in
+the training data and may be read poorly: spell numbers out in words.
+"""
+import argparse, os, re, tempfile
+import numpy as np
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+PAUSE_SEC = 0.2  # silence inserted between sentences
+# Sentence ends: Ethiopic full stop / question mark / paragraph separator, Latin . ? ! and the ellipsis.
+_SENT_END = re.compile(r"(?<=[\u1362\u1367\u1368?!.\u2026])\s+")
+
+
+def split_sentences(text):
+    """Sentences of `text`, each with its final punctuation. The model was trained on single sentences ending in one
+    '.', so each sentence is generated on its own: a sentence mark inside a prompt can make it stop early."""
+    return [x for x in (p.strip() for p in _SENT_END.split(text.strip())) if any(c.isalnum() for c in x)]
+
+
+def _resolved_config():
+    """config.yaml with weights/tokenizer paths made absolute (pocket-tts resolves them relative to the cwd)."""
+    import yaml
+    cfg = yaml.safe_load(open(os.path.join(HERE, "config.yaml"), encoding="utf-8"))
+    cfg["weights_path"] = os.path.join(HERE, cfg["weights_path"])
+    lt = cfg["flow_lm"]["lookup_table"]
+    lt["tokenizer_path"] = os.path.join(HERE, lt["tokenizer_path"])
+    fd, path = tempfile.mkstemp(suffix=".yaml")
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
+        yaml.safe_dump(cfg, f, allow_unicode=True)
+    return path
+
+
+class AmharicTTS:
+    def __init__(self, threads=4, int8=False, temp=None):
+        import torch
+        torch.set_num_threads(threads)
+        from pocket_tts import TTSModel
+        cfg = _resolved_config()
+        try:
+            self.model = TTSModel.load_model(config=cfg, quantize=int8, temp=temp)
+        finally:
+            os.unlink(cfg)
+        self.sample_rate = self.model.sample_rate
+        self._voices = {}
+
+    def _voice_state(self, voice):
+        voice = voice or os.path.join(HERE, "voices", "default.wav")
+        if voice not in self._voices:
+            import soundfile as sf, torch
+            w, sr = sf.read(voice, dtype="float32", always_2d=True)
+            w = w.mean(1)
+            if sr != self.sample_rate:
+                from pocket_tts.data.audio_utils import convert_audio
+                w = convert_audio(torch.from_numpy(w)[None], sr, self.sample_rate, 1)[0].numpy()
+            w = w[: 5 * self.sample_rate]
+            self._voices[voice] = self.model.get_state_for_audio_prompt(torch.from_numpy(w.copy())[None])
+        return self._voices[voice]
+
+    def synth(self, text, voice=None):
+        state = self._voice_state(voice)
+        pause = np.zeros(int(PAUSE_SEC * self.sample_rate), np.float32)
+        out = []
+        for sent in split_sentences(text):
+            if out:
+                out.append(pause)
+            out.append(self.model.generate_audio(state, sent).squeeze().cpu().numpy().astype(np.float32))
+        if not out:
+            raise ValueError("no speakable text")
+        return np.concatenate(out)
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--text", required=True); ap.add_argument("--out", required=True)
+    ap.add_argument("--voice"); ap.add_argument("--threads", type=int, default=4)
+    ap.add_argument("--int8", action="store_true")
+    a = ap.parse_args()
+    import soundfile as sf
+    tts = AmharicTTS(threads=a.threads, int8=a.int8)
+    sf.write(a.out, tts.synth(a.text, a.voice), tts.sample_rate)
+    print("wrote", a.out)
+
+
+if __name__ == "__main__":
+    main()

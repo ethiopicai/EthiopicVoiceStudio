@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "releases": [
+    {
+      "os": "macos",
+      "arch": "aarch64",
+      "tiers": [
+        "apple-arm",
+        "cpu-low",
+        "cpu-mid",
+        "cpu-high"
+      ],
+      "version": "small-tts-macos-2026-11-16",
+      "artifact": {
+        "kind": "runtime",
+        "sha256": "013456dc06cedb57f0358be03815e7a615c7a92ee036d74cdfbc3d589df16046",
+        "size": 160204361,
+        "unpacked_size": 567523441,
+        "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-runtime-macos-aarch64-small-tts-macos-2026-11-16.tar.gz"
+      }
+    },
+    {
+      "os": "windows",
+      "arch": "x86_64",
+      "tiers": [
+        "cpu-low",
+        "cpu-mid",
+        "cpu-high"
+      ],
+      "version": "voice-20261125-cpu",
+      "artifact": {
+        "kind": "runtime",
+        "url": "https://huggingface.co/ethiopic/ethiopic-studio-models/resolve/ce4b919ca0e27bcc5886ca3dc447e507466c2774/tts-runtime-windows-x86_64-voice-20261125-cpu.tar.gz",
+        "sha256": "6fd4799fa4ff0468dbd0adbdbd9ff2877a019974ebcdee336efa291f654caa8b",
+        "size": 232906611,
+        "unpacked_size": 726918660
+      }
+    }
+  ]
+}

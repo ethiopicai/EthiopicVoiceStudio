@@ -1,0 +1,586 @@
+"""Word-level speech editing ("change the words, keep the voice") for the Ethiopic Voice Studio.
+
+Code-only variant: it reuses the weights of a sibling OmniVoice TTS variant, the shared Higgs codec and the ONNX
+amharic-ctc aligner. Expected layout (as in manifest.json):
+
+    <models>/edit-codec_llm-0.6b-amh/          this folder
+    <models>/tts-codec_llm-0.6b-amh-fp16/      or tts-codec_llm-0.6b-amh-fp32 / tts-codec_llm-0.6b-amh-int8_onnx (any one)
+    <models>/codec-higgs_audio_v2-fp32/         found by the TTS variant at ../codec-higgs_audio_v2-fp32
+    <models>/asr-wav2vec_ctc-1b-amh-int8_onnx/    forced alignment + transcription (CPU, onnxruntime)
+
+Python:
+    from edit_omnivoice_infer import SpeechEditor
+    ed = SpeechEditor("<models>/tts-codec_llm-0.6b-amh-fp16")          # aligner_dir defaults to ../asr-wav2vec_ctc-1b-amh-int8_onnx
+    r = ed.transcribe("clip.wav")                              # {"text", "words": [{"word","start","end"}]}
+    out = ed.edit("clip.wav", r["text"], "<edited text>")      # {"audio" float32 24 kHz, "sr", "edits", "words", ...}
+
+CLI:
+    python edit_omnivoice_infer.py --tts <models>/tts-codec_llm-0.6b-amh-fp16 --audio in.wav --new-text "..." --out out.wav
+        [--orig-text "..."] [--num-step 32] [--span-duration 0.8] [--force] [--threads 4]
+
+Method (details: amharic-speech-edit README): the edited words' audio is cut at the neighbouring pauses, replaced by
+N masked token frames (N from the local speaking rate), and filled by OmniVoice's iterative unmasking with the audio
+on BOTH sides as context (masked-middle inference) and the new transcript as text; only the regenerated span is
+decoded into the original waveform (20 ms crossfades). Deletions are a cut plus a 0.32 s regeneration around the
+seam. Several changes are edited right to left. Needs: torch, torchaudio, transformers>=5.3, soundfile, omnivoice,
+onnxruntime (aligner); numpy. scipy optional (faster resampling).
+"""
+import argparse
+import difflib
+import importlib.util
+import math
+import os
+import sys
+import time
+
+import numpy as np
+import torch
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+from amharic_text import cer, fold, norm_word, spoken_chars, strip_punct  # noqa: E402
+
+SR = 24000
+FPS = 25
+HOP = SR // FPS
+SR16 = 16000
+MAX_SEC = 30.0
+DEFAULT_ALIGNER = "asr-wav2vec_ctc-1b-amh-int8_onnx"
+
+
+class EditError(ValueError):
+    """Raised for requests the editor refuses. `kind` is one of: no_change, too_long, too_short, bad_num_step,
+    text_mismatch, alignment_failed, empty_text."""
+
+    def __init__(self, kind, msg):
+        super().__init__(msg)
+        self.kind = kind
+
+
+def _load_module(path, name):
+    spec = importlib.util.spec_from_file_location(name, path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+# ---------------------------------------------------------------------------- forced alignment (numpy)
+def viterbi_word_spans(logp, tokens, word_of):
+    """CTC Viterbi forced alignment of one utterance. logp: (T, V) log-probs, tokens: target ids (no blanks),
+    word_of: word index per token (-1 for the space token). Returns [(first_frame, last_frame) | None] per word, or
+    None if the text cannot be aligned. Same algorithm as the research aligner (blank id 0)."""
+    T, N = logp.shape[0], len(tokens)
+    if N == 0 or T < N:
+        return None
+    tok = np.asarray(tokens)
+    blank = logp[:, 0]
+    tok_em = logp[:, tok]  # (T, N)
+    neg = -np.inf
+    tr = np.full((T + 1, N + 1), neg, dtype=np.float32)
+    tr[0, 0] = 0.0
+    for t in range(T):
+        prev = tr[t]
+        stay = prev + blank[t]
+        move = np.concatenate([[neg], prev[:-1] + tok_em[t]])
+        tr[t + 1] = np.maximum(stay, move)
+    if not np.isfinite(tr[T, N]):
+        return None
+    frames = [0] * N
+    j = N
+    for t in range(T, 0, -1):
+        if j == 0:
+            break
+        stay = tr[t - 1, j] + blank[t - 1]
+        move = tr[t - 1, j - 1] + tok_em[t - 1, j - 1]
+        if move >= stay:
+            j -= 1
+            frames[j] = t - 1
+    spans = {}
+    for f, w in zip(frames, word_of):
+        if w < 0:
+            continue
+        s, e = spans.get(w, (f, f))
+        spans[w] = (min(s, f), max(e, f))
+    n_words = max(word_of, default=-1) + 1
+    return [spans.get(i) for i in range(n_words)]
+
+
+class OnnxAligner:
+    """amharic-ctc v0.3 (ONNX, CPU) transcription + forced word alignment of a given transcript."""
+
+    def __init__(self, aligner_dir, threads=4):
+        mod = _load_module(os.path.join(aligner_dir, "asr_onnx_infer.py"), "_edit_asr_onnx_infer")
+        self.mod = mod
+        self.asr = mod.OnnxCTCTranscriber(aligner_dir, threads=threads)
+        self.char_id = {p: i for i, p in enumerate(self.asr.vocab) if len(p) == 1}
+        self.space_id, self.unk_id = mod.SPACE_ID, 3
+
+    def to16(self, wav24):
+        return self.mod.resample(np.asarray(wav24, np.float32), SR, SR16)
+
+    def logp(self, wav24):
+        """One ONNX pass -> (log-probs (T, V), seconds per frame). Audio must be <= 40 s (the editor caps at 30 s)."""
+        w16 = self.to16(wav24)
+        if len(w16) < 400:
+            return None, None
+        logits = self.asr.logits(np.ascontiguousarray(w16, np.float32)).astype(np.float32)
+        return logits - np.logaddexp.reduce(logits, axis=-1, keepdims=True), (len(w16) / SR16) / logits.shape[0]
+
+    def transcribe(self, wav24, lp=None):
+        """Greedy transcript + word times. Clips over 30 s go through the transcriber's own chunking."""
+        if lp is None and len(wav24) > 30 * SR:
+            r = self.asr.transcribe(self.to16(wav24), sr=SR16)
+            return {"text": r["text"], "words": r["words"], "model_version": r.get("model_version")}
+        lp = lp if lp is not None else self.logp(wav24)[0]
+        words = [] if lp is None else self.asr.words(lp.argmax(-1).tolist())
+        return {"text": " ".join(w["word"] for w in words), "words": words, "model_version": self.asr.version}
+
+    def align(self, wav24, text, lp=None, spf=None):
+        """Per raw whitespace token of `text`: (start_sec, end_sec) or None (no spoken characters). None if the text
+        cannot be aligned at all. Pass lp/spf from logp() to reuse one ONNX pass."""
+        if lp is None:
+            lp, spf = self.logp(wav24)
+            if lp is None:
+                return None
+        logp = lp
+        raw = text.split()
+        tk, wo, tok_word, k = [], [], [], 0
+        for ri, tok in enumerate(raw):
+            for part in strip_punct(fold(tok)).split():
+                ids = [self.char_id.get(c, self.unk_id) for c in spoken_chars(part)]
+                ids = [i for i in ids if i != self.unk_id]
+                if not ids:
+                    continue
+                if tk:
+                    tk.append(self.space_id); wo.append(-1)
+                tk += ids; wo += [k] * len(ids); tok_word.append(ri); k += 1
+        res = viterbi_word_spans(logp, tk, wo)
+        if res is None:
+            return None
+        out = [None] * len(raw)
+        for j, ri in enumerate(tok_word):
+            s = res[j]
+            if s is None:
+                continue
+            st, en = s[0] * spf, (s[1] + 1) * spf
+            out[ri] = (st, en) if out[ri] is None else (min(out[ri][0], st), max(out[ri][1], en))
+        return out
+
+
+def fill_timings(timings):
+    """Untimed tokens (punctuation, Latin script) become zero-length at the previous word's end."""
+    out, last = [], 0.0
+    nxt, nv = [None] * len(timings), None
+    for i in range(len(timings) - 1, -1, -1):
+        if timings[i] is not None:
+            nv = timings[i][0]
+        nxt[i] = nv
+    for i, t in enumerate(timings):
+        if t is None:
+            t = (last, last) if i > 0 or nxt[i] is None else (nxt[i], nxt[i])
+        out.append((float(t[0]), float(t[1])))
+        last = t[1]
+    return out
+
+
+# ---------------------------------------------------------------------------- editor
+class SpeechEditor:
+    def __init__(self, tts_dir, codec_dir=None, aligner_dir=None, device=None, threads=None, num_step=None):
+        """tts_dir: a tts-codec_llm-0.6b-amh-{fp16,fp32,int8_onnx} folder. codec_dir default ../codec-higgs_audio_v2-fp32, aligner_dir
+        default ../asr-wav2vec_ctc-1b-amh-int8_onnx (both next to tts_dir). device: torch device for the TTS variant (default
+        cuda if available; the cpu-int8 variant always runs on CPU). threads: CPU threads for the aligner (and the
+        cpu-int8 backbone). num_step: default decoding steps (default: the TTS variant's recommended value)."""
+        tts_dir = os.path.abspath(tts_dir)
+        parent = os.path.dirname(tts_dir)
+        if not aligner_dir:  # "asr-ctc-1b-onnx-int8" = name before 2026-11-26
+            aligner_dir = next((os.path.join(parent, n) for n in (DEFAULT_ALIGNER, "asr-ctc-1b-onnx-int8")
+                                if os.path.isdir(os.path.join(parent, n))), os.path.join(parent, DEFAULT_ALIGNER))
+        tmod = _load_module(os.path.join(tts_dir, "tts_omnivoice_infer.py"), "_edit_tts_omnivoice_infer")
+        from omnivoice.models.omnivoice import OmniVoiceGenerationConfig, _get_time_steps, _gumbel_sample
+        self._gc_cls, self._time_steps, self._gumbel = OmniVoiceGenerationConfig, _get_time_steps, _gumbel_sample
+        self.tts = tmod.OmniVoiceTTS(tts_dir, codec_dir, device=device, threads=threads, num_step=num_step)
+        self.model, self.device = self.tts.model, self.tts.device
+        self.model.audio_tokenizer.float()  # the codec must run in fp32 (fp16 decodes garbage)
+        self.num_step = self.tts.num_step
+        self.cfg = self.model.config
+        self.est = self.model.duration_estimator
+        self.aligner = OnnxAligner(aligner_dir, threads=threads or 4)
+        self.variant = self.tts.meta.get("id", os.path.basename(tts_dir))
+
+    # ------------------------------------------------------------------ audio io
+    def load(self, audio, sr=None):
+        """Path (wav/flac/ogg/mp3 via soundfile) or float array (pass sr) -> mono float32 at 24 kHz."""
+        if isinstance(audio, (str, os.PathLike)):
+            import soundfile as sf
+            x, sr = sf.read(str(audio), dtype="float32", always_2d=True)
+            x = x.mean(1)
+        else:
+            x = np.asarray(audio, np.float32)
+            if x.ndim == 2:
+                x = x.mean(1) if x.shape[1] <= 8 else x.mean(0)
+            if sr is None:
+                raise ValueError("pass sr= with a raw waveform")
+        return np.ascontiguousarray(self.aligner.mod.resample(x, sr, SR) if sr != SR else x, dtype=np.float32)
+
+    @torch.inference_mode()
+    def encode(self, wav):
+        fe = self.model.feature_extractor(raw_audio=wav, sampling_rate=SR, return_tensors="pt")
+        return self.model.audio_tokenizer.encode(fe["input_values"].to(self.device).float()).audio_codes.squeeze(0)
+
+    @torch.inference_mode()
+    def decode(self, tokens):
+        return self.model.audio_tokenizer.decode(tokens.to(self.device).unsqueeze(0)).audio_values[0, 0].float().cpu().numpy()
+
+    # ------------------------------------------------------------------ public: ASR / alignment
+    def transcribe(self, audio, sr=None):
+        """-> {"text", "words": [{"word","start","end"}], "model_version"} (greedy amharic-ctc v0.3)."""
+        return self.aligner.transcribe(self.load(audio, sr))
+
+    def align(self, audio, text, sr=None):
+        """Forced alignment of `text` -> [{"word","start","end"}] per whitespace token (start/end None for tokens
+        without Ethiopic/Latin letters or digits the model knows). Raises EditError("alignment_failed")."""
+        wav = self.load(audio, sr)
+        t = self.aligner.align(wav, text)
+        if t is None:
+            raise EditError("alignment_failed", "forced alignment failed: does the text match the audio?")
+        return [{"word": w, "start": None if s is None else round(s[0], 3), "end": None if s is None else round(s[1], 3)}
+                for w, s in zip(text.split(), t)]
+
+    # ------------------------------------------------------------------ public: edit
+    def edit(self, audio, orig_text, new_text, words=None, span_duration=None, num_step=None, seed=0, sr=None,
+             force=False, ctx_sec=6.0, guidance_scale=2.0, speed=1.0):
+        """Edit `audio` so it says `new_text` instead of `orig_text`, regenerating only the changed words.
+
+        audio: path or float array (+ sr). orig_text: transcript of the audio; None/"" -> transcribed with the
+        aligner's ASR (returned as "orig_text"). words: optional timings of orig_text, one per whitespace token
+        ([{"word","start","end"}] as returned by transcribe()/align()/edit(), or [(start, end) | None]); given, the
+        aligner pass and the orig_text-vs-ASR check are skipped (about half the latency of a GPU edit). Chain
+        edits by passing the previous result's audio, new_text and words. span_duration: seconds for the new span (single-change edits
+        only; default from the local speaking rate). num_step >= 16 (default: variant's recommendation).
+        force: skip the orig_text-vs-ASR check (CER > 0.6 refused otherwise).
+
+        Returns {"audio": float32 (n,), "sr": 24000, "orig_text", "orig_text_transcribed", "new_text",
+                 "edits": [{"span_in": [s, e] (input seconds replaced), "span_out": [s, e] (output seconds),
+                            "orig_words", "new_words"}] (left to right), "words": [{"word","start","end","aligned"}]
+                 of the output (unchanged words: shifted input timings; new words: aligned in a short window;
+                 aligned=False means an even split of the span because that window failed), "orig_text_cer_vs_asr",
+                 "latency_sec" (whole call incl. alignment), "num_step"}.
+        Raises EditError (kind: empty_text, too_long, too_short, bad_num_step, no_change, text_mismatch,
+        alignment_failed)."""
+        num_step = int(num_step or self.num_step)
+        if num_step < 16:
+            raise EditError("bad_num_step", "num_step must be >= 16 (8 steps clearly degrades quality)")
+        new_text = " ".join((new_text or "").split())
+        if not new_text:
+            raise EditError("empty_text", "new_text is empty")
+        wav = self.load(audio, sr)
+        if len(wav) > MAX_SEC * SR:
+            raise EditError("too_long", f"audio is {len(wav) / SR:.1f} s; the limit is {MAX_SEC:.0f} s "
+                                        "(cut the recording into sentences and edit the one that changes)")
+        if len(wav) < 0.5 * SR:
+            raise EditError("too_short", "audio is shorter than 0.5 s")
+        t0 = time.perf_counter()
+        transcribed, orig_cer = False, None
+        if words is not None:  # caller's timings (from transcribe()/align()/a previous edit()): no ASR pass, no check
+            orig_text = " ".join((orig_text or "").split())
+            if not orig_text:
+                raise EditError("empty_text", "orig_text is required when words are given")
+            if len(words) != len(orig_text.split()):
+                raise EditError("text_mismatch", f"{len(words)} word timings for {len(orig_text.split())} words")
+            tim = [None if w is None else ((w["start"], w["end"]) if isinstance(w, dict) else tuple(w)) for w in words]
+            tim = [None if t is None or t[0] is None else t for t in tim]
+        else:
+            lp, spf = self.aligner.logp(wav)  # one ONNX pass for both the ASR check and the alignment
+            asr = self.aligner.transcribe(wav, lp)["text"]
+            transcribed = not (orig_text or "").strip()
+            orig_text = asr if transcribed else " ".join(orig_text.split())
+            if not orig_text:
+                raise EditError("empty_text", "no speech recognised in the audio")
+            orig_cer = round(cer(orig_text, asr), 3)
+            if orig_cer > 0.6 and not force:
+                raise EditError("text_mismatch", f"orig_text does not match the audio (CER {orig_cer} against the ASR "
+                                                 f"transcript '{asr}'); fix it or pass force=True")
+        if [norm_word(w) for w in orig_text.split()] == [norm_word(w) for w in new_text.split()]:
+            raise EditError("no_change", "new_text has no word changes against orig_text")
+        if words is None:
+            tim = self.aligner.align(wav, orig_text, lp, spf)
+            if tim is None:
+                raise EditError("alignment_failed", "forced alignment of orig_text failed: does it match the audio?")
+        out, edits, out_tim, is_new = self._edit_groups(wav, orig_text, new_text, fill_timings(tim), span_duration,
+                                                        num_step, seed, ctx_sec, guidance_scale, speed)
+        out = np.clip(out, -1.0, 1.0).astype(np.float32)
+        words = self._output_words(out, new_text.split(), out_tim, is_new)
+        latency = time.perf_counter() - t0
+        return {"audio": out, "sr": SR, "orig_text": orig_text, "orig_text_transcribed": transcribed,
+                "new_text": new_text, "edits": edits, "words": words,
+                "orig_text_cer_vs_asr": orig_cer, "latency_sec": round(latency, 3), "num_step": num_step}
+
+    def _output_words(self, out, words, tim, is_new):
+        """Word timings of the output: unchanged words keep their (shifted) input timings; the generated words are
+        force-aligned in a short window (the new words plus one neighbour each side, +-0.15 s), which costs a
+        fraction of a full aligner pass. Words whose window fails keep an even split of the generated span."""
+        tim = [list(t) for t in tim]
+        exact = [g < 0 for g in is_new]
+        for g in sorted(set(x for x in is_new if x >= 0)):
+            idx = [i for i, x in enumerate(is_new) if x == g]
+            lo, hi = max(0, idx[0] - 1), min(len(words), idx[-1] + 2)
+            a = max(0.0, tim[lo][0] - 0.15)
+            b = min(len(out) / SR, tim[hi - 1][1] + 0.15)
+            r = self.aligner.align(out[int(a * SR):int(b * SR)], " ".join(words[lo:hi]))
+            if r is None:
+                continue
+            for j, t in zip(range(lo, hi), r):
+                if t is not None:
+                    tim[j] = [a + t[0], a + t[1]]
+                    exact[j] = True
+        return [{"word": w, "start": round(t[0], 3), "end": round(t[1], 3), "aligned": ex}
+                for w, t, ex in zip(words, tim, exact)]
+
+    # ------------------------------------------------------------------ internals
+    def _edit_groups(self, wav, orig_text, new_text, tim, span_duration, num_step, seed, ctx_sec, gs, speed):
+        peak = float(np.abs(wav).max()) + 1e-7
+        gain = 0.9 / peak  # same peak normalisation as the training tokens; undone at the end
+        cur = wav * gain
+        ow, nw = orig_text.split(), new_text.split()
+        sm = difflib.SequenceMatcher(a=[norm_word(w) for w in ow], b=[norm_word(w) for w in nw], autojunk=False)
+        groups = []
+        for op, i1, i2, j1, j2 in sm.get_opcodes():
+            if op == "equal":
+                continue
+            if groups and i1 - groups[-1][1] <= 1 and j1 - groups[-1][3] <= 1:  # merge changes <= 1 word apart
+                g = groups[-1]
+                groups[-1] = (g[0], i2, g[2], j2)
+            else:
+                groups.append((i1, i2, j1, j2))
+        if span_duration is not None and len(groups) != 1:
+            span_duration = None  # only meaningful for a single change
+        edits, cur_words, shifted = [], list(ow), None
+        is_new = [-1] * len(ow)  # per current word: index of the edit group that generated it, -1 = original
+        # Right to left: the word indices of the groups still to do are unchanged. Between groups, words left of the
+        # last edit keep their times, words to its right shift by the length change, and its generated words are
+        # force-aligned in a short window (if that fails they share the generated span evenly).
+        for gi, (i1, i2, j1, j2) in enumerate(reversed(groups)):
+            if gi > 0:  # refresh: shifted timings, generated words re-aligned in a short window
+                tim = [(w["start"], w["end"]) for w in self._output_words(cur, cur_words, shifted, is_new)]
+            new_w = nw[j1:j2]
+            before = len(cur)
+            cur, e = self._edit_one(cur, cur_words, tim, i1, i2, new_w, span_duration, num_step, seed, ctx_sec, gs,
+                                    speed)
+            delta = (len(cur) - before) / SR
+            for p in edits:
+                p["span_out"] = [round(p["span_out"][0] + delta, 3), round(p["span_out"][1] + delta, 3)]
+            s0, s1 = e["span_out"]
+            k = len(new_w)
+            shifted = (tim[:i1] + [(s0 + (s1 - s0) * q / max(k, 1), s0 + (s1 - s0) * (q + 1) / max(k, 1))
+                                   for q in range(k)] + [(a + delta, b + delta) for a, b in tim[i2:]])
+            e["orig_words"] = ow[i1:i2]
+            cur_words = cur_words[:i1] + new_w + cur_words[i2:]
+            is_new = is_new[:i1] + [len(groups) - 1 - gi] * k + is_new[i2:]
+            edits.append(e)
+        edits.reverse()
+        return cur / gain, edits, shifted, is_new
+
+    @torch.inference_mode()
+    def _generate(self, text, seq, gen_pos, num_step, gs, seed, t_shift=0.1, layer_penalty=5.0, pos_temp=5.0):
+        """Fill frames gen_pos of seq [8, T] by iterative unmasking; text CFG whose unconditional branch keeps the
+        audio context (no style/text)."""
+        torch.manual_seed(seed)
+        C, mask_id = self.cfg.num_audio_codebook, self.cfg.audio_mask_id
+        dev = self.device
+        seq = seq.clone().to(dev)
+        gen_pos = gen_pos.to(dev)
+        seq[:, gen_pos] = mask_id
+        tok = self.model.text_tokenizer
+        st = tok("<|lang_start|>am<|lang_end|><|instruct_start|>None<|instruct_end|>", return_tensors="pt").input_ids
+        tx = tok(f"<|text_start|>{text}<|text_end|>", return_tensors="pt").input_ids
+        pre = torch.cat([st, tx], 1).repeat(C, 1).to(dev)
+        P, T = pre.shape[1], seq.shape[1]
+        L = P + T
+        ids = torch.full((2, C, L), mask_id, dtype=torch.long, device=dev)
+        amask = torch.zeros(2, L, dtype=torch.bool, device=dev)
+        att = torch.zeros(2, 1, L, L, dtype=torch.bool, device=dev)
+        ids[0, :, :P] = pre
+        ids[0, :, P:] = seq
+        amask[0, P:] = True
+        att[0] = True
+        ids[1, :, :T] = seq
+        amask[1, :T] = True
+        att[1, :, :T, :T] = True
+        d = torch.arange(T, L, device=dev)
+        att[1, :, d, d] = True
+        c_idx, u_idx = P + gen_pos, gen_pos
+        n = len(gen_pos)
+        total = n * C
+        ts = self._time_steps(0.0, 1.0, num_step, t_shift).tolist()
+        sched, rem = [], total
+        for s in range(num_step):
+            k = rem if s == num_step - 1 else min(math.ceil(total * (ts[s + 1] - ts[s])), rem)
+            sched.append(int(k)); rem -= int(k)
+        layer_ids = torch.arange(C, device=dev).view(1, -1, 1)
+        cur = torch.full((1, C, n), mask_id, dtype=torch.long, device=dev)
+        gc = self._gc_cls(num_step=num_step, guidance_scale=gs, t_shift=t_shift, layer_penalty_factor=layer_penalty,
+                          position_temperature=pos_temp)
+        for s in range(num_step):
+            k = sched[s]
+            if k <= 0:
+                continue
+            logits = self.model(input_ids=ids, audio_mask=amask, attention_mask=att).logits.to(torch.float32)
+            pred, scores = self.model._predict_tokens_with_scoring(logits[0:1, :, c_idx, :], logits[1:2, :, u_idx, :], gc)
+            scores = scores - layer_ids * layer_penalty
+            if pos_temp > 0:
+                scores = self._gumbel(scores, pos_temp)
+            scores.masked_fill_(cur != mask_id, -float("inf"))
+            _, top = torch.topk(scores.flatten(), k)
+            flat = cur.flatten()
+            flat[top] = pred.flatten()[top]
+            cur = flat.view_as(cur)
+            ids[0, :, c_idx] = cur[0]
+            ids[1, :, u_idx] = cur[0]
+        seq[:, gen_pos] = cur[0]
+        return seq
+
+    def _rate(self, words, tim, lo, hi, ctx_sec, a_t, b_t):
+        """(weight per frame over context words only, median context pause in frames) or None."""
+        ctx = [i for i in range(len(words)) if tim[i][1] > tim[i][0] and
+               ((i < lo and tim[i][1] >= a_t - ctx_sec) or (i >= hi and tim[i][0] <= b_t + ctx_sec))]
+        wt = sum(self.est.calculate_total_weight(words[i]) for i in ctx)
+        du = sum(tim[i][1] - tim[i][0] for i in ctx) * FPS
+        if not ctx or du <= 0.3 * FPS or wt <= 0:
+            return None
+        cs = set(ctx)
+        gaps = [tim[i][0] - tim[i - 1][1] for i in range(1, len(words)) if i in cs and i - 1 in cs]
+        mg = float(np.median([max(0.0, g) for g in gaps])) * FPS if gaps else 0.05 * FPS
+        return wt / du, mg
+
+    @staticmethod
+    def _crop(tim, lo, hi, cut_l, cut_r, ctx_sec, dur):
+        n = len(tim)
+
+        def gap_mid(i):
+            if i <= 0:
+                return 0.0
+            if i >= n:
+                return dur
+            return 0.5 * (tim[i - 1][1] + tim[i][0])
+
+        a = lo
+        while a > 0 and cut_l - gap_mid(a - 1) <= ctx_sec:
+            a -= 1
+        b = hi
+        while b < n and gap_mid(b + 1) - cut_r <= ctx_sec:
+            b += 1
+        return a, b, min(gap_mid(a), cut_l), max(gap_mid(b), cut_r)
+
+    def _edit_one(self, wav, words, tim, i1, i2, new_w, span_duration, num_step, seed, ctx_sec, gs, speed,
+                  seam_window=0.32, crossfade=0.02):
+        dur = len(wav) / SR
+        n = len(words)
+        prev_end = tim[i1 - 1][1] if i1 > 0 else 0.0
+        next_start = tim[i2][0] if i2 < n else dur
+        if i2 > i1:  # replace / delete: cut half-way into the neighbouring pauses (max 0.3 s)
+            w0, w1 = tim[i1][0], tim[i2 - 1][1]
+            cut_l = w0 - min(max(0.0, w0 - prev_end) / 2, 0.3)
+            cut_r = w1 + min(max(0.0, next_start - w1) / 2, 0.3)
+            pad = (w0 - cut_l) + (cut_r - w1)
+        else:  # insert at the middle of the pause
+            if i1 == 0:
+                c = max(0.0, next_start - min(next_start / 2, 0.15))
+            elif i1 == n:
+                c = min(dur, prev_end + min((dur - prev_end) / 2, 0.15))
+            else:
+                c = 0.5 * (prev_end + next_start)
+            cut_l = cut_r = c
+            pad = None
+        cl, cr = int(round(cut_l * FPS)), int(round(cut_r * FPS))
+        if new_w:
+            if span_duration is not None:
+                N = max(2, int(round(span_duration * FPS)))
+            else:
+                r = self._rate(words, tim, i1, i2, ctx_sec, cut_l, cut_r) or self._rate(words, tim, 0, 0, 1e9, 0, 0)
+                rate, mg = r if r is not None else (1.5, 2.0)
+                wf = sum(self.est.calculate_total_weight(w) for w in new_w) / rate
+                gap_frames = (len(new_w) - 1) * mg + (mg if pad is None else pad * FPS)
+                N = max(3, int(round(wf / speed + gap_frames)))
+        else:
+            N = 0
+        a, b, crop_l, crop_r = self._crop(tim, i1, i2, cut_l, cut_r, ctx_sec, dur)
+        c0, c1 = int(round(crop_l * FPS)), int(round(crop_r * FPS))
+        m0, m1 = max(0, c0 - FPS), int(round(min(dur, crop_r + 1.0) * FPS))
+        tokens = self.encode(wav[m0 * HOP: m1 * HOP])
+        left, right = tokens[:, c0 - m0: cl - m0], tokens[:, cr - m0: c1 - m0]
+        text = " ".join(words[a:i1] + new_w + words[i2:b])
+        if N > 0:
+            seq = torch.cat([left, torch.full((tokens.shape[0], N), self.cfg.audio_mask_id, device=tokens.device,
+                                              dtype=tokens.dtype), right], 1)
+            gp = torch.arange(left.shape[1], left.shape[1] + N)
+        else:  # delete: cut, then regenerate a short window centred on the seam
+            seq = torch.cat([left, right], 1)
+            gp = None
+            if left.shape[1] and right.shape[1]:
+                W = max(2, int(round(seam_window * FPS)))
+                g0 = max(0, left.shape[1] - W // 2)
+                gp = torch.arange(g0, min(seq.shape[1], g0 + W))
+        xf = int(crossfade * SR)
+        L0 = cl * HOP
+        if gp is None or not len(gp):
+            out = np.concatenate([wav[:L0], wav[cr * HOP:]])
+            span = (L0 / SR, L0 / SR)
+        else:
+            gen0, gen1 = int(gp[0]), int(gp[-1]) + 1
+            dec = self.decode(self._generate(text, seq, gp, num_step, gs, seed))
+            seg = dec[gen0 * HOP: gen1 * HOP]
+            if N == 0:
+                lk = wav[:(c0 + gen0) * HOP]
+                rk = wav[(cr + (gen1 - left.shape[1])) * HOP:]
+            else:
+                lk, rk = wav[:L0], wav[cr * HOP:]
+            d0, d1 = gen0 * HOP, gen1 * HOP
+            ramp = np.sin(np.linspace(0, np.pi / 2, xf)) ** 2 if xf > 0 else None
+            if xf > 0 and d0 >= xf and len(lk) >= xf:
+                lk = lk.copy(); lk[-xf:] = lk[-xf:] * (1 - ramp) + dec[d0 - xf:d0] * ramp
+            if xf > 0 and len(dec) >= d1 + xf and len(rk) >= xf:
+                rk = rk.copy(); rk[:xf] = dec[d1:d1 + xf] * (1 - ramp) + rk[:xf] * ramp
+            out = np.concatenate([lk, seg, rk])
+            span = (len(lk) / SR, (len(lk) + len(seg)) / SR)
+        return out.astype(np.float32), {"span_in": [round(cut_l, 3), round(cut_r, 3)],
+                                        "span_out": [round(span[0], 3), round(span[1], 3)], "new_words": new_w}
+
+
+def main():
+    ap = argparse.ArgumentParser(description="Edit the words of an Amharic recording (OmniVoice masked-middle).")
+    ap.add_argument("--tts", required=True, help="tts-codec_llm-0.6b-amh-{fp16,fp32,int8_onnx} folder")
+    ap.add_argument("--audio", required=True)
+    ap.add_argument("--new-text", help="edited transcript (omit to only print the transcript)")
+    ap.add_argument("--orig-text", default=None, help="transcript of --audio (default: ASR)")
+    ap.add_argument("--out", default="edited.wav")
+    ap.add_argument("--codec", default=None)
+    ap.add_argument("--aligner", default=None)
+    ap.add_argument("--num-step", type=int, default=None)
+    ap.add_argument("--span-duration", type=float, default=None)
+    ap.add_argument("--threads", type=int, default=None)
+    ap.add_argument("--device", default=None)
+    ap.add_argument("--force", action="store_true")
+    ap.add_argument("--seed", type=int, default=0)
+    a = ap.parse_args()
+    import json
+    import soundfile as sf
+    t = time.perf_counter()
+    ed = SpeechEditor(a.tts, a.codec, a.aligner, device=a.device, threads=a.threads, num_step=a.num_step)
+    print(f"loaded {ed.variant} in {time.perf_counter() - t:.1f} s", file=sys.stderr)
+    if not a.new_text:
+        print(json.dumps(ed.transcribe(a.audio), ensure_ascii=False))
+        return
+    try:
+        r = ed.edit(a.audio, a.orig_text, a.new_text, span_duration=a.span_duration, num_step=a.num_step,
+                    seed=a.seed, force=a.force)
+    except EditError as e:
+        print(f"refused ({e.kind}): {e}", file=sys.stderr)
+        sys.exit(2)
+    sf.write(a.out, r["audio"], r["sr"])
+    print(json.dumps({k: v for k, v in r.items() if k != "audio"}, ensure_ascii=False))
+    print(f"{a.out}: {len(r['audio']) / SR:.2f} s, edit {r['latency_sec']:.2f} s ({r['num_step']} steps)",
+          file=sys.stderr)
+
+
+if __name__ == "__main__":
+    main()
